@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>App Logic World</title>
+
+    <!-- strart:CSS -->
+    <link type="text/css" href="css/jquery-ui.css" rel="stylesheet" >                            <!-- jQueryUI -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">   <!-- Bootstrap Theme-->
+    <!--"Styles" Personal configuration <link href="css/personalizado.css" rel="stylesheet"> -->
+    <link href="css/styles.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- end:CSS -->
+
+  </head>
+  <body>
+    <div class="white_space"></div>
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="navbar-header">
+    			<button type="button" class="navbar-toggle" data-toggle="collapse"
+    					data-target=".navbar-ex1-collapse">
+    			  <span class="sr-only">Desplegar navegación</span>
+    			  <span class="icon-bar"></span>
+    			  <span class="icon-bar"></span>
+    			  <span class="icon-bar"></span>
+    			</button>
+    		  <a class="navbar-brand" href="#"><img id="img_logo_app" src="images/logoApp.png" class="image" /></a>
+    	</div>
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+  			<ul class="nav navbar-nav">
+  			  <li class="dropdown">
+  			      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Archivo <b class="caret"></b></a>
+  				    <ul class="dropdown-menu">
+      				  <li><a href="#">Acción #1</a></li>
+      				  <li><a href="#">Acción #2</a></li>
+      				  <li class="divider"></li>
+      				  <li><a href="#">Acción #3</a></li>
+      				  <li class="divider"></li>
+      				  <li><a href="#">Acción #4</a></li>
+      				</ul>
+  			  </li>
+  			  <li class="dropdown">
+      				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Modelo <b class="caret"></b></a>
+      				<ul class="dropdown-menu">
+      				  <li><a href="#">Acción #5</a></li>
+      				  <li class="divider"></li>
+      				  <li><a href="#">Acción #6</a></li>
+      				</ul>
+  			  </li>
+  			  <li class="dropdown">
+      				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sentencias <b class="caret"></b></a>
+      				<ul class="dropdown-menu">
+      				  <li><a href="#">Acción #7</a></li>
+      				  <li class="divider"></li>
+      				  <li><a href="#">Acción #8</a></li>
+      				</ul>
+  			  </li>
+  			  <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ayuda <b class="caret"></b></a>
+      				<ul class="dropdown-menu">
+      				  <li><a href="#">Acción #9</a></li>
+      				  <li class="divider"></li>
+      				  <li><a href="#">Acción #10</a></li>
+      				</ul>
+  			  </li>
+  			  <li>
+            <button type="button" id="id_addmundo" class="btn btn-default navbar-btn btn-sm btn-gauzy"> <img id="img_add_mundo" src="images/icon_addWorld.png" class="image" /> </button>
+    			  <button type="button" id="id_addform" class="btn btn-default navbar-btn btn-sm btn-gauzy"> <img id="img_add_form" src="images/icon_addForm.png" class="image" /> </button>
+    			  <button type="button" class="btn btn-default navbar-btn btn-sm btn-gauzy"> <img id="img_info" src="images/icon_info.png" class="image" /> </button>
+    			  <button type="button" class="btn btn-default navbar-btn btn-sm btn-gauzy"> <img id="img_cuestion" src="images/icon_cuestion.png" class="image" /> </button> </li>
+  			</ul>
+		  </div>
+		</nav>
+    <!-- Contenido -->
+    <div id="app_container" class="container-fluid">
+      <div class="row">
+        <!-- Panel Modelo-->
+        <div class="col-md-6">
+          <!-- Herramientas Modelo-->
+          <div id="marco_elementos" class="thumbnail">
+			      <ul>
+        				<li><a href="#tabs-1"> <img id="icon_chancho" src="images/icon_chancho.png" class="image img-responsive elemento_mundo" /></a></li>
+        				<li><a href="#tabs-1"> <img id="icon_gallina" src="images/icon_gallina.png" class="image img-responsive elemento_mundo" /></a></li>
+        				<li><a href="#tabs-1"> <img id="icon_pato" src="images/icon_pato.png" class="image img-responsive elemento_mundo" /></a></li>
+        				<li><a href="#tabs-1"> <img id="icon_vaca" src="images/icon_vaca.png" class="image img-responsive elemento_mundo" /></a></li>
+				        <div style="float: right">
+					        <button id="add_element" type="button" class="btn btn-default btn_addedit_elem btn-block">Agregar</button>
+					        <button id="edit_element" type="button" class="btn btn-default btn_addedit_elem btn-block">Editar</button>
+				        </div>
+			      </ul>
+			      <div id="tabs-1">
+				        <ul id="lista_atributos_1" class="lista_atributos nav nav-pills nav-atributo">
+                  <li>
+                    <select id="tamaño" class="atributo form-control">
+                      <option>Chico</option><option>Mediano</option><option>Grande</option>
+                    </select>
+                  </li>
+                  <li>
+                    <select id="dormido" class="atributo form-control">
+                      <option>Despierto</option><option>Dormido</option>
+                    </select>
+                  </li>
+                </ul>
+			      </div>
+          </div>
+
+          <!-- Contenedor Modelo-->
+          <div id="panel_mundo1" class="contenedor_modelo">  <!-- thumbnail (antes autoajustado)-->
+			         <img id="imagen_fondo" src="images/granja.png" alt="granja">
+
+               <script id="Elemento_Template" type="text/template">
+                          <img class="elemento_insertado"  src="<%= img %>">
+   							          <button class="destroy"></button>
+               </script>
+
+		      </div>
+
+        </div>
+        <!-- Panel Sentencia-->
+        <div class="col-md-6">
+          <!-- Herramientas Sentencias-->
+          <div class="thumbnail"><!-- Herramientas sentencia-->
+    				<div class="row">
+    					<div id="" class="col-md-5">
+    						<div id="btn-group-char-1" class="btn-group btn-group-justified" role="group" >
+    						  <div class="btn-group" role="group">
+    							<button type="button" onclick="" class="btn-character btn btn-default "> &not; </button>
+    							</div>
+    						<div class="btn-group" role="group">
+    							<button type="button" onclick="" class="btn-character btn btn-default "> &and; </button> <!-- /\ -->
+    							</div>
+    						<div class="btn-group" role="group">
+    							<button type="button" onclick="" class="btn-character btn btn-default "> &or; </button> <!-- v -->
+    							</div>
+    						<div class="btn-group" role="group">
+    							<button type="button" onclick="" class="btn-character btn btn-default "> &rarr; </button> <!--  -> -->
+    						  </div>
+    						</div>
+    						<div  id="btn-group-char-2" class="btn-group btn-group-justified" role="group" >
+    						  <div class="btn-group" role="group">
+    							<button type="button" onclick="" class="btn-character btn btn-default"> &exist; </button> <!-- E -->
+    						  </div>
+    						  <div class="btn-group" role="group">
+    							<button type="button" onclick="" class="btn-character btn btn-default"> &forall; </button> <!-- A -->
+    							</div>
+    							<div class="btn-group" role="group">
+    							<button type="button" onclick="" class="btn-character btn btn-default"> ( </button>
+    							</div>
+    							<div class="btn-group" role="group">
+    							<button type="button" onclick="" class="btn-character btn btn-default"> ) </button>
+    						  </div>
+    						</div>
+    					</div>
+    					<div class="btn-toolbar col-md-7" role="toolbar" > <!-- style="background-color: yellow;" -->
+    						<div class="row ">
+    							<div class="col-xs-6" >
+    							<button id="id_btn_add_before" type="button" class="btn btn-default btn-block">Agregar antes</button>
+    							<button id="id_btn_add_after" type="button" class="btn btn-default btn-block">Agregar despues</button>
+    							</div>
+    							<div class="col-xs-6">
+    							<button id="id_btn_remove" type="button" class="btn btn-default btn-block">Borrar</button>
+    							<button id="id_btn_action" type="button" class="btn btn-default btn-block">Verificar</button>
+    							</div>
+    						</div>
+
+    					</div>
+    				</div>
+    		  </div>
+
+          <!-- Contenedor Sentencias-->
+          <div class="thumbnail"> <!-- Panel sentencia-->
+    				<div id="panel_sentencias" class="caption">
+					  <ul id="lista_sentencias">
+              <script id="Item_Sentencia_Template" type="text/template">
+                  <input type="text" id="<%= nombre %>" name="<%= nombre %>" class="input_sentencia form-control" placeholder="Campo de texto" value="<%= valor %>">
+                  <i class="imput_icon_center fa <%= estado %> form-control-feedback"></i>
+                  <button class="destroy"></button>
+              </script>
+
+					  </ul>
+    				</div>
+    		  </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- start:js -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.1/backbone-min.js"></script>
+      <script src="js/backbone.localstorage/backbone.localStorage.js"></script>
+      <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+      <script type="text/javascript" src="js/models/sentencia.js"></script>
+      <script type="text/javascript" src="js/models/elemento.js"></script>
+      <script type="text/javascript" src="js/collections/list_sentencias.js"></script>
+      <script type="text/javascript" src="js/collections/conj_elementos.js"></script>
+      <script type="text/javascript" src="js/view/sentenciaView.js"></script>
+      <script type="text/javascript" src="js/view/list_sentenciasView.js"></script>
+      <script type="text/javascript" src="js/view/elementoView.js"></script>
+      <script type="text/javascript" src="js/view/conj_elementosView.js"></script>
+      <script type="text/javascript" src="js/view/appView.js"></script>
+      <script type="text/javascript" src="js/app.js"></script>               <!-- Bootstrap's JavaScript plugin -->
+
+      <!-- Personalizados
+    	<script type="text/javascript" src="js/actions_buttons.js"></script>
+    	<script src="js/jquery-ui_DandD.js"></script> -->
+    <!-- end:js -->
+
+  </body>
+
+</html>

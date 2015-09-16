@@ -1,0 +1,88 @@
+/* Elementos Modelo*/
+.draggable{
+	position:absolute;
+	/*
+  top:0px;
+	left:0px;
+	*/
+}
+
+#imagen_fondo{
+	z-index: -1;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.contenedor_modelo{
+  overflow: auto;
+	height: auto;
+	width: 100%;
+	position: relative;
+
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 9px;
+}
+
+/* Menu Modelo*/
+#marco_elementos{
+	  margin-bottom: 5px;
+}
+
+#tabs-1{
+	padding: 8px 10px 2px;
+}
+
+.btn_addedit_elem{
+	  padding: 1px 12px;
+}
+
+.lista_atributos{
+	  margin-bottom: 0;
+}
+
+.atributo{
+  padding: 3px 4px;
+  height: 26px;
+}
+
+/*Sentencias */
+#btn-group-char-2{
+	margin-top: 5px;
+}
+
+#lista_sentencias{
+	padding-left: 0px;
+	list-style-type: none;
+}
+
+.item_sentencia{
+	margin-bottom: 2px;
+}
+
+.imput_icon_center{
+    padding: 9px 11px;
+}
+
+/*botton flotante delete */
+
+li.destroy {
+  display: block;
+}
+li .destroy:hover {
+  color: #af5b5e;
+}
+li .destroy {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  bottom: 0;
+  width: 40px;
+  height: 40px;
+  margin: auto 0;
+  font-size: 30px;
+  color: #cc9a9a;
+  margin-bottom: 11px;
+  transition: color 0.2s ease-out;
+}
