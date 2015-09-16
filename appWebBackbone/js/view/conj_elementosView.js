@@ -25,7 +25,7 @@ var app = app || {};
 
             app.elemento_collention.on("add", this.renderElemento, this); //actualiza la vista cada agregado.
                                                                             //actualiza la vista cada eliminado y otro para edit.
-            this.event_aggregator.bind("event_element:add_Element", this.addNewElemento);
+            this.event_aggregator.bind("event_mundo:add_Element", this.addNewElemento);
         },
 
         render: function(){

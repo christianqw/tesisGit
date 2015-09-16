@@ -28,11 +28,11 @@ var app = app || {};
         },
 
         addNewBefore: function(){
-            this.event_aggregator.trigger("event_sentencia:add_Before");
+            this.event_aggregator.trigger("event_formulario:add_Before");
         },
 
 				addNewElemento: function(){
-						this.event_aggregator.trigger("event_element:add_Element");
+						this.event_aggregator.trigger("event_mundo:add_Element");
 				},
 
         mensaje : function(){

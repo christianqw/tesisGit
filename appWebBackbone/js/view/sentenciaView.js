@@ -40,6 +40,7 @@ var app = app || {};
         },
 
 				edit: function(){
+					//var valor = this.$('input').val();
 					$(".editing").removeClass('editing');
 					this.$el.addClass('editing');
 
@@ -50,7 +51,8 @@ var app = app || {};
 				},
 
 				updateOnFocusOut: function(){
-	 					var value = $(".editing > input").val();
+	 					//var value = $(".editing > input").val(); //analizar $el OJO!!!
+						var value = this.$('input').val();
 						if (value){
 							var trimmedValue = value.trim();//string sin espacios
 							if (this.model.get("valor") !== trimmedValue){

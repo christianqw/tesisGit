@@ -10,6 +10,7 @@ var app = app || {};
 				el:$("#lista_sentencias"),  //insertamos los elementos en este componente
 
 				var_num_name: 3,
+				var_focus:'',
 
         initialize:function(){                    //var_sentencias
             _.bindAll(this, "addNewSentencia");
@@ -25,7 +26,7 @@ var app = app || {};
 						this.listenTo(this.model, 'destroy', this.remove);
 						*/
 
-						this.event_aggregator.bind("event_sentencia:add_Before", this.addNewSentencia);
+						this.event_aggregator.bind("event_formulario:add_Before", this.addNewSentencia);
 
 				},
 
@@ -55,7 +56,7 @@ var app = app || {};
 				num_nameNext: function(){
 					this.var_num_name = this.var_num_name + 1;
 				},
-				
+
         addNewSentencia: function(){
           alert("agregar sentencia  - lista ");
 					var name = "form_" + this.var_num_name;
