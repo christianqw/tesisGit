@@ -15,7 +15,8 @@ var app = app || {};
         nombre:"form_X",
         valor:"",
         estado:"", //blanco - none
-        mensaje:""
+        mensaje:"",
+				focus:false
     }
 	});
 })();
