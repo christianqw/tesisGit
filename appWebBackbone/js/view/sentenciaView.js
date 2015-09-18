@@ -42,7 +42,7 @@ var app = app || {};
 				edit: function(){
 					alert("se toma el focus de la sentencia");
 																													//, this
-					this.event_aggregator.trigger("event_formulario:edit_Focus");
+					this.event_aggregator.trigger("event_formulario:edit_Focus", this);
 					//var aux = this;
 					//$(".editing").removeClass('editing');
 					//this.$el.addClass('editing');

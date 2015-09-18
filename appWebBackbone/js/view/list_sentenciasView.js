@@ -65,8 +65,16 @@ var app = app || {};
           app.sentencia_collention.add(new app.Sentencia({nombre: name}));
         },
 
-				changeFocusSentencia: function(){
+				changeFocusSentencia: function( that ){
+					if (this.var_focus){
+						this.var_focus.$el.removeClass('editing');
+						this.var_focus.model.toggle();
+					};
 					alert(" changeFocusSentencia dentro de la lista");
+					that.$el.addClass('editing');
+			 		that.model.toggle();
+					this.var_focus = that;
+					alert(this.var_focus.model.get('nombre'));
 				}
 
     });
