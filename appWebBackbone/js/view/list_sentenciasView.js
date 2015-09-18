@@ -14,6 +14,7 @@ var app = app || {};
 
         initialize:function(){                    //var_sentencias
             _.bindAll(this, "addNewSentencia");
+						_.bindAll(this, "changeFocusSentencia");
 
             //this.collection = new List_Sentencias();  eliminado
             //this.collection.add(new Sentencia({nombre:"form_01"})); utilizado en una funcíon aparte.
@@ -27,7 +28,7 @@ var app = app || {};
 						*/
 
 						this.event_aggregator.bind("event_formulario:add_Before", this.addNewSentencia);
-
+						this.event_aggregator.bind("event_formulario:edit_Focus", this.changeFocusSentencia);
 				},
 
         cargar : function(){
@@ -62,7 +63,11 @@ var app = app || {};
 					var name = "form_" + this.var_num_name;
 					this.num_nameNext();
           app.sentencia_collention.add(new app.Sentencia({nombre: name}));
-        }
+        },
+
+				changeFocusSentencia: function(){
+					alert(" changeFocusSentencia dentro de la lista");
+				}
 
     });
 

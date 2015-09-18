@@ -40,9 +40,12 @@ var app = app || {};
         },
 
 				edit: function(){
-					//var valor = this.$('input').val();
-					$(".editing").removeClass('editing');
-					this.$el.addClass('editing');
+					alert("se toma el focus de la sentencia");
+																													//, this
+					this.event_aggregator.trigger("event_formulario:edit_Focus");
+					//var aux = this;
+					//$(".editing").removeClass('editing');
+					//this.$el.addClass('editing');
 
 				},
 
@@ -51,7 +54,6 @@ var app = app || {};
 				},
 
 				updateOnFocusOut: function(){
-	 					//var value = $(".editing > input").val(); //analizar $el OJO!!!
 						var value = this.$('input').val();
 						if (value){
 							var trimmedValue = value.trim();//string sin espacios
