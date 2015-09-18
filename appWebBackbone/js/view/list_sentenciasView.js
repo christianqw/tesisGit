@@ -15,6 +15,7 @@ var app = app || {};
         initialize:function(){                    //var_sentencias
             _.bindAll(this, "addNewSentencia");
 						_.bindAll(this, "changeFocusSentencia");
+						_.bindAll(this, "addCharInSentencia");
 
             //this.collection = new List_Sentencias();  eliminado
             //this.collection.add(new Sentencia({nombre:"form_01"})); utilizado en una funcíon aparte.
@@ -29,6 +30,7 @@ var app = app || {};
 
 						this.event_aggregator.bind("event_formulario:add_Before", this.addNewSentencia);
 						this.event_aggregator.bind("event_formulario:edit_Focus", this.changeFocusSentencia);
+						this.event_aggregator.bind("event_formulario:insert_Char", this.addCharInSentencia);
 				},
 
         cargar : function(){
@@ -59,7 +61,7 @@ var app = app || {};
 				},
 
         addNewSentencia: function(){
-          alert("agregar sentencia  - lista ");
+          //alert("agregar sentencia  - lista ");
 					var name = "form_" + this.var_num_name;
 					this.num_nameNext();
           app.sentencia_collention.add(new app.Sentencia({nombre: name}));
@@ -67,14 +69,19 @@ var app = app || {};
 
 				changeFocusSentencia: function( that ){
 					if (this.var_focus){
-						this.var_focus.$el.removeClass('editing');
-						this.var_focus.model.toggle();
-					};
-					alert(" changeFocusSentencia dentro de la lista");
-					that.$el.addClass('editing');
-			 		that.model.toggle();
+						this.var_focus.remove_editing();
+					//	this.var_focus.toggle();
+					}
+					//alert(" changeFocusSentencia dentro de la lista");
+					that.add_editing();
+			 		//that.toggle();
 					this.var_focus = that;
-					alert(this.var_focus.model.get('nombre'));
+					//alert(this.var_focus.model.get('nombre'));
+				},
+
+				addCharInSentencia: function(){
+					var charPos = this.var_focus.$('input').prop('selectionStart');
+					alert("charPos: " + charPos);
 				}
 
     });

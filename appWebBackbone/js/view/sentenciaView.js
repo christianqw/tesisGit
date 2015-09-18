@@ -40,13 +40,8 @@ var app = app || {};
         },
 
 				edit: function(){
-					alert("se toma el focus de la sentencia");
-																													//, this
+				//	alert("se toma el focus de la sentencia");
 					this.event_aggregator.trigger("event_formulario:edit_Focus", this);
-					//var aux = this;
-					//$(".editing").removeClass('editing');
-					//this.$el.addClass('editing');
-
 				},
 
 				clear : function(){
@@ -67,7 +62,20 @@ var app = app || {};
 								this.model.trigger('change', this.model);
 								}
 						};
-					},
+				},
+
+				toggle: function(){
+					this.model.toggle();
+					this.model.trigger('change', this.model);
+				},
+
+				remove_editing: function(){
+					this.$el.removeClass('editing');
+				},
+
+				add_editing: function(){
+					this.$el.addClass('editing');
+				},
 
 				updateOnEnter: function(){
 

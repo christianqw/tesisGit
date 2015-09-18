@@ -12,7 +12,8 @@ var app = app || {};
 
         events:{
           "click #id_btn_add_before" :"addNewBefore",
-					"click #add_element" :"addNewElemento"
+					"click #add_element" :"addNewElemento",
+					"click .btn-character" :"insertChar"
         },
 
         initialize:function(){
@@ -33,6 +34,11 @@ var app = app || {};
 
 				addNewElemento: function(){
 						this.event_aggregator.trigger("event_mundo:add_Element");
+				},
+
+				insertChar: function(){
+																								//, char
+					this.event_aggregator.trigger("event_formulario:insert_Char");
 				},
 
         mensaje : function(){
