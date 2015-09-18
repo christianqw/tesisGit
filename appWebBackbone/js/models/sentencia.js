@@ -16,12 +16,7 @@ var app = app || {};
         valor:"",
         estado:"", //blanco - none
         mensaje:"",
-				focus: false
-    },
-		toggle: function () {
-		this.save({
-			focus: !this.get('focus')
-		});
-	}
+				//focus: false
+    }
 	});
 })();

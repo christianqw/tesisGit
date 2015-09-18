@@ -79,9 +79,15 @@ var app = app || {};
 					//alert(this.var_focus.model.get('nombre'));
 				},
 
-				addCharInSentencia: function(){
-					var charPos = this.var_focus.$('input').prop('selectionStart');
-					alert("charPos: " + charPos);
+				addCharInSentencia: function( char ){
+					if (this.var_focus){
+						var charPos = this.var_focus.$('input').prop('selectionStart');
+						console.log(charPos);
+						var string = this.var_focus.model.get('valor');
+						string = string.substring(0, charPos) + char + string.substring(charPos);
+						console.log(string);
+						this.var_focus.model.save({valor : string});
+					}
 				}
 
     });

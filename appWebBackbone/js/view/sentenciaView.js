@@ -63,12 +63,12 @@ var app = app || {};
 								}
 						};
 				},
-
+/*
 				toggle: function(){
 					this.model.toggle();
 					this.model.trigger('change', this.model);
 				},
-
+*/
 				remove_editing: function(){
 					this.$el.removeClass('editing');
 				},
