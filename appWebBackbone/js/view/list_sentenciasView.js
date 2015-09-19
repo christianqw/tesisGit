@@ -61,7 +61,6 @@ var app = app || {};
 				},
 
         addNewSentencia: function(){
-          //alert("agregar sentencia  - lista ");
 					var name = "form_" + this.var_num_name;
 					this.num_nameNext();
           app.sentencia_collention.add(new app.Sentencia({nombre: name}));
@@ -70,11 +69,9 @@ var app = app || {};
 				changeFocusSentencia: function( that ){
 					if (this.var_focus){
 						this.var_focus.remove_editing();
-					//	this.var_focus.toggle();
 					}
 					//alert(" changeFocusSentencia dentro de la lista");
 					that.add_editing();
-			 		//that.toggle();
 					this.var_focus = that;
 					//alert(this.var_focus.model.get('nombre'));
 				},

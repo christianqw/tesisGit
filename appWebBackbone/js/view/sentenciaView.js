@@ -51,24 +51,20 @@ var app = app || {};
 				updateOnFocusOut: function(){
 						var value = this.$('input').val();
 						if (value){
-							var trimmedValue = value.trim();//string sin espacios
-							if (this.model.get("valor") !== trimmedValue){
-								this.model.save({ valor: trimmedValue });
-								this.model.trigger('change', this.model);
+							//Eliminado, genera conflicto con la inserciond ecaracteres
+							//var trimmedValue = value.trim();//string sin espacios
+							if (this.model.get("valor") !== value){
+								this.model.save({ valor: value });
+								//this.model.trigger('change', this.model);
 							}
 						} else {
 							if (this.model.get("valor")){
 								this.model.save({valor : ""});
-								this.model.trigger('change', this.model);
+								//this.model.trigger('change', this.model);
 								}
 						};
 				},
-/*
-				toggle: function(){
-					this.model.toggle();
-					this.model.trigger('change', this.model);
-				},
-*/
+
 				remove_editing: function(){
 					this.$el.removeClass('editing');
 				},
