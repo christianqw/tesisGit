@@ -1,11 +1,21 @@
 Comenzando con Gradle
 1- generar la ruta y los archivos del codigo
 2- generar a mano el archivo "build.gradle" en el directorio raiz del proyecto
-3- Compilar ejecutando 
+3- Compilar ejecutando
 
             gradle build
 
-4 - listar las diferentes acciones a realizar dentro del directorio del proyecto. 
+4 - listar las diferentes acciones a realizar dentro del directorio del proyecto.
 
-            gradle tasks 
+            gradle tasks
 
+--------------
+HelloWorld
+5- Modificado el codigo de HelloWorld para que muetre fecha.
+6- agregado elemento al archivo "bild.gradle": incorporada dependncias, ademas definicion
+del nombre del archivo compilado.
+
+-----
+Gradle Wrapper
+7- Se incorpora la linea para ejecutar el comando de compilacion
+           Gradle Wrapper
