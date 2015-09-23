@@ -1,0 +1,11 @@
+Comenzando con Gradle
+1- generar la ruta y los archivos del codigo
+2- generar a mano el archivo "build.gradle" en el directorio raiz del proyecto
+3- Compilar ejecutando 
+
+            gradle build
+
+4 - listar las diferentes acciones a realizar dentro del directorio del proyecto. 
+
+            gradle tasks 
+
