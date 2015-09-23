@@ -18,4 +18,12 @@ del nombre del archivo compilado.
 -----
 Gradle Wrapper
 7- Se incorpora la linea para ejecutar el comando de compilacion
-           Gradle Wrapper
+           gradle wrapper
+
+8- Luego e ejecutarlo agrega los archivos corespondientes y es posible compilar el proyecto
+utilizando:
+           ./gradlew build
+
+-------------
+Application Runeable
+9- Agregamos las dependencias para que la aplicacion pueda ser ejecutada por consola.
