@@ -27,3 +27,5 @@ utilizando:
 -------------
 Application Runeable
 9- Agregamos las dependencias para que la aplicacion pueda ser ejecutada por consola.
+10- Para ejecutar la aplicacion:
+           ./gradlew run
