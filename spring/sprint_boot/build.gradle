@@ -39,7 +39,9 @@ dependencies {
     // tag::actuator[]
     compile("org.springframework.boot:spring-boot-starter-actuator")
     // end::actuator[]
-    testCompile("junit:junit")
+    // tag::tests[]  -- Add dependencie for Add Unit Tests
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    // end::tests[]
 }
 // end::dependencies[]
 
