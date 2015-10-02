@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>probando... </title>
+  </head>
+  <body>
+    <form class="" action="index.html" method="post">
+      <span>campo 1: </span>
+      <input type="text" name="val1" value="">
+      <span>campo 2: </span>
+      <input type="text" name="val2" value="">
+      <button id="mandar" type="button" name="button">send</button>
+
+      <span id='resultado'></span>
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      "use strict";
+      $("#mandar").click(function(){
+          $.ajax({//Inicio de llamado
+            // type:"GET",
+            // datatype: "json",
+            // contentType: "application/json",
+            // cache: false,
+            // url: "http://localhost:8080/greeting",
+            // //url:"http://localhost:8080/calcular",
+
+            url: "http://localhost:8080/greeting",
+            dataType: "json",
+            type: 'GET',
+            beforeSend : $.bind(function (xhr) {
+                xhr.setRequestHeader('Content-Type', 'application/json');
+            }, this),
+            success:function(data){//lo que pasa cuando termina
+              $("#resultado").html(data.content);
+            },
+            error: function(){
+            }
+          });
+      event.preventDefault();
+      });
+    });
+    </script>
+
+
+  </body>
+</html>

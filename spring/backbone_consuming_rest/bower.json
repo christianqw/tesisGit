@@ -1,0 +1,17 @@
+{
+  "name": "backbone_consuming_rest",
+  "version": "0.0.0",
+  "homepage": "https://github.com/christianqw/tesisGit",
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/lib",
+    "test",
+    "tests"
+  ]
+}
