@@ -1,6 +1,8 @@
 $(document).ready(function() {
   $("#send").on('click', function(e) {
       $.ajax({
+          type: 'post',
+          data: $("#name_imputs").serializeArray(),
           url: "http://localhost:8080/greeting"
       }).then(function(data, status, jqxhr) {
          $('.greeting-id').append(data.id);
