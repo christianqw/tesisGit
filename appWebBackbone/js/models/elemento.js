@@ -19,8 +19,7 @@ var app = app || {};
         left: 0,
         top: 0,
         att1:"chico",
-        att2:"despierto",
-				focus:false
+        att2:"despierto"
     },
 
 		//function editing position

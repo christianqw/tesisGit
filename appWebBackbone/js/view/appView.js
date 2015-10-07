@@ -13,7 +13,7 @@ var app = app || {};
         events:{
           "click #id_btn_add_before" :"addNewBefore",
 					"click #add_element" :"addNewElemento",
-					"click .btn-character" :"addCharToInput"
+					"click .btn-character" :"insertChar"
         },
 
         initialize:function(){
@@ -36,8 +36,8 @@ var app = app || {};
 						this.event_aggregator.trigger("event_mundo:add_Element");
 				},
 
-				addCharToInput: function(e){
-					this.event_aggregator.trigger("event_formulario:insert_Char", $(e.target).text());
+				insertChar: function(){																					//, char
+					this.event_aggregator.trigger("event_formulario:insert_Char");
 				},
 
         mensaje : function(){
