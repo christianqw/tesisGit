@@ -83,29 +83,36 @@
           <!-- Herramientas Modelo-->
           <div id="marco_elementos" class="thumbnail">
 			      <ul>
-        				<li><a href="#tabs-1"> <img id="icon_chancho" src="images/icon_chancho.png" class="image img-responsive elemento_mundo" /></a></li>
-        				<li><a href="#tabs-1"> <img id="icon_gallina" src="images/icon_gallina.png" class="image img-responsive elemento_mundo" /></a></li>
-        				<li><a href="#tabs-1"> <img id="icon_pato" src="images/icon_pato.png" class="image img-responsive elemento_mundo" /></a></li>
-        				<li><a href="#tabs-1"> <img id="icon_vaca" src="images/icon_vaca.png" class="image img-responsive elemento_mundo" /></a></li>
+        				<li><a href="#tabs-1"> <img id="tipo1" src="images/icon_chancho.png" class="image img-responsive elemento_mundo" /></a></li>
+        				<li><a href="#tabs-2"> <img id="tipo2" src="images/icon_gallina.png" class="image img-responsive elemento_mundo" /></a></li>
+        				<li><a href="#tabs-1"> <img id="tipo3" src="images/icon_pato.png" class="image img-responsive elemento_mundo" /></a></li>
+        				<li><a href="#tabs-1"> <img id="tipo4" src="images/icon_vaca.png" class="image img-responsive elemento_mundo" /></a></li>
 				        <div style="float: right">
 					        <button id="add_element" type="button" class="btn btn-default btn_addedit_elem btn-block">Agregar</button>
 					        <button id="edit_element" type="button" class="btn btn-default btn_addedit_elem btn-block">Editar</button>
 				        </div>
 			      </ul>
-			      <div id="tabs-1">
-				        <ul id="lista_atributos_1" class="lista_atributos nav nav-pills nav-atributo">
-                  <li>
-                    <select id="tamaño" class="atributo form-control">
-                      <option>Chico</option><option>Mediano</option><option>Grande</option>
-                    </select>
-                  </li>
-                  <li>
-                    <select id="dormido" class="atributo form-control">
-                      <option>Despierto</option><option>Dormido</option>
-                    </select>
-                  </li>
-                </ul>
-			      </div>
+            <form id="tabs-1" class="lista_atributos nav-atributo">
+              <select name="tamaño" class="atributo form-inline">
+                <option>Chico</option>
+                <option>Mediano</option>
+                <option>Grande</option>
+              </select>
+              <select name="dormido" class="atributo form-inline">
+                <option>Despierto</option>
+                <option>Dormido</option>
+              </select>
+            </form>
+            <form id="tabs-2" class="lista_atributos nav-atributo">
+              <select name="name1" class="atributo form-inline">
+                <option>Single</option>
+                <option>Single2</option>
+              </select>
+              <select name="last" class="atributo form-inline">
+                <option>patitp</option>
+                <option>elefante</option>
+              </select>
+            </form>
           </div>
 
           <!-- Contenedor Modelo-->

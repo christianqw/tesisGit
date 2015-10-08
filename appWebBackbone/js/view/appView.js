@@ -34,6 +34,21 @@ var app = app || {};
         },
 
 				addNewElemento: function(){
+						var _id_atributos = $("#marco_elementos .ui-tabs-active a").attr("href");
+						console.log("form: ");
+						console.log(_id_atributos);
+						var _Json_atributos = $(_id_atributos).serializeArray();
+						console.log("serializado: ");
+						console.log(_Json_atributos);
+						var tipo = $("#marco_elementos .ui-tabs-active img").attr("id");
+						var data = { "tipo" : tipo };
+						console.log("   tipo: "+ tipo + "    data: " + data);
+						 $.each(_Json_atributos, function (i, obj) {
+							 data[obj.name] = obj.value;
+						 });
+						console.log(data);
+						//var aux = $_tab.tabs( "select",  $_tab.tabs( "option", "active" ) );
+						//console.log( aux.serializeArray() );
 						this.event_aggregator.trigger("event_mundo:add_Element");
 				},
 

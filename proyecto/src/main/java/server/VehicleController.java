@@ -16,39 +16,7 @@ import org.springframework.stereotype.Controller;
 
 
 @RestController
-public class VehicleController {
-
-	/*@RequestMapping(value = "/")
-	public ResponseEntity<Car> get() {
-
-		Car car = new Car();
-		car.setColor("Blue");
-		car.setMiles(100);
-		car.setVIN("1234");
-
-		return new ResponseEntity<Car>(car, HttpStatus.OK);
-	}
-
-	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public ResponseEntity<Car> update(@RequestBody Car car) {
-
-		if (car != null) {
-			car.setMiles(car.getMiles() + 100);
-		}
-
-		// TODO: call persistence layer to update
-		return new ResponseEntity<Car>(car, HttpStatus.OK);
-	}
-
-	@RequestMapping(value = "/cars", method = RequestMethod.POST)
-	public ResponseEntity<List<Car>> update(@RequestBody List<Car> cars) {
-
-		cars.stream().forEach(c -> c.setMiles(c.getMiles() + 100));
-
-		// TODO: call persistence layer to update
-		return new ResponseEntity<List<Car>>(cars, HttpStatus.OK);
-	}
-*/
+public class ActionController {
 
 	@RequestMapping(value = "/action", method = RequestMethod.POST)
 	public ResponseEntity<RequestWrapper> updateWithMultipleObjects(

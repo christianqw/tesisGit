@@ -33,6 +33,17 @@
 	padding: 8px 10px 2px;
 }
 
+#tabs-2{
+	padding: 8px 10px 2px;
+}
+
+.nav-pills > select {
+    float: left;
+}
+.nav > select {
+    position: relative;
+    display: block;
+}
 .btn_addedit_elem{
 	  padding: 1px 12px;
 }

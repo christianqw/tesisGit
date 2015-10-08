@@ -15,6 +15,7 @@ var app = app || {};
 		// de faltar un campo, se está asumiendo que simepre se asigna dicho atributo al crearlo
     defaults:{
         nombre:"eX",
+				tipo:"vaca",
         img: "images/icon_vaca.png",
         left: 0,
         top: 0,
