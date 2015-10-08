@@ -65,18 +65,18 @@ var app = app || {};
 						};
 				},
 
-				remove_editing: function(){
+				remove_editing : function(){
 					this.$el.removeClass('editing');
 				},
 
-				add_editing: function(){
+				add_editing : function(){
 					this.$el.addClass('editing');
 				},
 
-				updateOnEnter: function(){
+				updateOnEnter : function(){
 
 				},
-				revertOnEscape: function(){
+				revertOnEscape : function(){
 
 				}
     });

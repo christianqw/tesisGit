@@ -13,7 +13,8 @@ var app = app || {};
         events:{
           "click #id_btn_add_before" :"addNewBefore",
 					"click #add_element" :"addNewElemento",
-					"click .btn-character" :"insertChar"
+					"click .btn-character" :"addCharToInput",
+					"click #id_btn_action" : "verificar"
         },
 
         initialize:function(){
@@ -36,13 +37,21 @@ var app = app || {};
 						this.event_aggregator.trigger("event_mundo:add_Element");
 				},
 
-				insertChar: function(){																					//, char
-					this.event_aggregator.trigger("event_formulario:insert_Char");
-				},
+				addCharToInput: function(e){
++					this.event_aggregator.trigger("event_formulario:insert_Char", $(e.target).text());
+ 				},
 
         mensaje : function(){
           alert("apretaste afuera")
-        }
+        },
+
+				verificar : function(){
+					console.log('collection-Elementos.toJSON(): ', app.elemento_collention.toJSON());
+    			console.log('JSON.stringify(collection.toJSON()): ', JSON.stringify(app.elemento_collention.toJSON()));
+				  console.log('-------------------');
+					console.log('collection-Sentencias.toJSON(): ', app.sentencia_collention.toJSON());
+    			console.log('JSON.stringify(collection.toJSON()): ', JSON.stringify(app.sentencia_collention.toJSON()));
+				}
     });
 
   })(jQuery);

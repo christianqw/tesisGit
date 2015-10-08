@@ -1,4 +1,4 @@
-package demo;
+package server;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ import org.springframework.stereotype.Controller;
 @RestController
 public class VehicleController {
 
-	@RequestMapping(value = "/")
+	/*@RequestMapping(value = "/")
 	public ResponseEntity<Car> get() {
 
 		Car car = new Car();
@@ -48,16 +48,15 @@ public class VehicleController {
 		// TODO: call persistence layer to update
 		return new ResponseEntity<List<Car>>(cars, HttpStatus.OK);
 	}
+*/
 
-// consumes = "application/json", produces = "application/json",
-	@RequestMapping(value = "/carsandtrucks", method = RequestMethod.POST)
-  //@ResponseStatus(HttpStatus.CREATED)
+	@RequestMapping(value = "/action", method = RequestMethod.POST)
 	public ResponseEntity<RequestWrapper> updateWithMultipleObjects(
 			@RequestBody RequestWrapper requestWrapper) {
-
+/*
 		requestWrapper.getCars().stream()
 				.forEach(c -> c.setMiles(c.getMiles() + 100));
-
+*/
 		// TODO: call persistence layer to update
 		return new ResponseEntity<RequestWrapper>(requestWrapper, HttpStatus.OK);
 	}

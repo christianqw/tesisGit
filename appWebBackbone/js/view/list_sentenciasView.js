@@ -40,7 +40,7 @@ var app = app || {};
             app.sentencia_collention.add(new app.Sentencia(formData2));
         },
 
-        render: function(){
+        render : function(){
             var that = this;
             //iteramos sobre toda la coleccion, undercode function
             _.each(app.sentencia_collention.models,
@@ -49,24 +49,24 @@ var app = app || {};
                   }, this);
         },
 
-        renderSentencia:function(item){
+        renderSentencia : function(item){
             var sentenciaView = new app.SentenciaView({ //genera la vista del  modelo
                 model: item
             });
             this.$el.append(sentenciaView.render().el); //agrega al final
         },
 
-				num_nameNext: function(){
+				num_nameNext : function(){
 					this.var_num_name = this.var_num_name + 1;
 				},
 
-        addNewSentencia: function(){
+        addNewSentencia : function(){
 					var name = "form_" + this.var_num_name;
 					this.num_nameNext();
           app.sentencia_collention.add(new app.Sentencia({nombre: name}));
         },
 
-				changeFocusSentencia: function( that ){
+				changeFocusSentencia : function( that ){
 					if (this.var_focus){
 						this.var_focus.remove_editing();
 					}
@@ -76,7 +76,7 @@ var app = app || {};
 					//alert(this.var_focus.model.get('nombre'));
 				},
 
-				addCharInSentencia: function( char ){
+				addCharInSentencia : function( char ){
 					if (this.var_focus){
 						var charPos = this.var_focus.$('input').prop('selectionStart');
 						console.log(charPos);
