@@ -54,15 +54,15 @@ var app = app || {};
 					this.var_num_name = this.var_num_name + 1;
 				},
 
-        addNewElemento: function(){
+        addNewElemento: function( elem ){
           alert("agregar elemento  - conj ");
             /*
             var privada con contador - id del name
             cargar animal y atributos del formulario seleccionados.
             */
 						var name = "e" + this.var_num_name;
-						this.num_nameNext();
-            app.elemento_collention.add(new app.Elemento({nombre: name}));
+						this.num_nameNext(); //{nombre: name}
+            app.elemento_collention.add(new app.Elemento(elem));
         },
 
         mensaje2 : function(){

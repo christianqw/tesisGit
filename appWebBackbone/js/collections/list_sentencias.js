@@ -15,7 +15,7 @@ var app = app || {};
 		//localStorage: new Backbone.LocalStorage('sentencias-backbone')
   });
 
-  // Create our global collection of **Todos**.
+  // Create our global collection of **Sentencias**.
 	app.sentencia_collention = new List_Sentencias();
 
   })();

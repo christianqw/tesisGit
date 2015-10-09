@@ -49,7 +49,7 @@ var app = app || {};
 						console.log(data);
 						//var aux = $_tab.tabs( "select",  $_tab.tabs( "option", "active" ) );
 						//console.log( aux.serializeArray() );
-						this.event_aggregator.trigger("event_mundo:add_Element");
+						this.event_aggregator.trigger("event_mundo:add_Element", data);
 				},
 
 				addCharToInput: function(e){
