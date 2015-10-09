@@ -61,7 +61,8 @@ var app = app || {};
             cargar animal y atributos del formulario seleccionados.
             */
 						var name = "e" + this.var_num_name;
-						this.num_nameNext(); //{nombre: name}
+						elem["nombre"] = name;
+						this.num_nameNext();
             app.elemento_collention.add(new app.Elemento(elem));
         },
 

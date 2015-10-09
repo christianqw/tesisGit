@@ -14,6 +14,7 @@ var app = app || {};
     defaults:{
         nombre:"eX",
 				tipo:"xxx",
+				zona:"bosque",
         img: 'images/icon_chancho.png',
         left: 0,
         top: 0,
@@ -36,7 +37,6 @@ var app = app || {};
 
 		initialize: function(){
       //concatenamos atributos y tipo para sacar la ruta del elemento.
-			
 			//console.log("concatenacion : " + this.get("tipo")+this.get("att1")+this.get("att2"));
 			var clave = this.get("tipo")+this.get("att1")+this.get("att2");
 			//console.log(clave);
