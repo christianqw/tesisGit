@@ -4,14 +4,14 @@ import java.util.List;
 
 public class RequestWrapper {
 
-	List<Elemento> elements;
+	List<ElementoPost> elements;
 	List<Sentencia> sentens;
 
-	public List<Elemento> getElements() {
+	public List<ElementoPost> getElements() {
 			 return elements;
 	 }
 
-	 public void setElements(List<Elemento> elements) {
+	 public void setElements(List<ElementoPost> elements) {
 			 this.elements = elements;
 	 }
 
@@ -22,7 +22,7 @@ public class RequestWrapper {
 	 public void setSentens(List<Sentencia> sentens) {
 			 this.sentens = sentens;
 	 }
-	 
+
 
 
 }

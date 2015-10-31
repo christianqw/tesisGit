@@ -1,0 +1,285 @@
+ 
+/* ============ Seccion de declaraciones preliminares ============ */
+package compilacionFormulas;
+
+/* Import the class java_cup.runtime.*  */
+import java_cup.runtime.*;
+import java.io.FileReader;
+import estructuraLogica.*;
+import java.util.ArrayList;
+import modelado.Error;
+
+/* Codigo adicional, se copia integramente a la clase no publica que 
+engloba a todas las acciones semánticas especificadas por el usuario
+(esta clase es declarada dentro del archivo de parser.java). */
+action code {: 
+		/*
+		 En este bloque pueden declararse variables, funciones, etc. todas de tipo
+		estático ya que no existen objetos accesibles mediante los que referenciar 
+		componentes no estáticos. 
+		Todo lo que se declare en este bloque será accesible a las acciones 
+		semánticas.
+		*/
+		
+	:};   
+
+/* Codigo del parser, se copia integramente a la clase final.
+    Agregamos el manejo de errores. */
+parser code {:
+
+	/*declaramos una variable Estatica para que todos los motodos del 
+	Asintactico puedan acceder a ella. */
+	
+	static Error var_error = new Error();
+    
+	/* Reporte de error encontrado. */
+    
+	public void report_error(String message, Object info) {
+		System.out.println(" Entra a la Funcion Reporte Error ");
+		StringBuilder m = new StringBuilder("Error");
+        if (info instanceof java_cup.runtime.Symbol) {
+            java_cup.runtime.Symbol s = ((java_cup.runtime.Symbol) info);
+            if (s.left >= 0) {                
+                m.append(" en la linea "+(s.left+1));
+                if (s.right >= 0)
+                    m.append(", columna "+(s.right+1));
+            }
+        }
+        m.append(" : " + message);
+		/*Modifica la Variable estatica del Error para identificar que es Sintactico*/
+		if (AnalizadorSintactico.var_error.getTipoError() == modelado.Error.tipoError.SINERROR) {
+			AnalizadorSintactico.var_error.setError(modelado.Error.tipoError.SINTAXIS, m.toString());
+			} 
+		else {
+			AnalizadorSintactico.var_error.setIdentificador(AnalizadorSintactico.var_error.getId() + m.toString());
+			}
+    }
+   
+    /* Cuando se encuentra un error de donde el sistema no puede
+        recuperarse, se lanza un error fatal. Se finaliza la ejecucion
+		del analizador sintactico. */
+	
+	public void report_fatal_error(String message, Object info) {
+			System.out.println(" Entra a la Funcion al reconocer un Error Fatal ");
+        	//report_error(message, info);	
+    }
+
+	/* Metodo main para garantizar la ejecucion del analizador
+		lexico y sintactico, ademas que se pase como parametro la tabla
+		de simbolos correspondiente. */
+	public static void main(String[] args){
+		try {
+			 /* Cada vez que se anañliza, vuelve a asignarse un sinerror  - 
+				Esta accion ademas se realiza en la primer regla del AS (acá esta por cuestiones de legibilidad)*/                  
+			AnalizadorSintactico.var_error.setError(modelado.Error.tipoError.SINERROR, " ");
+			System.out.println("-------- > LLamama al Analizador Sintactico");
+			AnalizadorSintactico asin = new AnalizadorSintactico(
+					new AnalizadorLexico( new FileReader(args[0])));
+			System.out.println("-------- > Terminó");
+			Object result = asin.parse().value;
+			System.out.println("\n ===== Resultados finales =====");
+			System.out.println(result); /*puntero a la estructura logica*/
+			System.out.print(" Valor de Satic Error al terminar: ");
+			System.out.println(AnalizadorSintactico.var_error);
+		} catch (Exception ex) {
+			System.out.println(" XXXXXXX Error Fatal Capturado XXXXXX ");
+			System.err.println(ex.toString() + "  " + ex.getMessage());
+			System.out.println(" Valor de Satic Error: ");
+			System.out.print(AnalizadorSintactico.var_error);
+        }
+    }
+	
+	public static Formula EjecutarAnalizador(String ruta){
+	try { /* Cada vez que se anañliza, vuelve a asignarse un sinerror  - 
+		Esta accion ademas se realiza en la primer regla del AS (acá esta por cuestiones de legibilidad)*/                  
+			AnalizadorSintactico.var_error.setError(modelado.Error.tipoError.SINERROR, " ");
+			System.out.println("-------- > LLamama al Analizador Sintactico");
+			AnalizadorSintactico asin = new AnalizadorSintactico(
+					new AnalizadorLexico( new FileReader(ruta)));
+			System.out.println("-------- > Terminó");
+			Formula result = (Formula) asin.parse().value;
+			System.out.println("\n ===== Resultados finales =====");
+			System.out.println(result); /*puntero a la estructura logica*/
+			System.out.print(" Valor de Satic Error al terminar: ");
+			System.out.println(AnalizadorSintactico.var_error);
+			return result;
+		} catch (Exception ex) {
+			System.out.println(" XXXXXXX Error Fatal Capturado XXXXXX ");
+			System.err.println(ex.toString() + "  " + ex.getMessage());
+			System.out.println(" Valor de Satic Error: ");
+			System.out.print(AnalizadorSintactico.var_error);
+			return null;
+        }
+	}
+:};
+   
+/* ============ Declaracion de simbolos terminales y no terminales ============ */
+   
+/* Terminales (tokens obtenidos por el analizador lexico).  
+
+   Terminales que no tienen un valor son listados primero, los terminales que
+   tienen un valor (como los identificadores) son listados en la segunda o demas lineas. */
+
+terminal	 		EXISTE, PARATODO, NEGACION, DISYUNCION, CONJUNCION, IMPLICACION, PA, PC, COMA;
+terminal String  	IDVAR, IDFUNC, IDPRED, ERROR;
+   
+/* No terminales usados en la seccion gramatical. 
+
+   Primero se listan los no terminales que tienen un valor Object y despues
+   se listan los no terminales que tienen un tipo asociado. 
+   Un Object se refiere a que no tienen tipo predefinido o puede ser distinto
+   dependiendo la regla por la que reduce. 
+   Si es posible identificar el tipo de elemento generado por el no termina se
+   lo especifica para disminuir la cantida de casteos. */
+   
+non terminal Formula			comienzo, cond, disy, conj, factor, pred; 
+non terminal ArrayList<Termino> listaTerm; 
+non terminal Termino  			term;  
+
+/* ============ Seccion de predencia y asociacion de los terminales ============ */
+   
+/*
+  Precedencia de los no terminales, no sirve con simbolos terminales.
+  Por eso no la usamos. Además indica si se asocia a izquierda o derecha.
+*/
+  /*precedence left DISYUNCION, CONJUNCION; 
+    precedence left IMPLICACION;*/
+
+/* ============ Seccion de la gramatica ============ */
+   
+/* 
+La gramatica de nuestro analizador.
+   
+comienzo := cond 
+		;
+cond ::= disy IMPLICACION cond 
+		| disy
+		;
+disy ::= conj DISYUNCION disy 
+		| conj
+		;
+conj ::= factor CONJUNCION conj 
+		| factor  
+		;
+factor ::= PARATODO IDVAR factor 
+		| EXISTE IDVAR factor 
+		| NEGACION factor 
+		| PA cond PC 
+		| pred
+		;
+pred ::= IDPRED PA listaTerm PC 
+		;	
+listaTerm ::= term 
+		| listaTerm COMA term
+		;
+term ::= IDVAR 
+		| IDFUNC PA listaTerm PC
+		;   
+*/
+   
+/* 
+   Un terminal o no terminal se define <termino> ::= termino1 termino2 ... terminoN.
+   donde termino puede ser terminal o no terminal, solo se permite un simbolo a la
+   izquierda. La | sirve para indicar que es una produccion u otra.
+   Debemos pasar de simbolos no terminales a simbolos terminales. Una gramatica que no
+   termina en simbolos terminales se dice que no reduce, y por lo tanto nunca se finaliza
+   su procesado.
+*/
+
+/* 
+	'comienzo' es la raiz de la gramatica. Es declarado de esta forma en caso de 
+	tener que realizar acciones al principio de la generacion. 
+	En caso de reconocer mas de una sentencia por vez se tiene que incorporar una regla del estilo: 
+		listaSentencia ::= listaSentencia comienzo 
+		| comienzo
+		;
+		
+*/   
+comienzo ::={:   /* Cada vez que se anañliza, vuelve a asignarse un sinerror   */                  
+				AnalizadorSintactico.var_error.setError(modelado.Error.tipoError.SINERROR, " ");
+				:} cond:sol 		{:
+							RESULT = sol; System.out.println("llega a terminar todo");
+							:}
+		| ERROR {: 
+				System.out.println(" -----  ERROR DE LA PRIMERA PRODUCCION  ---- ");
+				:}
+		;
+/* 
+   <noTerminal>:a esta estableciendo que 'a' representa al objeto asociado al <noTerminal>, 
+   para que el mismo pueda ser utilizado dentro del {: //codigo Java :}
+   - se coloca el codigo en java, el mismo es utilizado para definir las acciones a tomar 
+   al cumplirse una produccion.
+   
+   RESULT es la variable que se utiliza para devolver el elemento generado a travez de la 
+   produccion, esta variable se utiliza dentro del {: //codigo Java :}
+*/
+cond ::= cond:con IMPLICACION disy:d {: 
+								RESULT = new Condicional(con, d);
+								:}
+		| disy:d {:
+				RESULT = d;
+				:}
+		;
+                  
+/* 	'disy' puede ser */              
+disy ::= disy:d DISYUNCION conj:cj {:
+								RESULT = new Disyuncion (d, cj);
+								:}
+		| conj:cj {:
+			RESULT = cj;
+				:}
+		;
+
+conj ::= conj:cj CONJUNCION factor:f{: 
+								RESULT = new Conjuncion(cj, f);
+								:}
+		| factor:f {: /* factor se llama a una unidad cuantificada o negada;*/
+					RESULT = f;
+					:} 
+		;
+/*	factor. Se denomina factor a una unidad cuantificada o negada; */	
+factor ::= PARATODO IDVAR:idv factor:f {: 
+								RESULT = new ParaTodo( f, idv);
+								:}
+		| EXISTE IDVAR:idv factor:f {: 
+								RESULT = new Existe( f, idv);
+								:}
+		| NEGACION:n factor:f {: 
+								RESULT = new Negacion(f);
+							:}
+		| PA cond:x PC  {: /*Las reglas de la gramatica generan sobre la estructura resultante
+							el orden de precedencia de las formulas involucradas por lo que no 
+							es necesario incorporar los parentesis ("(" ")") dentro de la 
+							estructura logica. */
+								RESULT = x;
+							:}
+		| pred:p {: 
+				RESULT = p;
+				:}
+		;
+/*	listaTerm representa una lista de términos*/
+pred ::= IDPRED:idp PA:a listaTerm:lis PC:c {: 
+								RESULT = new Predicado(idp, lis);
+							:}
+		;	
+
+/*   listaTerm representa una lista de términos utilizada dentro de los parentesis de un 
+	 predicado o funcion. */
+listaTerm ::= term:t {: /*RESULT puede ser utilizado como una variable auxiliar comun dentro del
+						cogo Java*/
+						RESULT = new ArrayList<Termino> () ;
+						RESULT.add(t);
+					:}
+		| listaTerm:lis COMA term:t {: 
+								lis.add(t);
+								RESULT = lis;
+							:}
+		;
+
+term ::= IDVAR:idv {:
+					RESULT = new Variable(idv);
+					:} 
+		| IDFUNC:idf PA listaTerm:lis PC{: 
+								RESULT = new Funcion( idf, lis);
+							:}
+		;

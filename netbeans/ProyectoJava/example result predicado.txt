@@ -1,0 +1,12 @@
+EstaEntre=
+     And{
+	     _eI->And{
+		        _eI->Igual{_paramI=1, _paramD=2, _attI=Col, _attD=Col}
+				_eD->Igual{_paramI=0, _paramD=1, _attI=Col, _attD=Col}
+				 }
+		 _eD->And{
+		        _eIIgual{_paramI=1, _paramD=2, _attI=Fil, _attD=Fil}
+				_eDIgual{_paramI=0, _paramD=1, _attI=Fil, _attD=Fil}
+				}
+	    },
+ Escirculo=Igual{_paramI=0, _paramD=0, _attI=Tipo, _attD=_constante}},

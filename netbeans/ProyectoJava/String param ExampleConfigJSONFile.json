@@ -1,0 +1,34 @@
+{"Predicado":[
+{"NombrePred":"Patito",
+  "CantParam":2,
+  "Componentes" :[{"Clase":"IGUAL", "ParametroI":1, "AtributoI":"Col", "ParametroD":-1, "AtributoD":"3"},
+				  {"Clase":"IGUAL", "ParametroI":0, "AtributoI":"Fil", "ParametroD":1,  "AtributoD":"Fil"},
+				  {"Clase":"OR"}
+				  ]},
+{"NombrePred":"EstaEntre",
+  "CantParam":3,
+  "Componentes" :[{"Clase":"IGUAL", "ParametroI":0, "AtributoI":"Fil", "ParametroD":1, "AtributoD":"Fil"},
+				  {"Clase":"IGUAL", "ParametroI":1, "AtributoI":"Fil", "ParametroD":2, "AtributoD":"Fil"},
+				  {"Clase":"AND"},
+				  {"Clase":"IGUAL", "ParametroI":0, "AtributoI":"Col", "ParametroD":1, "AtributoD":"Col"},
+				  {"Clase":"IGUAL", "ParametroI":1, "AtributoI":"Col", "ParametroD":2, "AtributoD":"Col"},
+				  {"Clase":"AND"},
+				  {"Clase":"AND"}
+				  ]},
+{"NombrePred":"Escirculo",
+  "CantParam":1,
+  "Componentes" :[{"Clase":"IGUAL", "ParametroI":0, "AtributoI":"Tipo", "ParametroD":-1, "AtributoD":"circulo"}
+				  ]}
+			],
+			
+"Funcion":[{"Rename":"ELMASLEJANO","Class":"ElMasLejano"},
+		   {"Rename":"CERCA","Class":"ElMasCercano"}
+		],
+
+"Elemento":[{"Dominio":"Figura",
+			"ListAtributos":[{"Atributo":"Tipo","Opciones":["circulo","piramide","hexaedro"]},
+							{"Atributo":"Tamaño","Opciones":["chico","mediano","grande"]},
+							{"Atributo":"Fil","Opciones":["1","2","3"]},
+							{"Atributo":"Col","Opciones":["1","2","3","4"]}]
+			}]
+}

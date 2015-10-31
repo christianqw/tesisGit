@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,13 @@ import org.springframework.stereotype.Controller;
 
 @RestController
 public class VehicleController {
+
+	private final Mensaje auxM;
+
+	@Autowired
+  public VehicleController(Mensaje mensaje) {
+        this.auxM = mensaje;
+    }
 
 	@RequestMapping(value = "/")
 	public ResponseEntity<Car> get() {
@@ -57,6 +65,7 @@ public class VehicleController {
 
 		requestWrapper.getCars().stream()
 				.forEach(c -> c.setMiles(c.getMiles() + 100));
+				System.out.println(this.auxM.getMensaje());
 
 		// TODO: call persistence layer to update
 		return new ResponseEntity<RequestWrapper>(requestWrapper, HttpStatus.OK);
