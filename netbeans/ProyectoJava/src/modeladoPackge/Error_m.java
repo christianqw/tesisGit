@@ -41,8 +41,12 @@ public class Error_m {
         this._identificador = identificador;
     }
     
-    public boolean isSinError(){
+    public boolean isWithoutError(){
         return this._tipo_de_error.equals(modeladoPackge.Error_m.tipoError.SINERROR);
+    }
+    
+    public boolean isHasError(){
+        return !isWithoutError();
     }
     
     @Override

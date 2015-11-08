@@ -27,10 +27,10 @@ public class Conjuncion implements Formula{
     @Override
     public boolean verificar(Modelo m, HashMap<String, String> instancia, Error_m e) {
         boolean rIzq = this._izq.verificar(m, instancia, e);
-        if (e.getTipoError()!= modeladoPackge.Error_m.tipoError.SINERROR)
+        if (e.isHasError())
             return false;
         boolean rDer = this._der.verificar(m, instancia, e);
-        if (modeladoPackge.Error_m.tipoError.SINERROR!= e.getTipoError())
+        if (e.isHasError())
             return false;
         return (rIzq && rDer); /*Return P ^ Q*/
     }

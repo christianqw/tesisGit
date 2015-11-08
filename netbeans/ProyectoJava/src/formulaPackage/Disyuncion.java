@@ -23,10 +23,10 @@ public class Disyuncion implements Formula{
     @Override
     public boolean verificar(Modelo m, HashMap<String, String> instancia, Error_m e) {
         boolean rIzq = izq.verificar(m, instancia, e);
-        if (e.getTipoError()!= modeladoPackge.Error_m.tipoError.SINERROR)
+        if (e.isHasError())
             return false;
         boolean rDer = der.verificar(m, instancia, e);
-        if (e.getTipoError()!= modeladoPackge.Error_m.tipoError.SINERROR)
+        if (e.isHasError())
             return false;
         return (rIzq || rDer);
     }

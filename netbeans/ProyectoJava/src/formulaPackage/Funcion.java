@@ -48,16 +48,20 @@ public class Funcion extends Termino{
             Se realiza una busqueda de los diferenetes parametros 
             para poder hacer la correspondiente evaluacion */
             int cont = 0;
-            while (cont < this._terminos.size() && e.isSinError()){
-                 parametros.add(this._terminos.get(cont).evaluar(m, instancia, e));
-                 cont++;
+            while (cont < this._terminos.size() && e.isWithoutError()){
+                Elemento_m e_parametro = this._terminos.get(cont).evaluar(m, instancia, e);
+                if (e_parametro == null){
+                    System.out.println("Error dentro de la Funcion - al momento de generar los parametros.");
+                }
+                parametros.add(e_parametro);
+                cont++;
             };
      
-            if (e.getTipoError() == modeladoPackge.Error_m.tipoError.SINERROR){
+            if (e.isWithoutError()){
                 res = m.evaluarFuncion(this._id, parametros, e);
-                if (e.getTipoError() != modeladoPackge.Error_m.tipoError.SINERROR){
+                if (e.isHasError()){
                     res = null; 
-                    /*"evaluarFuncion"1 retorna ' ' pero para una mayor 
+                    /*"evaluarFuncion" retorna ' ' pero para una mayor 
                     consistencia se le asigna el resultado de error de 
                     forma explicita.*/
                 }

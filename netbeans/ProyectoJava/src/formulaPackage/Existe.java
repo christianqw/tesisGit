@@ -4,7 +4,6 @@
  */
 package formulaPackage;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
@@ -33,22 +32,27 @@ public class Existe implements Formula{
             return false;
         }    
         
-        /*Se verifica si la variable ya fue instanciada
-        Al estar definida dentro de la instancia, la almacenamos 
-        en la variable temporal para reasignarla al 
-        finalizar la evaluacion. 
+        /*
+        Se verifica si la variable ya fue instanciada. 
+        Al estar definida dentro de la instancia, la almacenamos en la variable 
+        temporal para reasignarla al finalizar la evaluacion. 
         */
+        
         String temp = "";
          if (instancia.containsKey(_varCuantificada))
             temp = instancia.get(_varCuantificada);
         
-        /*Recorre todos los valores del dominio para hacer 
-        las evaluaciones.        
+        /*
+        Recorre todos los valores del dominio para hacer las evaluaciones.        
         */
         Set<String> listElems = m.getListaNombresElementos();
         Iterator<String> it = listElems.iterator();
         boolean resultado = false;
-        while (it.hasNext() && !resultado && (e.getTipoError() == modeladoPackge.Error_m.tipoError.SINERROR)){
+        /*
+        Evaluamos para tods los elementos hasta que:
+        no queden elementos, o una evaluacion de verdadero, o encontremos un error
+        */        
+        while (it.hasNext() && !resultado && e.isWithoutError()){
             String valorIt = it.next();
             instancia.put(_varCuantificada, valorIt); // ---- VER(2) ----
             resultado = this._contenido.verificar(m, instancia, e);
@@ -60,7 +64,7 @@ public class Existe implements Formula{
         en caso de no existir agrega la instancia. 
   */            
         //Si se encontro algun error cuando se verifico antes
-        if (e.getTipoError() != modeladoPackge.Error_m.tipoError.SINERROR)
+        if (e.isHasError())
             return false;
         
         if (!temp.equals("")){

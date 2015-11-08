@@ -46,7 +46,7 @@ public class ParaTodo implements Formula{
         Set<String> listElems = m.getListaNombresElementos();
         Iterator<String> it = listElems.iterator();
         boolean resultado = true;
-        while (it.hasNext() && resultado && (e.getTipoError() == modeladoPackge.Error_m.tipoError.SINERROR)){
+        while (it.hasNext() && resultado && (e.isWithoutError())){
             String valorIt = it.next();
             instancia.put(_varCuantificada, valorIt);// ----- VER(1) ------
             resultado = this._contenido.verificar(m, instancia, e);
@@ -56,7 +56,7 @@ public class ParaTodo implements Formula{
         en caso de no existir agrega la instancia. 
   */      
         //Si se encontro algun error cuando se verifico antes
-        if (e.getTipoError() != modeladoPackge.Error_m.tipoError.SINERROR)
+        if (e.isHasError())
             return false;
         
         if (!temp.equals("")){

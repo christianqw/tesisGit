@@ -34,7 +34,7 @@ public class Predicado implements Formula{
 
     @Override
     public boolean verificar(Modelo m, HashMap<String, String> instancia, Error_m e) {
-        ArrayList<Elemento_m> consulta = new ArrayList<Elemento_m>();
+        ArrayList<Elemento_m> consulta = new ArrayList<>();
         boolean res = true; 
         //En este momento es posible realizar la verificacion de error de cantidad de paramentros.
         if (!m.aridadPredicadoCorrecta(this._id, this._terminos.size())){
@@ -43,18 +43,18 @@ public class Predicado implements Formula{
             } else{ 
             //primero busca las distintas variables intervinientes (pueden ser resultados de funciones)
             int cont = 0;
-            while (cont < this._terminos.size() && e.isSinError()){
+            while (cont < this._terminos.size() && e.isWithoutError()){
                 consulta.add(this._terminos.get(cont).evaluar(m, instancia, e));
                 cont++;
             }
 
             //realizamos la verificacion y la evaluacion del predicado dentro del modelo en cuestion
             
-            if (!e.isSinError())
+            if (!e.isWithoutError())
                 res = false; 
             else {
                 res = m.verificarPredicado(this._id, consulta, e);
-                if (e.getTipoError()!= modeladoPackge.Error_m.tipoError.SINERROR)
+                if (e.isHasError())
                     res = false;
             }
         }

@@ -38,7 +38,7 @@ public class RequestWrapper {
         for (int i = 0; i < sentens.size(); i++) {
             System.out.println("Generamos el Objeto Formula ... y ejecutamos AL y AS ");
             f = AnalizadorSintactico.EjecutarAnalizador(sentens.get(i).getValor()); 
-            if (AnalizadorSintactico.getError().isSinError()){
+            if (AnalizadorSintactico.getError().isWithoutError()){
                 f.verificar(m, new HashMap<String, String>(), new Error_m());
             }
         }
