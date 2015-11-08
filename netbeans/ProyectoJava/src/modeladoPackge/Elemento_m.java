@@ -26,6 +26,10 @@ public class Elemento_m {
     public Integer getValue (String atributo){
         return this._atributos.get(atributo);
     }
+    
+    public String getNombre (){
+        return this._nombre;
+    }
 
     @Override
     public String toString() {

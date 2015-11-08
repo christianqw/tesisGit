@@ -9,7 +9,6 @@
             <file>file:/D:/tesisGit/netbeans/Antiguo_Proyecto_Java/src/modelado/relaciones/Evaluador.java</file>
             <file>file:/D:/tesisGit/netbeans/Antiguo_Proyecto_Java/src/modelado/relaciones/ElMasLejano.java</file>
             <file>file:/D:/tesisGit/netbeans/Antiguo_Proyecto_Java/src/modelado/relaciones/And.java</file>
-            <file>file:/D:/tesisGit/netbeans/Antiguo_Proyecto_Java/src/modelado/relaciones/ElMasCercano.java</file>
             <file>file:/D:/tesisGit/netbeans/Antiguo_Proyecto_Java/src/modelado/relaciones/GeneradorFunciones.java</file>
             <file>file:/D:/tesisGit/netbeans/Antiguo_Proyecto_Java/src/modelado/relaciones/GeneradorPredicados.java</file>
             <file>file:/D:/tesisGit/netbeans/Antiguo_Proyecto_Java/src/estructuraLogica/Funcion.java</file>
@@ -19,6 +18,13 @@
             <file>file:/D:/tesisGit/netbeans/Antiguo_Proyecto_Java/src/modelado/Elemento.java</file>
             <file>file:/D:/tesisGit/netbeans/Antiguo_Proyecto_Java/src/modelado/Modelo.java</file>
             <file>file:/D:/tesisGit/netbeans/Antiguo_Proyecto_Java/src/modelado/data/EstructuraElemento.java</file>
+            <file>file:/D:/tesisGit/netbeans/Antiguo_Proyecto_Java/test/Test_1.java</file>
+            <file>file:/D:/tesisGit/netbeans/Antiguo_Proyecto_Java/test/Test_2.java</file>
+            <file>file:/D:/tesisGit/netbeans/Antiguo_Proyecto_Java/src/estructuraLogica/Formula.java</file>
+            <file>file:/D:/tesisGit/netbeans/Antiguo_Proyecto_Java/test/JSONTest.java</file>
+            <file>file:/D:/tesisGit/netbeans/Antiguo_Proyecto_Java/src/compilacionFormulas/AnalizadorSintactico.java</file>
+            <file>file:/D:/tesisGit/netbeans/Antiguo_Proyecto_Java/src/modelado/relaciones/Mayor.java</file>
+            <file>file:/D:/tesisGit/netbeans/Antiguo_Proyecto_Java/src/modelado/relaciones/ElMasCercano.java</file>
         </group>
     </open-files>
 </project-private>

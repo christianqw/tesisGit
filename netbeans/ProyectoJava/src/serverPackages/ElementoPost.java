@@ -107,8 +107,8 @@ public class ElementoPost {
       
       aux_M.put("Tipo", aux_Ee.getCodigoValue("Tipo", this._tipo));
       aux_M.put("Zona", aux_Ee.getCodigoValue("Zona", this._zona));
-      aux_M.put("Tipo", this._left);
-      aux_M.put("Tipo", this._top);
+      aux_M.put("Left", this._left);
+      aux_M.put("Top", this._top);
       aux_M.put("Att1", aux_Ee.getCodigoValue("Att1", this._att1));
       aux_M.put("Att2", aux_Ee.getCodigoValue("Att2", this._att2));
       

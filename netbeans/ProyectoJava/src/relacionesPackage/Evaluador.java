@@ -6,6 +6,8 @@
 package relacionesPackage;
 
 import com.sun.org.apache.bcel.internal.generic.RETURN;
+import java.util.ArrayList;
+import java.util.HashMap;
 import modeladoPackge.Elemento_m;
 import org.json.simple.JSONObject;
 
@@ -22,7 +24,7 @@ public abstract class Evaluador {
     @Override
     public abstract String toString();
 
-    public abstract Elemento_m evaluar();
+    public abstract Elemento_m evaluar(HashMap<String, Elemento_m> dom, ArrayList<Elemento_m> e);
 
     public int getCantidadParametros(){
         return this.cantParametros;

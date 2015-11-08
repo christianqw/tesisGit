@@ -7,6 +7,7 @@
 package relacionesPackage;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import modeladoPackge.Elemento_m;
 
 /**
@@ -15,9 +16,9 @@ import modeladoPackge.Elemento_m;
  */
 public class ElMasLejano extends Evaluador{
     
-    @Override
-    public Elemento_m evaluar() {
-        return null;
+   @Override
+    public Elemento_m evaluar(HashMap<String, Elemento_m> dom, ArrayList<Elemento_m> e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -32,6 +33,8 @@ public class ElMasLejano extends Evaluador{
     private Elemento_m buscar(ArrayList<Elemento_m> instancia, Elemento_m elem) {
         return null;
     }
+
+    
  }        
         
  

@@ -52,14 +52,14 @@ public class Estructura {
         return this._funciones.get(s);
     }
     
-//    public Map getMapPredicados(){
-//        return this._predicados;
-//    }
-//    
-//    public Map getMapFunciones(){
-//        return this._funciones;
-//    }
-//    
+    public boolean containsFuncion (String id){
+        return this._funciones.containsKey(id);
+    }
+    
+    public boolean containsPredicado (String id){
+        return this._predicados.containsKey(id);
+    }
+    
     public Estructura_Elemento getEstructuraElemento(String s){
        return this._def_elementos.get(s);
     }

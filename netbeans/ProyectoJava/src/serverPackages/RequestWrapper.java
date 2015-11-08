@@ -23,10 +23,11 @@ public class RequestWrapper {
     Elementos como mapas, predicados y funciones.
     */
     public Modelo generarNuevoModelo( Estructura estructura ){
-        List<Elemento_m> list_map_elementos = new ArrayList<>();
+        HashMap<String, Elemento_m> list_map_elementos = new HashMap<>();
+        //List<Elemento_m> list_map_elementos = new ArrayList<>();
 
-        this.elements.stream().forEach((element) -> {
-            list_map_elementos.add(element.getElemToMap(estructura));
+        this.elements.stream().forEach((ElementoPost element) -> {
+            list_map_elementos.put(element.getNombre(), element.getElemToMap(estructura));
         });
 
         return new Modelo(list_map_elementos, estructura);

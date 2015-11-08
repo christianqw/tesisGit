@@ -35,30 +35,30 @@ public class Predicado implements Formula{
     @Override
     public boolean verificar(Modelo m, HashMap<String, String> instancia, Error_m e) {
         ArrayList<Elemento_m> consulta = new ArrayList<>();
-        boolean res = true; 
-        //En este momento es posible realizar la verificacion de error de cantidad de paramentros.
-        if (!m.aridadPredicadoCorrecta(this._id, this._terminos.size())){
+        
+        //Verificamos que exista un predicado con ese identificador.
+        if (m.containsPredicado(this._id)){
+           //En este momento es posible realizar la verificacion de error de cantidad de paramentros.
+            if (!m.aridadPredicadoCorrecta(this._id, this._terminos.size())){
                 e.setError(modeladoPackge.Error_m.tipoError.ARIDAD, "Cantidad de paramentros incorrecta dentro de " + this._id);
-                res = false;
-            } else{ 
-            //primero busca las distintas variables intervinientes (pueden ser resultados de funciones)
-            int cont = 0;
-            while (cont < this._terminos.size() && e.isWithoutError()){
-                consulta.add(this._terminos.get(cont).evaluar(m, instancia, e));
-                cont++;
-            }
-
-            //realizamos la verificacion y la evaluacion del predicado dentro del modelo en cuestion
-            
-            if (!e.isWithoutError())
-                res = false; 
-            else {
-                res = m.verificarPredicado(this._id, consulta, e);
-                if (e.isHasError())
-                    res = false;
-            }
+                return false;
+            }else{ //primero busca las distintas variables intervinientes (pueden ser resultados de funciones)
+                    int cont = 0;
+                    while (cont < this._terminos.size() && e.isWithoutError()){
+                        consulta.add(this._terminos.get(cont).evaluar(m, instancia, e));
+                        cont++;
+                    }
+                    //realizamos la verificacion y la evaluacion del predicado dentro del modelo en cuestion
+                    if (e.isWithoutError())
+                        return m.verificarPredicado(this._id, consulta, e);
+                    else {
+                        return false; 
+                    }
+            } 
+        } else {
+            e.setError(modeladoPackge.Error_m.tipoError.NOEXISTEP, "No Existe la funcion "+ this._id);
+            return false;
         }
-        return res;
     }
 
     @Override
