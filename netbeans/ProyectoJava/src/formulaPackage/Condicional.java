@@ -6,6 +6,7 @@ package formulaPackage;
 
 import java.util.HashMap;
 import modeladoPackge.Modelo;
+import modeladoPackge.Error_m;
 
 /**
  *
@@ -25,12 +26,13 @@ public class Condicional implements Formula{
     verificacion de un cunatificador 
     */
     @Override
-    public boolean verificar(Modelo m, HashMap<String, String> instancia, modelado.Error e) {
+    public boolean verificar(Modelo m, HashMap<String, String> instancia, Error_m e) {
         boolean rIzq = this._izq.verificar(m, instancia, e);
-        if (e.getTipoError()!= modelado.Error.tipoError.SINERROR)
+           //e.getTipoError()!= modeladoPackge.Error_m.tipoError.SINERROR
+        if (e.getTipoError()!= modeladoPackge.Error_m.tipoError.SINERROR)
             return false;
         boolean rDer = this._der.verificar(m, instancia, e);
-        if (e.getTipoError()!= modelado.Error.tipoError.SINERROR)
+        if (e.getTipoError()!= modeladoPackge.Error_m.tipoError.SINERROR)
             return false;
         return (!rIzq || rDer); /*return ¬P v Q*/
         

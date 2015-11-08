@@ -9,7 +9,7 @@ package modeladoPackge;
  *
  * @author Chris
  */
-public class Error {
+public class Error_m {
        
     public enum tipoError {
         SINERROR, CUANTIFICACION, VARLIBRE, NOEXISTEP,
@@ -19,8 +19,8 @@ public class Error {
     private tipoError _tipo_de_error;
     private String _identificador;
 
-    public Error() {//Cuando se genera una nueva variable error se inicializa como sin Error
-        this._tipo_de_error = modeladoPackge.Error.tipoError.SINERROR;
+    public Error_m() {//Cuando se genera una nueva variable error se inicializa como sin Error_m
+        this._tipo_de_error = modeladoPackge.Error_m.tipoError.SINERROR;
         this._identificador = "";
     }
 
@@ -41,8 +41,8 @@ public class Error {
         this._identificador = identificador;
     }
     
-    public boolean notError(){
-        return this._tipo_de_error.equals(tipoError.SINERROR);
+    public boolean isSinError(){
+        return this._tipo_de_error.equals(modeladoPackge.Error_m.tipoError.SINERROR);
     }
     
     @Override

@@ -6,6 +6,7 @@ package formulaPackage;
 
 import java.util.HashMap;
 import modeladoPackge.Modelo;
+import modeladoPackge.Error_m;
 
 /**
  *
@@ -20,7 +21,7 @@ public class Negacion implements Formula{
     }
     
     @Override
-    public boolean verificar(Modelo m, HashMap<String, String> instancia, modelado.Error e) {
+    public boolean verificar(Modelo m, HashMap<String, String> instancia, Error_m  e) {
         return (! this._elem.verificar(m, instancia, e));
     }
 

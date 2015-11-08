@@ -7,7 +7,7 @@ package relacionesPackage;
 
 import generadoresPackge.Estructura;
 import java.util.ArrayList;
-import modeladoPackge.Elemento;
+import modeladoPackge.Elemento_m;
 
 /**
  *
@@ -17,7 +17,7 @@ public abstract class Verificador {
 
     private Integer cantParametros;
 
-    public abstract boolean verificar(ArrayList<Elemento> e);
+    public abstract boolean verificar(ArrayList<Elemento_m> e);
         
     public void setCantidadParamentros(Integer valor) {
         this.cantParametros = valor;

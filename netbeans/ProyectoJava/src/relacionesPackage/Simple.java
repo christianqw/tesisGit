@@ -6,7 +6,7 @@
 
 package relacionesPackage;
 
-import modeladoPackge.Elemento;
+import modeladoPackge.Elemento_m;
 
 /**
  *
@@ -25,7 +25,7 @@ public abstract class Simple extends Verificador{
         this._attD = attD;            
     }
 
-    protected Integer getIzquierda(Elemento e){
+    protected Integer getIzquierda(Elemento_m e){
         if (isConstante(_attI)){
             return this._paramI;
         } else {
@@ -33,7 +33,7 @@ public abstract class Simple extends Verificador{
         }
     }
     
-    protected Integer getDerecha(Elemento e){
+    protected Integer getDerecha(Elemento_m e){
         if (isConstante(_attD)){
             return this._paramD;
         } else {

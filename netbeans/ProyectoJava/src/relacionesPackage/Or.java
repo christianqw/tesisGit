@@ -7,7 +7,7 @@
 package relacionesPackage;
 
 import java.util.ArrayList;
-import modeladoPackge.Elemento;
+import modeladoPackge.Elemento_m;
 
 /**
  *
@@ -25,7 +25,7 @@ public class Or extends Compuesto{
     }
 
     @Override
-    public boolean verificar(ArrayList<Elemento> list) {
+    public boolean verificar(ArrayList<Elemento_m> list) {
         return (this._vI.verificar(list) & this._vI.verificar(list));
     }
 }

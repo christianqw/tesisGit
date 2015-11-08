@@ -18,7 +18,7 @@ public class Test_Estructura {
      
         String data = getString();
         Estructura e = new Estructura(data);
-        System.out.println("Estructura Cargada ");
+        System.out.println("Estructura Cargada: ");
         System.out.println(e);
         
     }

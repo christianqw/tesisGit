@@ -5,14 +5,17 @@
 package formulaPackage;
 
 import modeladoPackge.Modelo;
+import modeladoPackge.Error_m;
 import java.util.HashMap;
+
 /**
  *
  * @author Chris
  */
 public interface Formula {
+
     
-    public boolean verificar(Modelo m, HashMap<String, String> a, modelado.Error e);
+    public boolean verificar(Modelo m, HashMap<String, String> a, Error_m e);
     @Override
     public abstract String toString();
 }

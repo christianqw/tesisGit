@@ -5,6 +5,7 @@
 package ALexicoyASintacticoPackage;
 
 import java_cup.runtime.*;
+import modeladoPackge.Error_m;
       
 
 /**
@@ -614,9 +615,9 @@ class AnalizadorLexico implements java_cup.runtime.Scanner {
         case 1: 
           { /* Imprime mensaje de eror, modifica la variable de "ERROR" */
 						System.out.println(" Reconoce error Lexico "); 
-						AnalizadorSintactico.var_error.setError(modelado.Error.tipoError.LEXICO,  new String("Caracter ilegal <"+yytext()+">"));
+						AnalizadorSintactico.var_error.setError(modeladoPackge.Error_m.tipoError.LEXICO, ("Caracter ilegal <"+yytext()+">"));
 						/* Retorna el caracter error con la ubicacion del mismo fila, columna */
-						return symbol(sym.ERROR, new String("Caracter ilegal <"+yytext()+">"));
+						return symbol(sym.ERROR, ("Caracter ilegal <"+yytext()+">"));
           }
         case 15: break;
         case 2: 

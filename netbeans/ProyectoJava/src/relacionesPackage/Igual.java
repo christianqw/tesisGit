@@ -7,7 +7,7 @@
 package relacionesPackage;
 
 import java.util.ArrayList;
-import modeladoPackge.Elemento;
+import modeladoPackge.Elemento_m;
 
 /**
  *
@@ -20,7 +20,7 @@ public class Igual extends Simple{
     }
 
     @Override
-    public boolean verificar(ArrayList<Elemento> listE) {
+    public boolean verificar(ArrayList<Elemento_m> listE) {
         Integer auxI = getIzquierda(listE.get(this._paramI));
         Integer auxD = getDerecha(listE.get(this._paramD));
         if (auxI == null || auxD == null){

@@ -6,8 +6,7 @@ package formulaPackage;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import modeladoPackge.Elemento;
-import modeladoPackge.Modelo;
+import modeladoPackge.*;
 
 /**
  *
@@ -37,26 +36,26 @@ public class Funcion extends Termino{
     
     @Override
     @SuppressWarnings("empty-statement")
-    public Elemento evaluar(Modelo m, HashMap<String, String> instancia, modelado.Error e) {
-       ArrayList<Elemento> parametros = new ArrayList();
+    public Elemento_m evaluar(Modelo m, HashMap<String, String> instancia, Error_m e) {
+       ArrayList<Elemento_m> parametros = new ArrayList();
        
-       Elemento res;
+       Elemento_m res;
        if (!m.aridadFuncionCorrecta(this._id, this._terminos.size())){
-                e.setError(modelado.Error.tipoError.ARIDAD, "Cantidad de paramentros incorrecta dentro de " + this._id);
+                e.setError(modeladoPackge.Error_m.tipoError.ARIDAD, "Cantidad de paramentros incorrecta dentro de " + this._id);
                 return null;
             } else {
             /* definicion de los parametros de la función 
             Se realiza una busqueda de los diferenetes parametros 
             para poder hacer la correspondiente evaluacion */
             int cont = 0;
-            while (cont < this._terminos.size() && e.notError()){
+            while (cont < this._terminos.size() && e.isSinError()){
                  parametros.add(this._terminos.get(cont).evaluar(m, instancia, e));
                  cont++;
             };
      
-            if (e.getTipoError() == modelado.Error.tipoError.SINERROR){
+            if (e.getTipoError() == modeladoPackge.Error_m.tipoError.SINERROR){
                 res = m.evaluarFuncion(this._id, parametros, e);
-                if (e.getTipoError() != modelado.Error.tipoError.SINERROR){
+                if (e.getTipoError() != modeladoPackge.Error_m.tipoError.SINERROR){
                     res = null; 
                     /*"evaluarFuncion"1 retorna ' ' pero para una mayor 
                     consistencia se le asigna el resultado de error de 

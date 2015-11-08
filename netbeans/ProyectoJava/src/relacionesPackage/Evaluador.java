@@ -6,7 +6,7 @@
 package relacionesPackage;
 
 import com.sun.org.apache.bcel.internal.generic.RETURN;
-import modeladoPackge.Elemento;
+import modeladoPackge.Elemento_m;
 import org.json.simple.JSONObject;
 
 /**
@@ -22,7 +22,7 @@ public abstract class Evaluador {
     @Override
     public abstract String toString();
 
-    public abstract Elemento evaluar();
+    public abstract Elemento_m evaluar();
 
     public int getCantidadParametros(){
         return this.cantParametros;

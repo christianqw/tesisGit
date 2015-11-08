@@ -5,9 +5,11 @@
  */
 package modeladoPackge;
 
+import generadoresPackge.Estructura;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
-import modelado.Error;
+
 
 /**
  *
@@ -15,15 +17,19 @@ import modelado.Error;
  */
 public class Modelo {
 
+    public Modelo(List<Elemento_m> list_map_elementos, Estructura estructura) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public boolean dominioContiene(String name_elem) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Elemento getElemento(String name_elem) {
+    public Elemento_m getElemento(String name_elem) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Elemento evaluarFuncion(String _id, ArrayList<Elemento> parametros, Error e) {
+    public Elemento_m evaluarFuncion(String _id, ArrayList<Elemento_m> parametros, Error_m e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -39,7 +45,7 @@ public class Modelo {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public boolean verificarPredicado(String _id, ArrayList<Elemento> consulta, Error e) {
+    public boolean verificarPredicado(String _id, ArrayList<Elemento_m> consulta, Error_m e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

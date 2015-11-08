@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 import modeladoPackge.Modelo;
+import modeladoPackge.Error_m;
 /**
  *
  * @author Chris
@@ -24,11 +25,11 @@ public class Existe implements Formula{
     }
 
     @Override
-    public boolean verificar(Modelo m, HashMap<String, String> instancia, modelado.Error e) {
+    public boolean verificar(Modelo m, HashMap<String, String> instancia, Error_m e) {
         
         //se verifica que la variable NO exista en el dominio
         if (m.dominioContiene(this._varCuantificada)){
-            e.setError(modelado.Error.tipoError.CUANTIFICACION, _varCuantificada);
+            e.setError(modeladoPackge.Error_m.tipoError.CUANTIFICACION, _varCuantificada);
             return false;
         }    
         
@@ -47,7 +48,7 @@ public class Existe implements Formula{
         Set<String> listElems = m.getListaNombresElementos();
         Iterator<String> it = listElems.iterator();
         boolean resultado = false;
-        while (it.hasNext() && !resultado && (e.getTipoError() == modelado.Error.tipoError.SINERROR)){
+        while (it.hasNext() && !resultado && (e.getTipoError() == modeladoPackge.Error_m.tipoError.SINERROR)){
             String valorIt = it.next();
             instancia.put(_varCuantificada, valorIt); // ---- VER(2) ----
             resultado = this._contenido.verificar(m, instancia, e);
@@ -59,7 +60,7 @@ public class Existe implements Formula{
         en caso de no existir agrega la instancia. 
   */            
         //Si se encontro algun error cuando se verifico antes
-        if (e.getTipoError() != modelado.Error.tipoError.SINERROR)
+        if (e.getTipoError() != modeladoPackge.Error_m.tipoError.SINERROR)
             return false;
         
         if (!temp.equals("")){

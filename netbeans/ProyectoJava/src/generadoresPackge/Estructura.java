@@ -52,6 +52,14 @@ public class Estructura {
         return this._funciones.get(s);
     }
     
+//    public Map getMapPredicados(){
+//        return this._predicados;
+//    }
+//    
+//    public Map getMapFunciones(){
+//        return this._funciones;
+//    }
+//    
     public Estructura_Elemento getEstructuraElemento(String s){
        return this._def_elementos.get(s);
     }
@@ -102,7 +110,7 @@ public class Estructura {
     private Evaluador generaEvaluador(JSONObject f){
         Evaluador fun = null;
         String nameClass = "relacionesPackage." + (String) f.get("Class");
-        System.out.println(nameClass);
+        //System.out.println(nameClass);
         try {
             fun = (Evaluador) Class.forName(nameClass).newInstance();
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
@@ -121,28 +129,25 @@ public class Estructura {
         Integer c_parametros;
         
         c_parametros = ((Long)p.get("CantParam")).intValue();
-        
-        System.out.println("Estado del : Mapa _Clases");
-        System.out.println(this._clases);
 
         System.out.println("---- Generacion de Predicado ----");
         
         for (Object componente : componentes) {
             iterado = (JSONObject) componente;
-            System.out.println("Json: \n" + iterado);
+            //System.out.println("Json: \n" + iterado);
             s_iterando = (String) iterado.get("Clase");
-            System.out.println("Clase: " + s_iterando);
+            //System.out.println("Clase: " + s_iterando);
             if (esSimple(s_iterando)){
                 try {
                     Integer auxA, auxB;
                     String auxC, auxD;
                     auxA = ((Long)iterado.get("ParametroI")).intValue(); auxB = ((Long) iterado.get("ParametroD")).intValue();
                     auxC = (String)iterado.get("AtributoI"); auxD = (String)iterado.get("AtributoD");
-                    System.out.println("parametros: " + auxA + auxC + auxB+ auxD);
+                    //System.out.println("parametros: " + auxA + auxC + auxB+ auxD);
                     
                     v_actual = (Verificador) Class.forName(this._clases.get(s_iterando)).getConstructor(Integer.class, Integer.class, String.class, String.class).newInstance(auxA, auxB, auxC, auxD);
                     
-                    System.out.println("resutaldooooo:  "+ v_actual.toString());
+                    //System.out.println("resutaldooooo:  "+ v_actual.toString());
                     //Verificador v = (Verificador) Class.forName(this._clases.get(s_iterando)).getConstructor(Integer.TYPE, Integer.TYPE, String.class, String.class ).newInstance(auxA, auxB, auxC, auxD);                    
                     
                     parciales.add(v_actual);
@@ -153,12 +158,12 @@ public class Estructura {
             } else
                 if(esCompuesto(s_iterando)){
                     try {
-                        System.out.println("ENTRANDO AL COMPUESTO");
+                      //  System.out.println("ENTRANDO AL COMPUESTO");
                         v_actual = (Verificador) Class.forName(this._clases.get(s_iterando)).getConstructor(Verificador.class, Verificador.class).newInstance(parciales.remove(parciales.size()-1), parciales.remove(parciales.size()-1));
-                        System.out.println("sALIDA: " + v_actual.toString());
+                     //   System.out.println("sALIDA: " + v_actual.toString());
                         //v_actual = (Verificador) Class.forName((String) this._clases.get(s_iterando)).getConstructor( Verificador.class, Verificador.class ).newInstance(parciales.remove(parciales.size()-1), parciales.remove(parciales.size()-1));
                         parciales.add(v_actual);
-                        System.out.println("Arreglo: " + parciales.toString());
+                      //  System.out.println("Arreglo: " + parciales.toString());
                     } catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException ex) {
                         System.out.println("Error al Contruir Verificador Compuesto");
                         Logger.getLogger(Estructura.class.getName()).log(Level.SEVERE, null, ex);

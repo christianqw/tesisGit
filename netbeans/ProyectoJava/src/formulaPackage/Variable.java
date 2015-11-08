@@ -4,9 +4,10 @@
  */
 package formulaPackage;
 
-import modeladoPackge.Elemento;
+import modeladoPackge.Elemento_m;
 import java.util.HashMap;
 import modeladoPackge.Modelo;
+import modeladoPackge.Error_m;
 
 /**
  *
@@ -17,7 +18,7 @@ public class Variable extends Termino{
     private final String _id;
     
     @Override
-    public Elemento evaluar(Modelo m, HashMap<String, String> instancia, modelado.Error e) {
+    public Elemento_m evaluar(Modelo m, HashMap<String, String> instancia, Error_m e) {
         
         String name_elem = this._id;
         
@@ -35,7 +36,7 @@ public class Variable extends Termino{
             return m.getElemento(name_elem);
         else {
             //no existe un elemento con el nombre dentro del dominio. 
-            e.setError(modelado.Error.tipoError.VARLIBRE, name_elem);
+            e.setError(modeladoPackge.Error_m.tipoError.VARLIBRE, name_elem);
             return null;
         }
     }

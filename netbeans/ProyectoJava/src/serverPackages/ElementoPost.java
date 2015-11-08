@@ -4,7 +4,7 @@ import generadoresPackge.Estructura;
 import generadoresPackge.Estructura_Elemento;
 import java.util.HashMap;
 import java.util.Map;
-import modeladoPackge.Elemento;
+import modeladoPackge.Elemento_m;
 
 public class ElementoPost {
 
@@ -99,19 +99,19 @@ public class ElementoPost {
   }
 
   
-  public Elemento getElemToMap(Estructura e){
+  public Elemento_m getElemToMap(Estructura e){
       Map <String, Integer> aux_M;
       Estructura_Elemento aux_Ee;
       aux_M = new HashMap<>();
       aux_Ee = e.getEstructuraElemento(this._dominio);
       
       aux_M.put("Tipo", aux_Ee.getCodigoValue("Tipo", this._tipo));
-      aux_M.put("Tipo", aux_Ee.getCodigoValue("Zona", this._zona));
+      aux_M.put("Zona", aux_Ee.getCodigoValue("Zona", this._zona));
       aux_M.put("Tipo", this._left);
       aux_M.put("Tipo", this._top);
-      aux_M.put("Tipo", aux_Ee.getCodigoValue("Att1", this._att1));
-      aux_M.put("Tipo", aux_Ee.getCodigoValue("Att2", this._att2));
+      aux_M.put("Att1", aux_Ee.getCodigoValue("Att1", this._att1));
+      aux_M.put("Att2", aux_Ee.getCodigoValue("Att2", this._att2));
       
-      return new Elemento(aux_M, this._nombre);
+      return new Elemento_m(aux_M, this._nombre);
   }
 }

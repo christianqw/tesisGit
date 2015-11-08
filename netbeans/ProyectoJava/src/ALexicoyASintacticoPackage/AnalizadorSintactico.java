@@ -10,7 +10,7 @@ import java_cup.runtime.*;
 import java.io.FileReader;
 import formulaPackage.*;
 import java.util.ArrayList;
-import modelado.Error;
+import modeladoPackge.Error_m;
 
 /** CUP v0.11a beta 20060608 generated parser.
   * @version Wed Nov 19 09:37:56 ART 2014
@@ -137,16 +137,25 @@ public class AnalizadorSintactico extends java_cup.runtime.lr_parser {
   /** <code>error</code> Symbol index. */
   public int error_sym() {return 1;}
 
-
-
-
 	/*declaramos una variable Estatica para que todos los motodos del 
 	Asintactico puedan acceder a ella. */
 	
-	static Error var_error = new Error();
+	static Error_m var_error = new Error_m();
     
+        public static Error_m getError(){
+            return AnalizadorSintactico.var_error;
+        }
+        
 	/* Reporte de error encontrado. */
+
+    /**
+     *
+     * @param message
+     * @param info
+     */
     
+    
+  @Override
 	public void report_error(String message, Object info) {
 		System.out.println(" Entra a la Funcion Reporte Error ");
 		StringBuilder m = new StringBuilder("Error");
@@ -160,8 +169,8 @@ public class AnalizadorSintactico extends java_cup.runtime.lr_parser {
         }
         m.append(" : " + message);
 		/*Modifica la Variable estatica del Error para identificar que es Sintactico*/
-		if (AnalizadorSintactico.var_error.getTipoError() == modelado.Error.tipoError.SINERROR) {
-			AnalizadorSintactico.var_error.setError(modelado.Error.tipoError.SINTAXIS, m.toString());
+		if (AnalizadorSintactico.var_error.getTipoError() == modeladoPackge.Error_m.tipoError.SINERROR) {
+			AnalizadorSintactico.var_error.setError(modeladoPackge.Error_m.tipoError.SINTAXIS, m.toString());
 			} 
 		else {
 			AnalizadorSintactico.var_error.setIdentificador(AnalizadorSintactico.var_error.getId() + m.toString());
@@ -180,48 +189,75 @@ public class AnalizadorSintactico extends java_cup.runtime.lr_parser {
 	/* Metodo main para garantizar la ejecucion del analizador
 		lexico y sintactico, ademas que se pase como parametro la tabla
 		de simbolos correspondiente. */
-	public static void main(String[] args){
-		try {
-			 /* Cada vez que se anañliza, vuelve a asignarse un sinerror  - 
-				Esta accion ademas se realiza en la primer regla del AS (acá esta por cuestiones de legibilidad)*/                  
-			AnalizadorSintactico.var_error.setError(modelado.Error.tipoError.SINERROR, " ");
-			System.out.println("-------- > LLamama al Analizador Sintactico");
-			AnalizadorSintactico asin = new AnalizadorSintactico(
-					new AnalizadorLexico( new FileReader(args[0])));
-			System.out.println("-------- > Terminó");
-			Object result = asin.parse().value;
-			System.out.println("\n ===== Resultados finales =====");
-			System.out.println(result); /*puntero a la estructura logica*/
-			System.out.print(" Valor de Satic Error al terminar: ");
-			System.out.println(AnalizadorSintactico.var_error);
-		} catch (Exception ex) {
-			System.out.println(" XXXXXXX Error Fatal Capturado XXXXXX ");
-			System.err.println(ex.toString() + "  " + ex.getMessage());
-			System.out.println(" Valor de Satic Error: ");
-			System.out.print(AnalizadorSintactico.var_error);
-        }
-    }
+//	public static void main(String[] args){
+//		try {
+//			 /* Cada vez que se anañliza, vuelve a asignarse un sinerror  - 
+//				Esta accion ademas se realiza en la primer regla del AS (acá esta por cuestiones de legibilidad)*/                  
+//			AnalizadorSintactico.var_error.setError(modeladoPackge.Error.tipoError.SINERROR, " ");
+//			System.out.println("-------- > LLamama al Analizador Sintactico");
+//			AnalizadorSintactico asin = new AnalizadorSintactico(
+//					new AnalizadorLexico( new FileReader(args[0])));
+//			System.out.println("-------- > Terminó");
+//			Object result = asin.parse().value;
+//			System.out.println("\n ===== Resultados finales =====");
+//			System.out.println(result); /*puntero a la estructura logica*/
+//			System.out.print(" Valor de Satic Error al terminar: ");
+//			System.out.println(AnalizadorSintactico.var_error);
+//		} catch (Exception ex) {
+//			System.out.println(" XXXXXXX Error Fatal Capturado XXXXXX ");
+//			System.err.println(ex.toString() + "  " + ex.getMessage());
+//			System.out.println(" Valor de Satic Error: ");
+//			System.out.print(AnalizadorSintactico.var_error);
+//        }
+//    }
 	
-	public static Formula EjecutarAnalizador(String ruta){
-	try { /* Cada vez que se anañliza, vuelve a asignarse un sinerror  - 
-		Esta accion ademas se realiza en la primer regla del AS (acá esta por cuestiones de legibilidad)*/                  
-			AnalizadorSintactico.var_error.setError(modelado.Error.tipoError.SINERROR, " ");
-			System.out.println("-------- > LLamama al Analizador Sintactico");
-			AnalizadorSintactico asin = new AnalizadorSintactico(
-					new AnalizadorLexico( new FileReader(ruta)));
-			System.out.println("-------- > Terminó");
-			Formula result = (Formula) asin.parse().value;
-			System.out.println("\n ===== Resultados finales =====");
-			System.out.println(result); /*puntero a la estructura logica*/
-			System.out.print(" Valor de Satic Error al terminar: ");
-			System.out.println(AnalizadorSintactico.var_error);
-			return result;
-		} catch (Exception ex) {
-			System.out.println(" XXXXXXX Error Fatal Capturado XXXXXX ");
-			System.err.println(ex.toString() + "  " + ex.getMessage());
-			System.out.println(" Valor de Satic Error: ");
-			System.out.print(AnalizadorSintactico.var_error);
-			return null;
+//	public static Formula EjecutarAnalizadorOriginal(String ruta){
+//	try { /* Cada vez que se anañliza, vuelve a asignarse un sinerror  - 
+//		Esta accion ademas se realiza en la primer regla del AS (acá esta por cuestiones de legibilidad)*/                  
+//			AnalizadorSintactico.var_error.setError(modeladoPackge..Error.tipoError.SINERROR, " ");
+//			System.out.println("-------- > LLamama al Analizador Sintactico");
+//			AnalizadorSintactico asin = new AnalizadorSintactico(
+//					new AnalizadorLexico( new FileReader(ruta)));
+//			System.out.println("-------- > Terminó");
+//			Formula result = (Formula) asin.parse().value;
+//			System.out.println("\n ===== Resultados finales =====");
+//			System.out.println(result); /*puntero a la estructura logica*/
+//			System.out.print(" Valor de Satic Error al terminar: ");
+//			System.out.println(AnalizadorSintactico.var_error);
+//			return result;
+//		} catch (Exception ex) {
+//			System.out.println(" XXXXXXX Error Fatal Capturado XXXXXX ");
+//			System.err.println(ex.toString() + "  " + ex.getMessage());
+//			System.out.println(" Valor de Satic Error: ");
+//			System.out.print(AnalizadorSintactico.var_error);
+//			return null;
+//        }
+//	}
+        
+        public static Formula EjecutarAnalizador(String s_formula){
+        /* 
+        Cada vez que se anañliza una nueva f, vuelve a asignarse un sinerror  - 
+	Esta accion ademas se realiza en la primer regla del AS (acá esta por cuestiones de legibilidad)
+        */ 
+	try {                  
+            AnalizadorSintactico.var_error.setError(modeladoPackge.Error_m.tipoError.SINERROR, " ");
+                System.out.println("-------- > LLamama al Analizador Sintactico");
+                System.out.println("con la siguiente formula: ");
+                System.out.println(s_formula);
+            AnalizadorSintactico asin = new AnalizadorSintactico(new AnalizadorLexico( new FileReader(s_formula)));
+                System.out.println("-------- > Terminó");
+            Formula result = (Formula) asin.parse().value;
+                System.out.println("\n ===== Resultados finales =====");
+                System.out.println(result); /*puntero a la estructura logica*/
+                System.out.print(" Valor de Satic Error al terminar: ");
+                System.out.println(AnalizadorSintactico.var_error);
+            return result;
+	} catch (Exception ex) {
+		System.out.println(" XXXXXXX Error Fatal Capturado XXXXXX ");
+		System.err.println(ex.toString() + "  " + ex.getMessage());
+		System.out.println(" Valor de Satic Error: ");
+		System.out.print(AnalizadorSintactico.var_error);
+            return null;
         }
 	}
 
@@ -570,7 +606,7 @@ class CUP$AnalizadorSintactico$actions {
             {
               Formula RESULT =null;
    /* Cada vez que se anañliza, vuelve a asignarse un sinerror   */                  
-				AnalizadorSintactico.var_error.setError(modelado.Error.tipoError.SINERROR, " ");
+				AnalizadorSintactico.var_error.setError(modeladoPackge.Error_m.tipoError.SINERROR, " ");
 				
               CUP$AnalizadorSintactico$result = parser.getSymbolFactory().newSymbol("NT$0",8, ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$AnalizadorSintactico$stack.peek()), RESULT);
             }

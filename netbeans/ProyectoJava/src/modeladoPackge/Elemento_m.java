@@ -11,13 +11,13 @@ import java.util.Map;
  *
  * @author Chris
  */
-public class Elemento {
+public class Elemento_m {
     
-    private String _nombre;
-    private Map<String, Integer> _atributos ;
+    private final String _nombre;
+    private final Map<String, Integer> _atributos ;
     
 
-    public Elemento(Map<String, Integer> _atributos, String _nombre) {
+    public Elemento_m(Map<String, Integer> _atributos, String _nombre) {
         this._atributos = _atributos;
         this._nombre = _nombre;
     }

@@ -1,0 +1,35 @@
+//Cambios Cup-Flex
+
+static Error_m var_error = new Error_();
+ 
+        public Error_m getError(){
+            return AnalizadorSintactico.var_error;
+        } 
+	
+
+public static Formula EjecutarAnalizador(String s_formula){
+        /* 
+        Cada vez que se anañliza una nueva f, vuelve a asignarse un sinerror  - 
+	Esta accion ademas se realiza en la primer regla del AS (acá esta por cuestiones de legibilidad)
+        */ 
+	try {                  
+            AnalizadorSintactico.var_error.setError(modelado.Error.tipoError.SINERROR, " ");
+                System.out.println("-------- > LLamama al Analizador Sintactico");
+                System.out.println("con la siguiente formula: ");
+                System.out.println(s_formula);
+            AnalizadorSintactico asin = new AnalizadorSintactico(new AnalizadorLexico( new FileReader(s_formula)));
+                System.out.println("-------- > Terminó");
+            Formula result = (Formula) asin.parse().value;
+                System.out.println("\n ===== Resultados finales =====");
+                System.out.println(result); /*puntero a la estructura logica*/
+                System.out.print(" Valor de Satic Error al terminar: ");
+                System.out.println(AnalizadorSintactico.var_error);
+            return result;
+		} catch (Exception ex) {
+			System.out.println(" XXXXXXX Error Fatal Capturado XXXXXX ");
+			System.err.println(ex.toString() + "  " + ex.getMessage());
+			System.out.println(" Valor de Satic Error: ");
+			System.out.print(AnalizadorSintactico.var_error);
+			return null;
+        }
+	}

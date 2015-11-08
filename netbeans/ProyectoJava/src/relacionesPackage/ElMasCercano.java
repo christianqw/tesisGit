@@ -7,7 +7,7 @@
 package relacionesPackage;
 
 import java.util.ArrayList;
-import modeladoPackge.Elemento;
+import modeladoPackge.Elemento_m;
 
 /**
  *
@@ -16,7 +16,7 @@ import modeladoPackge.Elemento;
 public class ElMasCercano extends Evaluador{
     
     @Override
-    public Elemento evaluar() {
+    public Elemento_m evaluar() {
         return null;    
     }
 
@@ -29,7 +29,7 @@ public class ElMasCercano extends Evaluador{
         return "Funtion Elmascercano"; //To change body of generated methods, choose Tools | Templates.
     }
 
-    private Elemento buscar(ArrayList<Elemento> instancia, Elemento elem) {        
+    private Elemento_m buscar(ArrayList<Elemento_m> instancia, Elemento_m elem) {        
         return null;
     }
     
