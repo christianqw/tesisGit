@@ -42,7 +42,7 @@ public class Funcion extends Termino{
        //Verificamos que exista un predicado con ese identificador.
         if (m.containsFuncion(this._id)){
             //verificamos la aridad
-            if (!m.aridadFuncionCorrecta(this._id, this._terminos.size())){
+            if (!m.isAridadFuncionCorrecta(this._id, this._terminos.size())){
                 e.setError(modeladoPackge.Error_m.tipoError.ARIDAD, "Cantidad de paramentros incorrecta dentro de " + this._id);
                 return null;
             }else { /* definicion de los parametros de la función 

@@ -27,4 +27,8 @@ public abstract class Verificador {
         return cantParametros;
     }
 
+    public boolean isArityCorrect(int size) {
+        return (getCantParametros() == size);
+    }
+
 }

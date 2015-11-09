@@ -33,5 +33,9 @@ public abstract class Evaluador {
     public void setCantidadParametros(int valor){
         this.cantParametros = valor;
     }
+
+    public boolean isArityCorrect(int size) {
+        return (getCantidadParametros() == size);
+    }
     
 }

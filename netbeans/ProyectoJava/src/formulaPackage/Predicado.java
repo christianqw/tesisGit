@@ -39,7 +39,7 @@ public class Predicado implements Formula{
         //Verificamos que exista un predicado con ese identificador.
         if (m.containsPredicado(this._id)){
            //En este momento es posible realizar la verificacion de error de cantidad de paramentros.
-            if (!m.aridadPredicadoCorrecta(this._id, this._terminos.size())){
+            if (!m.isAridadPredicadoCorrecta(this._id, this._terminos.size())){
                 e.setError(modeladoPackge.Error_m.tipoError.ARIDAD, "Cantidad de paramentros incorrecta dentro de " + this._id);
                 return false;
             }else{ //primero busca las distintas variables intervinientes (pueden ser resultados de funciones)

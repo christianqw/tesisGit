@@ -197,6 +197,14 @@ public class Estructura {
         this._clases.put("MENOR", "relacionesPackage.Menor");
         this._clases.put("MAYOR", "relacionesPackage.Mayor");
     }
+
+    public boolean isFunctionArityCorrect(String id, int size) {
+        return this._funciones.get(id).isArityCorrect(size);
+    }
+    
+    public boolean isPredicateArityCorrect(String id, int size) {
+        return this._predicados.get(id).isArityCorrect(size);
+    }
     
     
     
