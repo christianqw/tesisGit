@@ -3,7 +3,6 @@ package serverPackages;
 import ALexicoyASintacticoPackage.AnalizadorSintactico;
 import formulaPackage.Formula;
 import generadoresPackge.Estructura;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import modeladoPackge.*;
@@ -24,7 +23,6 @@ public class RequestWrapper {
     */
     public Modelo generarNuevoModelo( Estructura estructura ){
         HashMap<String, Elemento_m> list_map_elementos = new HashMap<>();
-        //List<Elemento_m> list_map_elementos = new ArrayList<>();
 
         this.elements.stream().forEach((ElementoPost element) -> {
             list_map_elementos.put(element.getNombre(), element.getElemToMap(estructura));
@@ -35,13 +33,24 @@ public class RequestWrapper {
 
     public void ejecutar(Estructura estructura){
         Modelo m = generarNuevoModelo(estructura);
+        
+        System.out.println("Modelo Actual: ");
+        System.out.println(m);
+        
         Formula f;
+        Error_m e;
+        boolean result = false;
         for (int i = 0; i < sentens.size(); i++) {
-            System.out.println("Generamos el Objeto Formula ... y ejecutamos AL y AS ");
+            System.out.println("Analizamos todas las Formulas ... y ejecutamos AL y AS ");
             f = AnalizadorSintactico.EjecutarAnalizador(sentens.get(i).getValor()); 
-            if (AnalizadorSintactico.getError().isWithoutError()){
-                f.verificar(m, new HashMap<String, String>(), new Error_m());
+            e = AnalizadorSintactico.getError();
+            if (e.isWithoutError()){
+                e = new Error_m();
+                result = f.verificar(m, new HashMap<String, String>(), e);
             }
+            System.out.println("[[[[[[[[[[  -----  ]]]]]]]]]]");
+            System.out.println(" Formula : " + f.toString() +" \n resultado: " + result + "\n error : " + e.toString());
+            System.out.println("[[[[[[[[[[  -----  ]]]]]]]]]]");
         }
     }
     
@@ -62,4 +71,11 @@ public class RequestWrapper {
                     this.sentens = sentens;
     }
 
+    @Override
+    public String toString() {
+        return "RequestWrapper{" + "elements=" + elements + ", sentens=" + sentens + '}';
+    }
+    
+    
+    
 }

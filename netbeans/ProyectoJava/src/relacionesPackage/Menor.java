@@ -21,8 +21,8 @@ public class Menor extends Simple{
 
     @Override
     public boolean verificar(ArrayList<Elemento_m> listE) {
-        Integer auxI = getIzquierda(listE.get(this._paramI));
-        Integer auxD = getDerecha(listE.get(this._paramD));
+        Integer auxI = getIzquierda(listE);
+        Integer auxD = getDerecha(listE);
         if (auxI == null || auxD == null){
             return false;
         } else return (auxI.compareTo(auxD)>0);

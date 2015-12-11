@@ -43,8 +43,8 @@ public class ElMasCercano extends Evaluador{
         for (Map.Entry<String, Elemento_m> entrySet : dom.entrySet()) {
             // busca el otro que no sea si mismo que tenga distancia menor
             if (!entrySet.getKey().equals(elem.getNombre())){
-                dTemporal = Math.sqrt( Math.pow(elem.getValue("Top")- entrySet.getValue().getValue("Top"),2)
-                                        + Math.pow(elem.getValue("Left")- entrySet.getValue().getValue("Left"),2));
+                dTemporal = Math.sqrt( Math.pow(elem.getValue("top")- entrySet.getValue().getValue("top"),2)
+                                        + Math.pow(elem.getValue("left")- entrySet.getValue().getValue("left"),2));
                 if ((distanciaMenor > dTemporal) || (distanciaMenor == 0)){
                     distanciaMenor = dTemporal;
                     encontrado = entrySet.getValue();

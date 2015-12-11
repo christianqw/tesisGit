@@ -6,6 +6,7 @@
 
 package relacionesPackage;
 
+import java.util.ArrayList;
 import modeladoPackge.Elemento_m;
 
 /**
@@ -25,22 +26,21 @@ public abstract class Simple extends Verificador{
         this._attD = attD;            
     }
 
-    protected Integer getIzquierda(Elemento_m e){
+    protected Integer getIzquierda(ArrayList<Elemento_m> listE ){
         if (isConstante(_attI)){
             return this._paramI;
         } else {
-            return e.getValue(_attI);
+            return listE.get(this._paramI).getValue(_attI);
         }
     }
     
-    protected Integer getDerecha(Elemento_m e){
+    protected Integer getDerecha(ArrayList<Elemento_m> listE ){
         if (isConstante(_attD)){
             return this._paramD;
         } else {
-            return e.getValue(_attD);
+            return listE.get(this._paramD).getValue(_attD);
         }
-    }
-    
+    }    
     
     protected boolean isConstante(String s){
         return s.equals("_constante");

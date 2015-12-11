@@ -48,5 +48,10 @@ public class Sentencia {
         this.mensaje = mensaje;
     }
 
+    @Override
+    public String toString() {
+        return "\n Sentencia{" + "id=" + id + ", nombre=" + nombre + ", valor=" + valor + ", estado=" + estado + ", mensaje=" + mensaje + "} \n";
+    }
 
+    
 }

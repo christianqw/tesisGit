@@ -9,6 +9,7 @@ package ALexicoyASintacticoPackage;
 import java_cup.runtime.*;
 import java.io.FileReader;
 import formulaPackage.*;
+import java.io.StringReader;
 import java.util.ArrayList;
 import modeladoPackge.Error_m;
 
@@ -244,7 +245,10 @@ public class AnalizadorSintactico extends java_cup.runtime.lr_parser {
                 System.out.println("-------- > LLamama al Analizador Sintactico");
                 System.out.println("con la siguiente formula: ");
                 System.out.println(s_formula);
-            AnalizadorSintactico asin = new AnalizadorSintactico(new AnalizadorLexico( new FileReader(s_formula)));
+                
+                //String saux = " (Escirculo(a)|Escirculo(c))  ";
+            StringReader _fAux = new StringReader(s_formula);
+            AnalizadorSintactico asin = new AnalizadorSintactico(new AnalizadorLexico( _fAux ));
                 System.out.println("-------- > Terminó");
             Formula result = (Formula) asin.parse().value;
                 System.out.println("\n ===== Resultados finales =====");

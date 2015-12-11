@@ -81,7 +81,7 @@ public class Modelo {
     }
     
         public Set<String> getListaNombresElementos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            return this._dom.keySet();
     }
     
     @Override

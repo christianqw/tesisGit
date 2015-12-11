@@ -87,6 +87,7 @@ public class Estructura {
         this._def_elementos = new HashMap<> ();
         arrElem.stream().forEach((arrElem1) -> {
             CargaEstructuraElem((JSONObject) arrElem1);
+            //agregar el pos como id de dominio numerico.??
         });
     }
 

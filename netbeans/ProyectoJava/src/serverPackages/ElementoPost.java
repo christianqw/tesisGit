@@ -34,14 +34,22 @@ public class ElementoPost {
       this._id = id;
   }
 
-	public String getTipo() {
-			return _tipo;
+    public String getTipo() {
+                    return _tipo;
+    }
+
+    public void setTipo(String t) {
+                    this._tipo = t;
+    }
+
+    	public String getDominio() {
+			return _dominio;
 	}
 
-	public void setTipo(String t) {
-			this._tipo = t;
+	public void setDominio(String d) {
+			this._dominio = d;
 	}
-
+        
   public String getNombre() {
       return _nombre;
   }
@@ -104,14 +112,23 @@ public class ElementoPost {
       Estructura_Elemento aux_Ee;
       aux_M = new HashMap<>();
       aux_Ee = e.getEstructuraElemento(this._dominio);
-      
-      aux_M.put("Tipo", aux_Ee.getCodigoValue("Tipo", this._tipo));
-      aux_M.put("Zona", aux_Ee.getCodigoValue("Zona", this._zona));
-      aux_M.put("Left", this._left);
-      aux_M.put("Top", this._top);
-      aux_M.put("Att1", aux_Ee.getCodigoValue("Att1", this._att1));
-      aux_M.put("Att2", aux_Ee.getCodigoValue("Att2", this._att2));
+         
+      aux_M.put("tipo", aux_Ee.getCodigoValue("tipo", this._tipo));
+      aux_M.put("zona", aux_Ee.getCodigoValue("zona", this._zona));
+              //System.out.println("No tengo el dominio como atributo");
+        // dominio
+      aux_M.put("left", this._left);
+      aux_M.put("top", this._top);
+      aux_M.put("att1", aux_Ee.getCodigoValue("att1", this._att1));
+      aux_M.put("att2", aux_Ee.getCodigoValue("att2", this._att2));
       
       return new Elemento_m(aux_M, this._nombre);
   }
+
+    @Override
+    public String toString() {
+        return " \n ElementoPost{" + "_id=" + _id + ", _img=" + _img + ", _nombre=" + _nombre + ", _dominio=" + _dominio + ", _tipo=" + _tipo + ", _zona=" + _zona + ", _left=" + _left + ", _top=" + _top + ", _att1=" + _att1 + ", _att2=" + _att2 + "} \n";
+    }
+  
+  
 }

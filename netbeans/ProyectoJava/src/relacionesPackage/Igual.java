@@ -21,8 +21,15 @@ public class Igual extends Simple{
 
     @Override
     public boolean verificar(ArrayList<Elemento_m> listE) {
-        Integer auxI = getIzquierda(listE.get(this._paramI));
-        Integer auxD = getDerecha(listE.get(this._paramD));
+        Integer auxI;                
+        if (isConstante(this._attI)){
+            auxI = this._paramI;
+        } else {
+            auxI = listE.get(this._paramI).getValue(_attI);
+        }        
+                
+
+        Integer auxD = getDerecha(listE);
         if (auxI == null || auxD == null){
             return false;
         } else return auxI.equals(auxD);

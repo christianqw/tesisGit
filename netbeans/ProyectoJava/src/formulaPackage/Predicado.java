@@ -36,6 +36,8 @@ public class Predicado implements Formula{
     public boolean verificar(Modelo m, HashMap<String, String> instancia, Error_m e) {
         ArrayList<Elemento_m> consulta = new ArrayList<>();
         
+        
+        System.out.println(" >>>>> Verificando: " + this.toString());
         //Verificamos que exista un predicado con ese identificador.
         if (m.containsPredicado(this._id)){
            //En este momento es posible realizar la verificacion de error de cantidad de paramentros.
@@ -49,8 +51,10 @@ public class Predicado implements Formula{
                         cont++;
                     }
                     //realizamos la verificacion y la evaluacion del predicado dentro del modelo en cuestion
-                    if (e.isWithoutError())
+                    if (e.isWithoutError()){
+                        System.out.println(">>>>>>" + consulta + " "+  e);
                         return m.verificarPredicado(this._id, consulta, e);
+                    }
                     else {
                         return false; 
                     }

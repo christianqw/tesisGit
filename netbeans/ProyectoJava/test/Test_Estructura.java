@@ -1,6 +1,8 @@
 
+import com.sun.jndi.url.rmi.rmiURLContext;
 import generadoresPackge.Estructura;
 import org.json.simple.parser.ParseException;
+import serverPackages.RequestWrapper;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -16,49 +18,69 @@ public class Test_Estructura {
      
     public static void main(String[] args) throws ClassNotFoundException, ParseException {
      
+        
+    //generamos la estructura:     
         String data = getString();
         Estructura e = new Estructura(data);
         System.out.println("Estructura Cargada: ");
         System.out.println(e);
         
+        
+    //emulamos el POST - mensaje mandado por la Web
+        RequestWrapper rw = TestGenerateRequestWrapper.getFalsoPost();
+        
+        System.out.println(" XXXX --- *falso* RequestWApper --- XXXX ");
+        System.out.println(rw);
+        System.out.println(" XXXX ----------------------------- XXXX ");
+        
+    //ejecutamos verificador : 
+        rw.ejecutar(e);
     }
     
     private static String getString () {
         String s;
         s = "{\"Predicado\":[\n" +
-"{\"NombrePred\":\"Patito\",\n" +
-"  \"CantParam\":2,\n" +
-"  \"Componentes\" :[{\"Clase\":\"IGUAL\", \"ParametroI\":1, \"AtributoI\":\"Col\", \"ParametroD\":2, \"AtributoD\":\"_constante\"},\n" +
-"				  {\"Clase\":\"IGUAL\", \"ParametroI\":0, \"AtributoI\":\"Fil\", \"ParametroD\":1,  \"AtributoD\":\"Fil\"},\n" +
-"				  {\"Clase\":\"OR\"}\n" +
-"				  ]},\n" +
-"{\"NombrePred\":\"EstaEntre\",\n" +
-"  \"CantParam\":3,\n" +
-"  \"Componentes\" :[{\"Clase\":\"IGUAL\", \"ParametroI\":0, \"AtributoI\":\"Fil\", \"ParametroD\":1, \"AtributoD\":\"Fil\"},\n" +
-"				  {\"Clase\":\"IGUAL\", \"ParametroI\":1, \"AtributoI\":\"Fil\", \"ParametroD\":2, \"AtributoD\":\"Fil\"},\n" +
-"				  {\"Clase\":\"AND\"},\n" +
-"				  {\"Clase\":\"IGUAL\", \"ParametroI\":0, \"AtributoI\":\"Col\", \"ParametroD\":1, \"AtributoD\":\"Col\"},\n" +
-"				  {\"Clase\":\"IGUAL\", \"ParametroI\":1, \"AtributoI\":\"Col\", \"ParametroD\":2, \"AtributoD\":\"Col\"},\n" +
-"				  {\"Clase\":\"AND\"},\n" +
-"				  {\"Clase\":\"AND\"}\n" +
-"				  ]},\n" +
-"{\"NombrePred\":\"Escirculo\",\n" +
-"  \"CantParam\":1,\n" +
-"  \"Componentes\" :[{\"Clase\":\"IGUAL\", \"ParametroI\":0, \"AtributoI\":\"Tipo\", \"ParametroD\":0, \"AtributoD\":\"_constante\"}\n" +
-"				  ]}\n" +
-"			],\n" +
-"			\n" +
-"\"Funcion\":[{\"Rename\":\"ELMASLEJANO\",\"Class\":\"ElMasLejano\"},\n" +
-"		   {\"Rename\":\"CERCA\",\"Class\":\"ElMasCercano\"}\n" +
-"		],\n" +
-"\n" +
-"\"Elemento\":[{\"Dominio\":\"Figura\",\n" +
-"			\"ListAtributos\":[{\"Atributo\":\"Tipo\",\"Opciones\":[\"circulo\",\"piramide\",\"hexaedro\"]},\n" +
-"							{\"Atributo\":\"Tamaño\",\"Opciones\":[\"chico\",\"mediano\",\"grande\"]},\n" +
-"							{\"Atributo\":\"Fil\",\"Opciones\":[\"1\",\"2\",\"3\"]},\n" +
-"							{\"Atributo\":\"Col\",\"Opciones\":[\"1\",\"2\",\"3\",\"4\"]}]\n" +
-"			}]\n" +
-"}"; 
+            "{\"NombrePred\":\"Despierto\",\n" +
+            "  \"CantParam\":1,\n" +
+            "  \"Componentes\" :[{\"Clase\":\"IGUAL\", \"ParametroI\":0, \"AtributoI\":\"att2\", \"ParametroD\":0, \"AtributoD\":\"_constante\"}\n" +
+            "				  ]},\n" +
+            "{\"NombrePred\":\"Dormido\",\n" +
+            "  \"CantParam\":1,\n" +
+            "  \"Componentes\" :[{\"Clase\":\"IGUAL\", \"ParametroI\":0, \"AtributoI\":\"att2\", \"ParametroD\":1, \"AtributoD\":\"_constante\"}\n" +
+            "				  ]},\n" +
+            "{\"NombrePred\":\"EsChancho\",\n" +
+            "  \"CantParam\":1,\n" +
+            "  \"Componentes\" :[{\"Clase\":\"IGUAL\", \"ParametroI\":0, \"AtributoI\":\"tipo\", \"ParametroD\":0, \"AtributoD\":\"_constante\"}\n" +
+            "				  ]},\n" +
+            "{\"NombrePred\":\"EsGallina\",\n" +
+            "  \"CantParam\":1,\n" +
+            "  \"Componentes\" :[{\"Clase\":\"IGUAL\", \"ParametroI\":0, \"AtributoI\":\"tipo\", \"ParametroD\":1, \"AtributoD\":\"_constante\"}\n" +
+            "				  ]},\n" +
+            "{\"NombrePred\":\"EsPato\",\n" +
+            "  \"CantParam\":1,\n" +
+            "  \"Componentes\" :[{\"Clase\":\"IGUAL\", \"ParametroI\":0, \"AtributoI\":\"tipo\", \"ParametroD\":2, \"AtributoD\":\"_constante\"}\n" +
+            "				  ]},\n" +
+            "{\"NombrePred\":\"EsVaca\",\n" +
+            "  \"CantParam\":1,\n" +
+            "  \"Componentes\" :[{\"Clase\":\"IGUAL\", \"ParametroI\":0, \"AtributoI\":\"tipo\", \"ParametroD\":3, \"AtributoD\":\"_constante\"}\n" +
+            "				  ]},\n" +
+            "{\"NombrePred\":\"MismoLugar\",\n" +
+            "  \"CantParam\":2,\n" +
+            "  \"Componentes\" :[{\"Clase\":\"IGUAL\", \"ParametroI\":0, \"AtributoI\":\"zona\", \"ParametroD\":1, \"AtributoD\":\"zona\"}\n" +
+            "				  ]}\n" +
+            "			],\n" +
+            "			\n" +
+            "\"Funcion\":[{\"Rename\":\"ELMASLEJANO\",\"Class\":\"ElMasLejano\"},\n" +
+            "		   {\"Rename\":\"CERCA\",\"Class\":\"ElMasCercano\"}\n" +
+            "		],\n" +
+            "\n" +
+            "\"Elemento\":[{\"Dominio\":\"animal\",\n" +
+            "			\"ListAtributos\":[{\"Atributo\":\"tipo\",\"Opciones\":[\"tipo1\",\"tipo2\",\"tipo3\", \"tipo4\"]},\n" +
+            "							{\"Atributo\":\"att1\",\"Opciones\":[\"chico\",\"mediano\",\"grande\"]},\n" +
+            "							{\"Atributo\":\"att2\",\"Opciones\":[\"despierto\",\"dormido\"]},\n" +
+            "							{\"Atributo\":\"zona\",\"Opciones\":[\"bosque\",\"cielo\",\"corral\"]}]\n" +
+            "			}]\n" +
+            "}"; 
         return s;
     }
 }

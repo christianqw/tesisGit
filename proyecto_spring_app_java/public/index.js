@@ -5,8 +5,8 @@ $(document).ready(function() {
           headers: { 'content-type': 'application/json' },
           data:JSON.stringify({
                   "elements":[
-                    {"tipo":"tipo1","att1":"Chico","att2":"Despierto","nombre":"e1","zona":"bosque","img":"images/icon_chancho.png","left":62,"top":146,"id":"1327578c-34d4-8c0c-95b5-2fea3670c64d"},
-                    {"tipo":"tipo3","att1":"Chico","att2":"Despierto","nombre":"e2","zona":"bosque","img":"images/icon_pato.png","left":205,"top":140,"id":"d22f5b75-eff1-ff50-0f4c-8497aa3f8870"}
+                    {"tipo":"tipo1","dominio":"animal" ,"att1":"Chico","att2":"Despierto","nombre":"e1","zona":"bosque","img":"images/icon_chancho.png","left":62,"top":146,"id":"1327578c-34d4-8c0c-95b5-2fea3670c64d"},
+                    {"tipo":"tipo3","dominio":"animal" ,"att1":"Chico","att2":"Despierto","nombre":"e2","zona":"bosque","img":"images/icon_pato.png","left":205,"top":140,"id":"d22f5b75-eff1-ff50-0f4c-8497aa3f8870"}
                             ],
                   "sentens": [
                     {"nombre":"form_X","valor":"sasdasdasd","estado":"","mensaje":"","id":"2a2beaa5-8513-bd27-ea29-b150247a4f1f"},
