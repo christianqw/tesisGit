@@ -82,6 +82,37 @@
         <div class="col-md-6">
           <!-- start:Herramientas Modelo-->
           <div id="marco_elementos" class="thumbnail">
+            <ul>
+              <li><a href="#tabs-1"> <img id="tipo1" src="images/icon_chancho.png" class="image img-responsive elemento_mundo" /></a></li>
+              <li><a href="#tabs-2"> <img id="tipo2" src="images/icon_gallina.png" class="image img-responsive elemento_mundo" /></a></li>
+              <li><a href="#tabs-1"> <img id="tipo3" src="images/icon_pato.png" class="image img-responsive elemento_mundo" /></a></li>
+              <li><a href="#tabs-1"> <img id="tipo4" src="images/icon_vaca.png" class="image img-responsive elemento_mundo" /></a></li>
+              <div style="float: right">
+                <button id="add_element" type="button" class="btn btn-default btn_addedit_elem btn-block">Agregar</button>
+                <button id="edit_element" type="button" class="btn btn-default btn_addedit_elem btn-block">Editar</button>
+              </div>
+            </ul>
+            <form id="tabs-1" class="lista_atributos nav-atributo">
+                <select name="att1" class="atributo form-inline">
+                  <option>Chico</option>
+                  <option>Mediano</option>
+                  <option>Grande</option>
+                </select>
+                <select name="att2" class="atributo form-inline">
+                  <option>Despierto</option>
+                  <option>Dormido</option>
+                </select>
+            </form>
+              <form id="tabs-2" class="lista_atributos nav-atributo">
+                <select name="name1" class="atributo form-inline">
+                  <option>Single</option>
+                  <option>Single2</option>
+                </select>
+                <select name="last" class="atributo form-inline">
+                  <option>patitp</option>
+                  <option>elefante</option>
+                </select>
+              </form>
 
             <!--
             <iframe  src="menu_elementos.html" scrolling="no" frameborder="no" ></iframe>
@@ -93,8 +124,13 @@
           <!-- end:Herramientas Modelo-->
           <!-- Start:Mundo Modelo-->
           <div id="panel_mundo1" class="contenedor_modelo">
-            <!-- imagen mundo/ Tablero-->
-            <script id="Elemento_Template" type="text/template">
+            <!-- <iframe  class = "demo-frame" src="tablero2.html" scrolling="no"  ></iframe>
+            <iframe  id="fondo_mundo_html" class = "demo-frame" src="mundo.html" scrolling="no"  ></iframe>
+
+            imagen mundo/ Tablero-->
+              <img id="imagen_fondo" src="images/granja.png" alt="granja">
+
+              <script id="Elemento_Template" type="text/template">
               <img class="elemento_insertado"  src="<%= img %>">
               <button class="destroy"></button>
             </script>

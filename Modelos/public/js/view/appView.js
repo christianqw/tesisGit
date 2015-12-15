@@ -13,6 +13,7 @@ var app = app || {};
         events:{
           "click #id_btn_add_before" :"addNewBefore",
 					"click #add_element" :"addNewElemento",
+					"click #id_btn_remove" : "funcion_popup",
 					"click .btn-character" :"addCharToInput",
 					"click #id_btn_action" : "verificar"
         },
@@ -66,6 +67,18 @@ var app = app || {};
 				  console.log('-------------------');
 					console.log('collection-Sentencias.toJSON(): ', app.sentencia_collention.toJSON());
     			console.log('JSON.stringify(collection.toJSON()): ', JSON.stringify(app.sentencia_collention.toJSON()));
+				},
+
+				funcion_popup : function(){
+					alert("ALERT: apretaste borrar...");
+					var mascara = new Image();
+					mascara.src = "images/mascara.png";
+					alert(mascara);
+					var data = mascara.data;
+					alert(data);
+					var width = mascara.width;
+					var height = mascara.height;
+					alert("width: " + width + "height: "+ height);
 				}
     });
 
