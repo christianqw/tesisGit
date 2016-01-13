@@ -11,10 +11,11 @@ var app = app || {};
         el:$("#app_container"),  //Panel de Trabajo
 
         events:{
-          "click #id_btn_add_before" :"addNewBefore",
+          "click #id_btn_add_sentencia" :"addNewSentencia",
 					"click #add_element" :"addNewElemento",
 					"click .btn-character" :"addCharToInput",
 					"click #id_btn_action" : "verificar",
+					"click #id_btn_clear" : "clearAllInputs",
 					//-------------
 					"click #id_btn_remove" : "funcion_popup",
 					"click #edit_element" : "funcion_XX"
@@ -34,9 +35,14 @@ var app = app || {};
           return this;
         },
 
-        addNewBefore: function(){
+        addNewSentencia: function(){
+					alert("nnnnnnnnnnnnnnnnnnnnnnnnn");
             this.event_aggregator.trigger("event_formulario:add_Before");
         },
+
+				clearAllInputs: function(){
+					this.event_aggregator.trigger("event_formulario:clearAll");
+				},
 
 				addNewElemento: function(){
 						var _id_atributos = $("#marco_elementos .ui-tabs-active a").attr("href");

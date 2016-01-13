@@ -13,9 +13,10 @@ var app = app || {};
 				var_focus:'',
 
         initialize:function(){                    //var_sentencias
-            _.bindAll(this, "addNewSentencia");
+            _.bindAll(this, "addNew");
 						_.bindAll(this, "changeFocusSentencia");
 						_.bindAll(this, "addCharInSentencia");
+						_.bindAll(this, "clearAllInputs");
 
             //this.collection = new List_Sentencias();  eliminado
             //this.collection.add(new Sentencia({nombre:"form_01"})); utilizado en una funcíon aparte.
@@ -28,9 +29,11 @@ var app = app || {};
 						this.listenTo(this.model, 'destroy', this.remove);
 						*/
 
-						this.event_aggregator.bind("event_formulario:add_Before", this.addNewSentencia);
+						this.event_aggregator.bind("event_formulario:add_Before", this.addNew);
 						this.event_aggregator.bind("event_formulario:edit_Focus", this.changeFocusSentencia);
 						this.event_aggregator.bind("event_formulario:insert_Char", this.addCharInSentencia);
+						this.event_aggregator.bind("event_formulario:clearAll", this.clearAllInputs);
+
 				},
 
         cargar : function(){
@@ -56,12 +59,22 @@ var app = app || {};
             this.$el.append(sentenciaView.render().el); //agrega al final
         },
 
+				clearAllInputs : function(){
+					var that = this;
+					//iteramos sobre toda la coleccion, undercode function
+					_.each(app.sentencia_collention.models,
+								 function(item){ //funcion que se le aplica a cada elemento
+									item.save({valor : ''});
+								}, this);
+				},
+
 				num_nameNext : function(){
 					this.var_num_name = this.var_num_name + 1;
 				},
 
-        addNewSentencia : function(){
+        addNew : function(){
 					var name = "form_" + this.var_num_name;
+					alert("dentro del new sentencia")
 					this.num_nameNext();
           app.sentencia_collention.add(new app.Sentencia({nombre: name}));
         },
