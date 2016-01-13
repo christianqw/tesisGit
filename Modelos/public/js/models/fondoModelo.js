@@ -26,10 +26,9 @@ var app = app || {};
     },
 
 		getStringZona:function(left, top){
+			console.log("calculamos las pos reales de la mascara")
 			var leftReal = this.calcularRealLeft(left);
-			alert("aaaaaaa")
 			var topReal = this.calcularRealTop(top);
-			alert("bbbbb")
 			//get color de canvas real:real
 			//get value mapa en color.
 			return "corral";
@@ -56,7 +55,7 @@ var app = app || {};
 		    canvas.width = image.width;
 		    canvas.height = image.height;
 		    var context = canvas.getContext( '2d' );
-				alert("context var " + context);
+				console.log("context var " + context);
 		    context.drawImage( image, 0, 0 );
 		    return context.getImageData( 0, 0, image.width, image.height );
 

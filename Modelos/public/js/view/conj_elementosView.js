@@ -67,15 +67,15 @@ var app = app || {};
 				},
 
         addNewElemento: function( elem ){
-          alert("agregar elemento  - conj ");
+          //alert("agregar elemento  - conj ");
             /*
             var privada con contador - id del name
             cargar animal y atributos del formulario seleccionados.
             */
 						var name = "e" + this.var_num_name;
 						elem["nombre"] = name;
-						console.log("nombre: " + name);
-						console.log(elem);
+						//console.log("nombre: " + name);
+						//console.log(elem);
 						this.num_nameNext();
 						var e = new app.Elemento(elem);
 				//		e.asd(e.getRuta(e.getClave()));
@@ -88,7 +88,7 @@ var app = app || {};
 						console.log(e);
 */
             app.elemento_collention.add(e);
-						alert("se agrego a la coleccion");
+						//alert("se agrego a la coleccion");
         },
 
 				changeFocusElement : function( that ){
