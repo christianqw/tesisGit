@@ -15,65 +15,60 @@
 
   </head>
   <body>
+
+
     <!-- start:Navbar -->
-    <!--<div class="white_space"></div>-->
-    <nav class="navbar navbar-default" role="navigation">
-      <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse"
-              data-target=".navbar-ex1-collapse">
-            <span class="sr-only">Desplegar navegación</span>
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="#"><img id="img_logo_app" src="images/logoApp.png" class="image" /></a>
-      </div>
-      <div class="collapse navbar-collapse navbar-ex1-collapse">
-        <ul class="nav navbar-nav">
-          <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Archivo <b class="caret"></b></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ayuda <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Acción #1</a></li>
-                <li><a href="#">Acción #2</a></li>
+                <li>
+                  <a data-toggle="modal" class="btn btn-info" href="remote.html" data-target="#myModal">Click me !</a>
+                </li>
+                <li><a href="#">Información de LogicWorld</a></li>
+                <li><a href="#">Hacerca del modelo</a></li>
                 <li class="divider"></li>
-                <li><a href="#">Acción #3</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Acción #4</a></li>
+                <li><a href="#">Hacerca de LPO</a></li>
               </ul>
-          </li>
-          <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Modelo <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Acción #5</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Acción #6</a></li>
-              </ul>
-          </li>
-          <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sentencias <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Acción #7</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Acción #8</a></li>
-              </ul>
-          </li>
-          <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ayuda <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Acción #9</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Acción #10</a></li>
-              </ul>
-          </li>
-          <li>
-            <button type="button" id="id_addmundo" class="btn btn-default navbar-btn btn-sm btn-gauzy"> <img id="img_add_mundo" src="images/icon_addWorld.png" class="image" /> </button>
-            <button type="button" id="id_addform" class="btn btn-default navbar-btn btn-sm btn-gauzy"> <img id="img_add_form" src="images/icon_addForm.png" class="image" /> </button>
-            <button type="button" class="btn btn-default navbar-btn btn-sm btn-gauzy"> <img id="img_info" src="images/icon_info.png" class="image" /> </button>
-            <button type="button" class="btn btn-default navbar-btn btn-sm btn-gauzy"> <img id="img_cuestion" src="images/icon_cuestion.png" class="image" /> </button> </li>
-        </ul>
-      </div>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
     </nav>
+
     <!-- end:Navbar -->
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                       <h4 class="modal-title">Modal title</h4>
+                  </div>
+                  <div class="modal-body"></div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+              </div> <!-- /.modal-content -->
+          </div> <!-- /.modal-dialog -->
+      </div> <!-- /.modal -->
     <!-- XX CONTENIDO XX -->
 
     <div id="app_container" class="container-fluid">
@@ -126,14 +121,16 @@
           <div id="panel_mundo1" class="contenedor_modelo">
             <!-- <iframe  class = "demo-frame" src="tablero2.html" scrolling="no"  ></iframe>
             <iframe  id="fondo_mundo_html" class = "demo-frame" src="mundo.html" scrolling="no"  ></iframe>
-
             imagen mundo/ Tablero-->
-              <img id="imagen_fondo" src="images/granja.png" alt="granja">
-
-              <script id="Elemento_Template" type="text/template">
-              <img class="elemento_insertado"  src="<%= img %>">
-              <button class="destroy"></button>
+            <script id="Board_Template" type="text/template">
+              <img id="imagen_fondo"  src="<%= img %>" alt="<%= alt %>">
             </script>
+
+            <script id="Elemento_Template" type="text/template">
+              <img class="elemento_insertado"  src="<%= img %>">
+   						<button class="destroy"></button>
+            </script>
+
           </div>
           <!-- end:Mundo Modelo-->
         </div>
@@ -231,12 +228,14 @@ antiguo script
 
       <script type="text/javascript" src="js/models/sentencia.js"></script>
       <script type="text/javascript" src="js/models/elemento.js"></script>
+      <script type="text/javascript" src="js/models/FondoModelo.js"></script>
       <script type="text/javascript" src="js/collections/list_sentencias.js"></script>
       <script type="text/javascript" src="js/collections/conj_elementos.js"></script>
       <script type="text/javascript" src="js/view/sentenciaView.js"></script>
       <script type="text/javascript" src="js/view/list_sentenciasView.js"></script>
       <script type="text/javascript" src="js/view/elementoView.js"></script>
       <script type="text/javascript" src="js/view/conj_elementosView.js"></script>
+      <script type="text/javascript" src="js/view/boardView.js"></script>
       <script type="text/javascript" src="js/view/appView.js"></script>
       <script type="text/javascript" src="js/app.js"></script>
   </body>

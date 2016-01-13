@@ -10,6 +10,7 @@ var app = app || {};
         el:$("#panel_mundo1"),  //insertamos los elementos en este componente
 
 				var_num_name: 1,
+				var_elem_focus: '',
 
         events:{
           "click #asd" :"mensaje2"
@@ -17,6 +18,7 @@ var app = app || {};
 
         initialize:function(){                    //var_sentencias
             _.bindAll(this, "addNewElemento");
+						_.bindAll(this, "changeFocusElement");
 
             //this.collection = new List_Sentencias();  eliminado
             //this.collection.add(new Sentencia({nombre:"form_01"})); utilizado en una funcíon aparte.
@@ -26,6 +28,8 @@ var app = app || {};
             app.elemento_collention.on("add", this.renderElemento, this); //actualiza la vista cada agregado.
                                                                             //actualiza la vista cada eliminado y otro para edit.
             this.event_aggregator.bind("event_mundo:add_Element", this.addNewElemento);
+						this.event_aggregator.bind("event_mundo:edit_Focus_Element", this.changeFocusElement);
+
         },
 
         render: function(){
@@ -62,12 +66,37 @@ var app = app || {};
             */
 						var name = "e" + this.var_num_name;
 						elem["nombre"] = name;
+						console.log("nombre: " + name);
+						console.log(elem);
 						this.num_nameNext();
-            app.elemento_collention.add(new app.Elemento(elem));
+						var e = new app.Elemento(elem);
+				//		e.asd(e.getRuta(e.getClave()));
+				//		console.log("usando asd");
+						console.log(e);
+/*
+						var e = new app.Elemento(elem);
+						e.save_ruta(e.getClave);
+						console.log( "Elemento generado dentro del conjunto : ");
+						console.log(e);
+*/
+            app.elemento_collention.add(e);
+						alert("se agrego a la coleccion")
         },
 
+				changeFocusElement : function( that ){
+					if (this.var_elem_focus){
+						this.var_elem_focus.remove_editingFocus();
+					}
+					that.add_editingFocus();
+					this.var_elem_focus = that;
+				},
+
         mensaje2 : function(){
-          alert("apretaste asd dentro");
+          alert("Dentro de Colection");
+					_.each(app.elemento_collention.models,
+								 function(item){ //funcion que se le aplica a cada elemento
+										console.log(item);
+								}, this);
         }
     });
 

@@ -9,6 +9,12 @@ var app = app || {};
 
 	// Nuestro moledo basico de **Elemento** posee los atributos: 'nombre', 'valor', 'estado', 'mensaje'
   app.Elemento = Backbone.Model.extend({
+		localStorage: new Store("Modelos"),
+		var_map : {"tipo1ChicoDespierto":"images/icon_chancho.png",
+							"tipo2ChicoDespierto":"images/icon_gallina.png",
+							"tipo3ChicoDespierto":"images/icon_pato.png",
+							"tipo4ChicoDespierto":"images/icon_vaca.png"
+		},
 		// Atributos por defecto de un Elemento
 		// de faltar un campo, se está asumiendo que simepre se asigna dicho atributo al crearlo
     defaults:{
@@ -22,34 +28,59 @@ var app = app || {};
         att2:"WWWW"
     },
 
-		save_ruta : function (clave) {
-			var map = {
-					"tipo1ChicoDespierto":"images/icon_chancho.png",
-					"tipo2ChicoDespierto":"images/icon_gallina.png",
-					"tipo3ChicoDespierto":"images/icon_pato.png",
-					"tipo4ChicoDespierto":"images/icon_vaca.png"
-			};
-			 //console.log(map[clave]);
-			 this.save({
- 				img: map[clave],
- 			});
-		},
+		 updateImg: function() {
+			  console.log("<<<< Entramos a UPDATE IMG >>>>>");
+				this. save({
+					img : this.getImgRuta(this.getClave())
+				});
+				console.log("<<<<    IMG modificada     >>>>>");
+		 },
 
 		initialize: function(){
       //concatenamos atributos y tipo para sacar la ruta del elemento.
-			//console.log("concatenacion : " + this.get("tipo")+this.get("att1")+this.get("att2"));
-			var clave = this.get("tipo")+this.get("att1")+this.get("att2");
-			//console.log(clave);
-			this.save_ruta(clave);
+			console.log("Inicializamos: -cargamos la imagen ");
+			this.updateImg();
 		},
 
+		getClave : function(){
+			return (this.get("tipo")+this.get("att1")+this.get("att2"));
+		},
+/*
+		asd : function (ruta){
+			console.log("entra a asd : this es:");
+			this.save({
+				img: ruta,
+			});
+			console.log("cambio de ruta de imag : ");
+			console.log(this);
+		},
+*/
+		getImgRuta: function(k){
+			return this.var_map[k];
+		},
+
+		//function editing position and Zona
+		stop_drop: function ( data ) {
+			this.save({
+				left: data["left"],
+				top: data["top"],
+				zona: data["zona"]
+			});
+			console.log("cambio de lugar : ");
+			console.log(this);
+		// + this.get_img_ruta("key1") + " " + this.get_img_ruta("key2")
+		}
+/*
 		//function editing position
 		stop_drop: function ( new_left, new_top ) {
 			this.save({
 				left: new_left,
 				top: new_top
 			});
-		}
+			console.log("cambio de lugar : ");
+			console.log(this);
+// + this.get_img_ruta("key1") + " " + this.get_img_ruta("key2")
+		} */
 
 
 	/*	validate: function(attrs, options) {

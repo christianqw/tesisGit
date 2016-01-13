@@ -13,20 +13,24 @@ var app = app || {};
         events:{
           "click #id_btn_add_before" :"addNewBefore",
 					"click #add_element" :"addNewElemento",
-					"click #id_btn_remove" : "funcion_popup",
 					"click .btn-character" :"addCharToInput",
-					"click #id_btn_action" : "verificar"
+					"click #id_btn_action" : "verificar",
+					//-------------
+					"click #id_btn_remove" : "funcion_popup",
+					"click #edit_element" : "funcion_XX"
         },
 
         initialize:function(){
-          var list_sentenciasView = new app.List_SentenciasView();
+					var boardView = new app.BoardView({model: new app.FondoModelo});
+					var list_sentenciasView = new app.List_SentenciasView();
 					var conj_elementosView = new app.Conj_ElementosView();
-
+					//var boardView = new app.BoardView({model: new app.FondoModelo}); sin realizar el new en el inic
         },
 
         render: function(){
           this.$el.append(app.list_sentenciasView.render().el);
 					this.$el.append(app.conj_elementosView.render().el);
+					this.$el.append(app.boardView.render().el);
           return this;
         },
 

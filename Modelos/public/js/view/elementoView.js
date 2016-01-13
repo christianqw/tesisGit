@@ -13,7 +13,7 @@ var app = app || {};
         template:$("#Elemento_Template").html(),
 
         events:{
-          'click .elemento_insertado': 'element_focus',
+          'click img.elemento_insertado': 'element_focus',
           //no andan!!
           //"dragstop .draggable": "edit_position_model"
           //'stop .elemento_insertado': 'edit_position_model'
@@ -25,7 +25,7 @@ var app = app || {};
 
         element_focus: function(){
           alert("focus en " + this.model.get("nombre"));
-          //this.$el.addClass('element_editing_focus');
+          this.event_aggregator.trigger("event_mundo:edit_Focus_Element", this);
         },
 
         render:function () {
@@ -33,14 +33,48 @@ var app = app || {};
           var tmpl = _.template(this.template);
           //this.el is what we defined in tagName. use $el to get access to jQuery html() function
           this.$el.html(tmpl(this.model.toJSON()));
-          var that = this.model;
+          var that = this;
+          var data = {"left": 0, "top": 0 };
           this.$el.draggable({
                   stop: function( event, ui ) {
-                  alert("left: " + ui.position.left+ " top: " + ui.position.top );
+                  //alert("Dentro del Drop ccccccc");
+                  var data = {"left": ui.position.left, "top": ui.position.top };
+                  //alert("left: " + 	data["left"]+ " top: " + data["top"] );
+                  //alert("ddddddd");
+                  that.event_aggregator.trigger("event_board:setPos", that, data);
+                  //that.stop_drop(ui.position.left, ui.position.top);
+                }
+          }).css({position:"absolute", top:0, left:0})
+          //alert("Por fuera del Drop - left: " + 	data["left"]+ " top: " + data["top"] );
+          this.event_aggregator.trigger("event_board:setPos", that, data);
+          return this;
+        },
+
+        remove_editingFocus : function(){
+					this.$el.removeClass('editing-focus');
+				},
+
+				add_editingFocus : function(){
+					this.$el.addClass('editing-focus');
+				},
+/*
+        render:function () {
+          //tmpl is a function that takes a JSON object and returns html
+          var tmpl = _.template(this.template);
+          //this.el is what we defined in tagName. use $el to get access to jQuery html() function
+          this.$el.html(tmpl(this.model.toJSON()));
+          var that = this.model;
+          var data = {"left": 0, "top": 0 };
+          this.$el.draggable({
+                  stop: function( event, ui ) {
+                  data = {"left": ui.position.left, "top": ui.position.top }
+                  alert("left: " + 	data["left"]+ " top: " + data["top"] );
+                  //var z = app.boardView.model.getStringZona(ui.position.left,  ui.position.top );
                   that.stop_drop(ui.position.left, ui.position.top);
                 }
           }).css({position:"absolute", top:0, left:0})
+          //this.event_aggregator.trigger("event_board:setPos", that, data);
           return this;
-        }
+        }*/
     });
   })(jQuery);

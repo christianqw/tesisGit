@@ -47,6 +47,11 @@ iframe {
 	max-height: 100%;
 }
 
+.editing-focus{
+	border-style: solid;
+  border-color: green;
+}
+
 .contenedor_modelo{
   overflow: auto;
 	height: auto;
