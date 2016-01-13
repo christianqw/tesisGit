@@ -18,6 +18,7 @@ var app = app || {};
 
         initialize:function(){                    //var_sentencias
             _.bindAll(this, "addNewElemento");
+						_.bindAll(this, "editElemento");
 						_.bindAll(this, "changeFocusElement");
 
             //this.collection = new List_Sentencias();  eliminado
@@ -28,6 +29,7 @@ var app = app || {};
             app.elemento_collention.on("add", this.renderElemento, this); //actualiza la vista cada agregado.
                                                                             //actualiza la vista cada eliminado y otro para edit.
             this.event_aggregator.bind("event_mundo:add_Element", this.addNewElemento);
+						this.event_aggregator.bind("event_mundo:edit_Element", this.editElemento);
 						this.event_aggregator.bind("event_mundo:edit_Focus_Element", this.changeFocusElement);
 
         },
@@ -58,6 +60,12 @@ var app = app || {};
 					this.var_num_name = this.var_num_name + 1;
 				},
 
+				editElemento(data){
+					if (this.var_elem_focus){
+						this.var_elem_focus.editData(data);
+					}
+				},
+
         addNewElemento: function( elem ){
           alert("agregar elemento  - conj ");
             /*
@@ -80,7 +88,7 @@ var app = app || {};
 						console.log(e);
 */
             app.elemento_collention.add(e);
-						alert("se agrego a la coleccion")
+						alert("se agrego a la coleccion");
         },
 
 				changeFocusElement : function( that ){

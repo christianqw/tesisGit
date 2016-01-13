@@ -9,18 +9,20 @@ var app = app || {};
     app.ElementoView = Backbone.View.extend({
 
         tagName:"div",
-        className:"draggable",
+        className:"draggable elementoInsertado",
         template:$("#Elemento_Template").html(),
 
         events:{
           'click img.elemento_insertado': 'element_focus',
+          'click .destroy' : 'delete'
           //no andan!!
           //"dragstop .draggable": "edit_position_model"
           //'stop .elemento_insertado': 'edit_position_model'
         },
 
         initialize:function(){
-					// $(this.el)
+          this.listenTo(this.model, 'destroy', this.remove); //cuando se elimina actualiza
+					//this.listenTo(this.model, 'change', this.render);  //Por los espacion adelante... cuando se edita el modelo actualiza.
 				},
 
         element_focus: function(){
@@ -50,6 +52,14 @@ var app = app || {};
           return this;
         },
 
+        individualRender: function(){
+          //tmpl is a function that takes a JSON object and returns html
+          var tmpl = _.template(this.template);
+          //this.el is what we defined in tagName. use $el to get access to jQuery html() function
+          this.$el.html(tmpl(this.model.toJSON()));
+          return this;
+        },
+
         remove_editingFocus : function(){
 					this.$el.removeClass('editing-focus');
 				},
@@ -57,6 +67,16 @@ var app = app || {};
 				add_editingFocus : function(){
 					this.$el.addClass('editing-focus');
 				},
+
+        editData : function(d){
+          this.model.save(d);
+          this.model.updateImg();
+          this.individualRender();
+        },
+
+        delete : function(){
+          this.model.destroy();
+        }
 /*
         render:function () {
           //tmpl is a function that takes a JSON object and returns html

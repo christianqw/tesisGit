@@ -17,7 +17,7 @@ var app = app || {};
 					'click .btn-destroy-trash' : 'clear',
 					'blur .input_sentencia' : 'updateOnFocusOut',
 					'keypress .edit': 'updateOnEnter',
-					'keydown .edit' : 'revertOnEscape'
+					'keydown .editing' : 'revertOnEscape'
 				},
 
 				initialize: function () {
@@ -34,10 +34,10 @@ var app = app || {};
 						return;
 					}
 					//tmpl is a function that takes a JSON object and returns html
-            var tmpl = _.template(this.template);
+          var tmpl = _.template(this.template);
           //this.el is what we defined in tagName. use $el to get access to jQuery html() function
-            this.$el.html(tmpl(this.model.toJSON()));
-            return this;
+          this.$el.html(tmpl(this.model.toJSON()));
+          return this;
         },
 
 				edit: function(){
@@ -89,7 +89,7 @@ var app = app || {};
 
 				},
 				revertOnEscape : function(){
-
+						alert("escape");
 				}
     });
   })(jQuery);

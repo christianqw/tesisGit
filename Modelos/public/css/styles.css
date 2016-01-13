@@ -127,3 +127,29 @@ iframe {
   height: 34px;
 
 }
+
+/*Btn delete element*/
+.elementoInsertado button{
+	margin: 0px;
+	padding: 0px;
+	border: 0px none;
+	background: transparent none repeat scroll 0% 0%;
+	font-size: 100%;
+	vertical-align: baseline;
+	font-family: inherit;
+	font-weight: inherit;
+	color: inherit;
+}
+
+.elementoInsertado .destroy {
+	position: absolute;
+	bottom: 5px;
+	left: 25px;
+	bottom: 15px;
+	width: 30px;
+	height: 30px;
+	margin: auto 0px 11px;
+	font-size: 30px;
+	color: #CC9A9A;
+	transition: color 0.2s ease-out 0s;
+}
