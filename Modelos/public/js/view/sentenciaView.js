@@ -16,8 +16,7 @@ var app = app || {};
 					'click input.input_sentencia' : 'edit',
 					'click .btn-destroy-trash' : 'clear',
 					'blur .input_sentencia' : 'updateOnFocusOut',
-					'keypress .edit': 'updateOnEnter',
-					'keydown .editing' : 'revertOnEscape'
+					'keypress .edit': 'updateOnEnter'
 				},
 
 				initialize: function () {
@@ -87,9 +86,7 @@ var app = app || {};
 
 				updateOnEnter : function(){
 
-				},
-				revertOnEscape : function(){
-						alert("escape");
 				}
+
     });
   })(jQuery);

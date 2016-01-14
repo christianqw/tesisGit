@@ -13,7 +13,8 @@ var app = app || {};
 				var_elem_focus: '',
 
         events:{
-          "click #asd" :"mensaje2"
+          "click #asd" :"mensaje2",
+					//'keydown .editing-focus': 'revertOnEscape',
         },
 
         initialize:function(){                    //var_sentencias
@@ -98,6 +99,15 @@ var app = app || {};
 					that.add_editingFocus();
 					this.var_elem_focus = that;
 				},
+/*
+				revertOnEscape: function (e) {
+					if (e.which === ESC_KEY) {
+						if (this.var_elem_focus){
+							this.var_elem_focus.remove_editingFocus();
+						}
+						this.var_elem_focus = '';
+					}
+				},*/
 
         mensaje2 : function(){
           alert("Dentro de Colection");

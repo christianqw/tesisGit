@@ -48,8 +48,16 @@ iframe {
 }
 
 .editing-focus{
-	border-style: solid;
-  border-color: green;
+	outline: 0;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+	line-height: 1;
+	color: #555;
+	background-color: rgba(255, 255, 255, 0.5);
+	background-image: none;
+	border: 1px solid #66afe9;
+	border-radius: 4px;
+	/*border-style: solid;
+  border-color: green;*/
 }
 
 .contenedor_modelo{
@@ -152,4 +160,18 @@ iframe {
 	font-size: 30px;
 	color: #CC9A9A;
 	transition: color 0.2s ease-out 0s;
+}
+
+.ui-menu {
+	width: 150px;
+}
+
+#contextMenu {
+  position: absolute;
+  display:none;
+}
+
+#myMascara {
+  position: absolute;
+  display:none;
 }

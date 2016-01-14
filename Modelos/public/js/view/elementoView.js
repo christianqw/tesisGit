@@ -15,6 +15,7 @@ var app = app || {};
         events:{
           'click img.elemento_insertado': 'element_focus',
           'click .destroy' : 'delete'
+          //'contextmenu img.elemento_insertado': 'mm'
           //no andan!!
           //"dragstop .draggable": "edit_position_model"
           //'stop .elemento_insertado': 'edit_position_model'
@@ -37,18 +38,20 @@ var app = app || {};
           this.$el.html(tmpl(this.model.toJSON()));
           var that = this;
           var data = {"left": 0, "top": 0 };
+          var size = {"h": 41 , "w": 41};
           this.$el.draggable({
                   stop: function( event, ui ) {
                   //alert("Dentro del Drop ccccccc");
                   var data = {"left": ui.position.left, "top": ui.position.top };
+                  var size = {"h": 41 , "w": 41};
                   //alert("left: " + 	data["left"]+ " top: " + data["top"] );
                   //alert("ddddddd");
-                  that.event_aggregator.trigger("event_board:setPos", that, data);
+                  that.event_aggregator.trigger("event_board:setPos", that, data, size);
                   //that.stop_drop(ui.position.left, ui.position.top);
                 }
           }).css({position:"absolute", top:0, left:0})
           //alert("Por fuera del Drop - left: " + 	data["left"]+ " top: " + data["top"] );
-          this.event_aggregator.trigger("event_board:setPos", that, data);
+          this.event_aggregator.trigger("event_board:setPos", that, data, size);
           return this;
         },
 
@@ -76,6 +79,25 @@ var app = app || {};
 
         delete : function(){
           this.model.destroy();
+        },
+
+        mm : function (event) {
+          // body...
+          //alert("evento capturado. menu contextual");
+         var $menu_ctx = $("#contextMenu");
+         $menu_ctx.position({
+                  my: "left top",
+                  of: event
+              });
+          console.log("antes del show");
+          $menu_ctx.show().on('click', 'a',
+                      function (e) {
+                        $menu_ctx.hide();
+                        alert("mira las cosas de la memoria")
+                        alert(e.target);
+                      });
+          console.log("show");
+          return false;
         }
 /*
         render:function () {

@@ -122,6 +122,7 @@
             <!-- <iframe  class = "demo-frame" src="tablero2.html" scrolling="no"  ></iframe>
             <iframe  id="fondo_mundo_html" class = "demo-frame" src="mundo.html" scrolling="no"  ></iframe>
             imagen mundo/ Tablero-->
+            <img id="myMascara" src="images/mascara.png" alt="" />
             <script id="Board_Template" type="text/template">
               <img id="imagen_fondo"  src="<%= img %>" alt="<%= alt %>">
             </script>
@@ -214,6 +215,26 @@ antiguo script
 					  </ul>
     				</div>
     		  </div>
+
+          <!-- Menu contextual elemento-->
+          <ul id="asd" class="dropdown-menu" role="menu" style="display:none" >
+              <li><a tabindex="-1" href="#">Action</a></li>
+              <li><a tabindex="-1" href="#">Another action</a></li>
+              <li><a tabindex="-1" href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a tabindex="-1" href="#">Separated link</a></li>
+          </ul>
+          <div id="contextMenu" class="dropdown clearfix">
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display:block;position:absolute;margin-bottom:5px;">
+                <li><a tabindex="-1" href="#">Action</a></li>
+                <li><a tabindex="-1" href="#">Another action</a></li>
+                <li><a tabindex="-1" href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a tabindex="-1" href="#">Separated link</a></li>
+              </ul>
+          </div>
+
+
         </div>
          <!-- end: Panel Formulas-->
 
