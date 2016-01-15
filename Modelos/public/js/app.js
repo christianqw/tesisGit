@@ -8,6 +8,7 @@
 
     //defino receptor donde se pueden soltar los elementos
     $(".contenedor_modelo").droppable();
+    $("#menu_ctx_elem").menu();
 
     var appView = new app.AppView();
 

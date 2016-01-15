@@ -12,12 +12,13 @@ var app = app || {};
   para ello es que se incorpora una logica que trabaja con una mascara.
   */
   app.FondoModelo = Backbone.Model.extend({
-		var_map : {"bosque":"Rojo",
-							"corral":"Azul",
-							"aire":"Amarillo",
-							"pasto":"Verde"
+		var_map : {"R63G72B204" : "aire", //Azul
+							 "R34G177B76" : "bosque",
+							 "R255G242B0" : "granero",
+							 "R255G174B201" : "pasto",
+							 "R237G28B36": "corral"
 		},
-		var_imagedata :"",
+		var_imageCtx :"",
 		var_hReal : "",
 		var_wReal : "",
 
@@ -29,31 +30,25 @@ var app = app || {};
 
 		getStringZona:function(data, size){
 			console.log("calculamos las pos reales de la mascara")
-			var leftReal = this.calcularRealLeft(data["left"], size["h"]);
-			var topReal = this.calcularRealTop(data["top"], size["w"]);
-			//get color de canvas real:real
-			//get value mapa en color.
-			return "corral";
+			var img_fondo = document.getElementById('imagen_fondo');
+			var leftReal = this.calcularRealLeft(data["left"], size["w"],img_fondo.clientWidth);
+			var topReal = this.calcularRealTop(data["top"], size["h"], img_fondo.clientHeight);
+			console.log("pos real en la mascara: " + leftReal + " "+ topReal );
+
+			var claveColor = this.getPixelColor(leftReal, topReal); //get color de canvas real:real
+			console.log("clave Color : " + claveColor);//get value mapa en color
+			return this.var_map[claveColor];
 		},
+
 
 
 	initialize:function(){
 
-		var img = document.getElementById('myMascara');
-		//var canvas = document.getElementById('my-canvas');
-		var canvas = document.createElement('canvas');
-		this.var_wReal = img.width;
-		this.var_hReal = img.height;
-		canvas.width = 	this.var_wReal;
-		canvas.height = 	this.var_hReal;
-		this.var_imagedata = canvas.getContext("2d");
-		this.var_imagedata.drawImage(img, 0, 0, this.var_wReal, this.var_hReal);
-		alert(this.var_wReal + "  " +img.height);
+		this.generateImgData();
+
 
 		//alert($(#imagen_fondo).width);
 
-		//var pixelData = canvas.getContext('2d').getImageData(100, 100, 1, 1).data;
-		//alert('R: ' + pixelData[0] + '<br>G: ' + pixelData[1] + '<br>B: ' + pixelData[2] + '<br>A: ' + pixelData[3])
 
 /*		var img = new Image();
 		img.src = "images/mascara.png";
@@ -61,10 +56,10 @@ var app = app || {};
 
 		alert("dentro del Modelo Fondo");
 		alert("img var  " + img);
-		this.var_imagedata = this.getImgData( img );
-		var color = this.getPixel( this.var_imagedata, 10, 10);
+		this.var_imageCtx = this.getImgData( img );
+		var color = this.getPixel( this.var_imageCtx, 10, 10);
 
-		alert(var_imagedata);
+		alert(var_imageCtx);
 		alert(color);
 
 	var canvas = document.getElementById('panel');
@@ -78,33 +73,36 @@ var app = app || {};
 	*/
 	},
 
-		getImgData: function (image) {
-		    var canvas = document.createElement( 'canvas' );
-		    canvas.width = image.width;
-		    canvas.height = image.height;
-		    var context = canvas.getContext( '2d' );
-				console.log("context var " + context);
-		    context.drawImage( image, 0, 0 );
-		    return context.getImageData( 0, 0, image.width, image.height );
-
-
+		generateImgData: function (image) {
+			var img = document.getElementById('myMascara');
+			//var canvas = document.getElementById('my-canvas');
+			var canvas = document.createElement('canvas');
+			this.var_wReal = img.width;
+			this.var_hReal = img.height;
+			canvas.width = 	this.var_wReal;
+			canvas.height = 	this.var_hReal;
+			this.var_imageCtx = canvas.getContext("2d");
+			this.var_imageCtx.drawImage(img, 0, 0, this.var_wReal, this.var_hReal);
+			alert("tamaños reales: "+this.var_wReal + "  " +img.height);
 		},
 
-		getPixel: function ( imagedata, x, y ) {
-		    var position = ( x + imagedata.width * y ) * 4, data = imagedata.data;
-		    return { r: data[ position ], g: data[ position + 1 ], b: data[ position + 2 ]};																																					//, a: data[ position + 3 ]
+		getPixelColor: function ( l, t ) {
+			var pixelData = this.var_imageCtx.getImageData(l, t, 1, 1).data;
+			alert('R: ' + pixelData[0] + '<br>G: ' + pixelData[1] + '<br>B: ' + pixelData[2] + '<br>A: ' + pixelData[3])	//, a: data[ position + 3 ]
+			return('R'+ pixelData[0] + 'G' + pixelData[1] + 'B' + pixelData[2]);
 		},
 
-		calcularRealTop:function(pos, h) {
-			var centro = pos+(h/2);
+		calcularRealTop:function(pos, h, tvisual) {
+			var centro = pos+(~~(h/2));
 			console.log("pos = " + pos + "centro : " + centro);
-
-
-			return 0;
+			return (~~(centro*this.var_hReal/tvisual));
+		//	return 0;
 		},
 
-		calcularRealLeft:function(pos){
-			return 0;
+		calcularRealLeft:function(pos, w, tvisual){
+			var centro = pos+(~~(w/2));
+			console.log("pos = " + pos + "centro : " + centro);
+			return (~~(centro*this.var_wReal/tvisual));
 		}
 
 	}

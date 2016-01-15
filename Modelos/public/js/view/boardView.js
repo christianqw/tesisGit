@@ -45,10 +45,9 @@ var app = app || {};
         },
 
 				setPosyMascara:function(element, data, size){
-					alert("Zona: ");
-					var aaa = document.getElementById('imagen_fondo');
-					alert(aaa.clientWidth);
-					data["zona"] = this.model.getStringZona(data, size);
+					var z = this.model.getStringZona(data, size);
+					alert("Zona: " + z );
+					data["zona"] = z
 					element.model.stop_drop(data);
 					//alert("Agregados 3 atributos");
 				},
