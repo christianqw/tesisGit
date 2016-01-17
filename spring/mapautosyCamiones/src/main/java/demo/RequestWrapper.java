@@ -6,7 +6,7 @@ public class RequestWrapper {
 
 	List<Car> cars;
 	Truck truck;
-	
+
 	public List<Car> getCars() {
 		return cars;
 	}
@@ -19,6 +19,10 @@ public class RequestWrapper {
 	public void setTruck(Truck truck) {
 		this.truck = truck;
 	}
-	
-	
+
+	public String toString(){
+		return (this.truck.toString() + "  " + this.cars.toString());
+	}
+
+
 }

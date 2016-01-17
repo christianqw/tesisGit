@@ -32,6 +32,7 @@ public final class TestGenerateRequestWrapper {
 "                            ],\n" +
 "                  \"sentens\": [\n" +
 "                    {\"nombre\":\"form_X\",\"valor\":\"@ x (Asd(x)  | Despierto (x))\",\"estado\":\"\",\"mensaje\":\"\",\"id\":\"2a2beaa5-8513-bd27-ea29-b150247a4f1f\"},\n" +
+                       " {\"nombre\":\"form_01\",\"valor\":\"@ x (Asd(e1)  | Despierto (x))\",\"estado\":\"\",\"mensaje\":\"\",\"id\":\"2a2beaa5-8513-bd27-ea29-b150247a4f1f\"},\n" +
 "                    {\"nombre\":\"form_02\",\"valor\":\"@ x (Dormido(x)  | Despierto (x))\",\"estado\":\"\",\"mensaje\":\"\",\"id\":\"afc8524b-51d9-3ef9-2d9b-e8b265b2a1c0\"}\n" +
 "                  ]\n" +
 "                }"; 

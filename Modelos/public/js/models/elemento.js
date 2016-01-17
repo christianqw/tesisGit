@@ -18,12 +18,16 @@ var app = app || {};
 		// Atributos por defecto de un Elemento
 		// de faltar un campo, se está asumiendo que simepre se asigna dicho atributo al crearlo
     defaults:{
+				img: 'images/icon_chancho.png',
         nombre:"eX",
+
+				dominio:"animal",
 				tipo:"xxx",
 				zona:"bosque",
-        img: 'images/icon_chancho.png',
+
         left: 0,
         top: 0,
+				
         att1:"YYY",
         att2:"WWWW"
     },

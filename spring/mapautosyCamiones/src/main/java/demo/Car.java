@@ -31,4 +31,7 @@ public class Car {
 		this.miles = miles;
 	}
 
+	public String toString(){
+		return ("color: " + this.getColor() + " miles: " + this.getMiles() + "att: " + this.att.toString());
+	}
 }
