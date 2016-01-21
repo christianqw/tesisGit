@@ -1,3 +1,1 @@
-#x#y#z EstaEntre(x,y,z) & (Escirculo(a)|Escirculo(c)) 
- 
- 
+﻿ #x#y#z EstaEntre(x,y,z) & (Escirculo(a)|Escirculo(c)) 

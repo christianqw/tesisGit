@@ -62,7 +62,7 @@ Salto = \r|\n|\r\n
 Espacio = {Salto} | [ \t\f]
 
 /*Identificadores de Variables. Los nombres de las variables siempre estan escritos en Minuscula*/
-Idvariable = [a-z][a-z]*
+Idvariable = [a-z][a-z]*[0-9]*
 
 /*Identificadores de Funciones. Los nombres de las funciones siempre estan escritos en Mayusculas*/
 Idfuncion = [A-Z][A-Z]* 
@@ -87,22 +87,22 @@ Idpredicado = [A-Z][a-z][a-zA-Z]*
 <YYINITIAL> {
    
     /* Regresa que el token EXISTE declarado en la clase sym fue encontrado. */
-    "#"                { System.out.print(" # ");
+    "#" | "∀"               { System.out.print(" ∀ ");
 						  return symbol(sym.EXISTE); }
     /* Regresa que el token PARATODO declarado en la clase sym fue encontrado. */
-    "@"                {  System.out.print(" @ ");
+    "@" | "∃"                {  System.out.print(" ∃ ");
                           return symbol(sym.PARATODO); }
     /* Regresa que el token NEGACION declarado en la clase sym fue encontrado. */
     "¬"|"~"            {  System.out.print(" ¬ ");
                           return symbol(sym.NEGACION); }
     /* Regresa que el token DISYUNCION declarado en la clase sym fue encontrado. */
-    "|"                {  System.out.print(" or ");
+    "|"|"∨"               {  System.out.print(" or ");
                           return symbol(sym.DISYUNCION); }
     /* Regresa que el token CONJUNCION declarado en la clase sym fue encontrado. */
-    "^"|"&"            {  System.out.print(" and ");
+    "^"|"&" |"∧"            {  System.out.print(" and ");
                           return symbol(sym.CONJUNCION); }
 	/* Regresa que el token IMPLICACION declarado en la clase sym fue encontrado. */
-    "="">"             {  System.out.print(" -> ");
+    "="">" |"->"| "→"          {  System.out.print(" -> ");
                           return symbol(sym.IMPLICACION); }				  
     /* Regresa que el token PA declarado en la clase sym fue encontrado. */
     "("                {  System.out.print(" ( ");

@@ -6,6 +6,8 @@
 package generadoresPackge;
 
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,6 +44,21 @@ public class Estructura {
         cargaMapFunciones((JSONArray) objJson.get("Funcion"));
         cargaMapDefElementos((JSONArray) objJson.get("Elemento"));
 
+    }
+    
+    public Estructura(FileReader file) throws ParseException, IOException{
+        cargarClases();
+        
+        //Cargamos el Archivo para ser parseado
+        //Se realiza el casteo del mismo
+        JSONParser p = new JSONParser(); 
+        JSONObject objJson = (JSONObject) p.parse(file);
+        
+        //obtenemos los 3 objetos Json correspondientes a ser analizados.
+        cargaMapPredicados((JSONArray) objJson.get("Predicado"));
+        cargaMapFunciones((JSONArray) objJson.get("Funcion"));
+        cargaMapDefElementos((JSONArray) objJson.get("Elemento"));
+        
     }
     
     public Verificador getPredicado (String s){

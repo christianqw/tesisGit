@@ -7,6 +7,7 @@
 package compilacionFormulas;
 
 import java.io.File;
+import java.io.StringReader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
@@ -81,7 +82,9 @@ public class EjemploCUP {
                     /*  Ejecutamos el analizador lexico y sintactico
                      sobre un archivo de pruebas. 
                      */
-                    String[] archivoPrueba = {"test.txt"};
+                    String s = "∀y ∀ x  ( Sad (x))";
+                    StringReader _fAux = new StringReader( s);
+                    String[] archivoPrueba = {"test2.txt"};
                     AnalizadorSintactico.main(archivoPrueba);
                     System.out.println("Ejecutado!");
                     break;

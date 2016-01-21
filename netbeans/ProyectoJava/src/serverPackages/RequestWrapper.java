@@ -13,8 +13,8 @@ public class RequestWrapper {
     para poder cominucar la informacion a travez del POST
     */
 
-    List<ElementoPost> elements;
-    List<Sentencia> sentens;
+    List<ElementoPost> listaElementos;
+    List<Sentencia> listaSentencias;
 
     /*
     Genera el Modelo correspondiente a la informacion mandada desde la web, el mismo
@@ -24,7 +24,7 @@ public class RequestWrapper {
     public Modelo generarNuevoModelo( Estructura estructura ){
         HashMap<String, Elemento_m> list_map_elementos = new HashMap<>();
 
-        this.elements.stream().forEach((ElementoPost element) -> {
+        this.listaElementos.stream().forEach((ElementoPost element) -> {
             list_map_elementos.put(element.getNombre(), element.getElemToMap(estructura));
         });
 
@@ -40,9 +40,9 @@ public class RequestWrapper {
         Formula f;
         Error_m e;
         boolean result = false;
-        for (int i = 0; i < sentens.size(); i++) {
+        for (int i = 0; i < listaSentencias.size(); i++) {
             System.out.println("Analizamos todas las Formulas ... y ejecutamos AL y AS ");
-            f = AnalizadorSintactico.EjecutarAnalizador(sentens.get(i).getValor()); 
+            f = AnalizadorSintactico.EjecutarAnalizador(listaSentencias.get(i).getValor()); 
             e = AnalizadorSintactico.getError();
             if (e.isWithoutError()){
                 e = new Error_m();
@@ -55,25 +55,25 @@ public class RequestWrapper {
     }
     
     
-    public List<ElementoPost> getElements() {
-                    return elements;
+    public List<ElementoPost> getListasE() {
+                    return listaElementos;
     }
 
-    public void setElements(List<ElementoPost> elements) {
-                    this.elements = elements;
+    public void setListaE(List<ElementoPost> e) {
+                    this.listaElementos = e;
     }
 
-    public List<Sentencia> getSentens() {
-                    return sentens;
+    public List<Sentencia> getListasS() {
+                    return listaSentencias;
     }
 
-    public void setSentens(List<Sentencia> sentens) {
-                    this.sentens = sentens;
+    public void setListaS(List<Sentencia> s) {
+                    this.listaSentencias = s;
     }
 
     @Override
     public String toString() {
-        return "RequestWrapper{" + "elements=" + elements + ", sentens=" + sentens + '}';
+        return "RequestWrapper{" + "elements=" + listaElementos + ", sentens=" + listaSentencias + '}';
     }
     
     

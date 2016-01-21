@@ -27,8 +27,10 @@ targetCompatibility = 1.8
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("com.fasterxml.jackson.core:jackson-databind")
+    compile files('libs/MensajeAutomatico.jar')
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
+
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.3'

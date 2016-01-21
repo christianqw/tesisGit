@@ -91,8 +91,8 @@ public final class TestGenerateRequestWrapper {
             listS.add(getS((JSONObject) arrS1));
         });
     
-        rw.setElements(listE);    
-        rw.setSentens(listS);
+        rw.setListaE(listE);
+        rw.setListaS(listS);
         
         return rw;
     }

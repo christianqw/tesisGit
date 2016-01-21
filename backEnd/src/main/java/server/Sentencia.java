@@ -2,50 +2,50 @@ package server;
 
 public class Sentencia {
 
-    private String id;
-    private String nombre;
-    private String valor;
-    private String estado;
-    private String mensaje;
+    private String _id;
+    private String _nombre;
+    private String _valor;
+    private String _estado;
+    private String _mensaje;
 
     public String getId() {
-        return id;
+        return _id;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this._id = id;
     }
 
     public String getNombre() {
-        return nombre;
+        return _nombre;
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        this._nombre = nombre;
     }
 
     public String getValor() {
-        return valor;
+        return _valor;
     }
 
     public void setValor(String valor) {
-        this.valor = valor;
+        this._valor = valor;
     }
 
     public String getEstado() {
-        return estado;
+        return _estado;
     }
 
     public void setEstado(String estado) {
-        this.estado = estado;
+        this._estado = estado;
     }
 
     public String getMensaje() {
-        return mensaje;
+        return _mensaje;
     }
 
     public void setMensaje(String mensaje) {
-        this.mensaje = mensaje;
+        this._mensaje = mensaje;
     }
 
     public String toString(){
