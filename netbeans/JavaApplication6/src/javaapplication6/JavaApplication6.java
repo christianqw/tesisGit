@@ -20,6 +20,7 @@ public class JavaApplication6 {
         // TODO code application logic here
         
         Mensaje m = new Mensaje();
+        System.out.println(m.toString());
         
         
     }

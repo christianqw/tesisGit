@@ -1,0 +1,42 @@
+{"Predicado":[
+	{"NombrePred":"Despierto",
+	  "CantParam":1,
+	  "Componentes" :[{"Clase":"IGUAL", "ParametroI":0, "AtributoI":"att2", "ParametroD":0, "AtributoD":"_constante"}
+					  ]},
+	{"NombrePred":"Dormido",
+	  "CantParam":1,
+	  "Componentes" :[{"Clase":"IGUAL", "ParametroI":0, "AtributoI":"att2", "ParametroD":1, "AtributoD":"_constante"}
+					  ]},
+	{"NombrePred":"EsChancho",
+	  "CantParam":1,
+	  "Componentes" :[{"Clase":"IGUAL", "ParametroI":0, "AtributoI":"tipo", "ParametroD":0, "AtributoD":"_constante"}
+					  ]},
+	{"NombrePred":"EsGallina",
+	  "CantParam":1,
+	  "Componentes" :[{"Clase":"IGUAL", "ParametroI":0, "AtributoI":"tipo", "ParametroD":1, "AtributoD":"_constante"}
+					  ]},
+	{"NombrePred":"EsPato",
+	  "CantParam":1,
+	  "Componentes" :[{"Clase":"IGUAL", "ParametroI":0, "AtributoI":"tipo", "ParametroD":2, "AtributoD":"_constante"}
+					  ]},
+	{"NombrePred":"EsVaca",
+	  "CantParam":1,
+	  "Componentes" :[{"Clase":"IGUAL", "ParametroI":0, "AtributoI":"tipo", "ParametroD":3, "AtributoD":"_constante"}
+					  ]},
+	{"NombrePred":"MismoLugar",
+	  "CantParam":2,
+	  "Componentes" :[{"Clase":"IGUAL", "ParametroI":0, "AtributoI":"zona", "ParametroD":1, "AtributoD":"zona"}
+					  ]}
+				],		
+"Funcion":[
+	{"Rename":"ELMASLEJANO","Class":"ElMasLejano"},
+	{"Rename":"CERCA","Class":"ElMasCercano"}
+	],
+
+"Elemento":[{"Dominio":"animal",
+			"ListAtributos":[{"Atributo":"tipo","Opciones":["tipo1","tipo2","tipo3", "tipo4"]},
+							{"Atributo":"att1","Opciones":["chico","mediano","grande"]},
+							{"Atributo":"att2","Opciones":["despierto","dormido"]},
+							{"Atributo":"zona","Opciones":["bosque","cielo","corral"]}]
+			}]
+}

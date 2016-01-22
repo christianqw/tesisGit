@@ -1,10 +1,10 @@
 package server;
 
-//import generadoresPackge.Estructura;
-//import generadoresPackge.Estructura_Elemento;
+import generadoresPackge.Estructura;
+import generadoresPackge.Estructura_Elemento;
 import java.util.HashMap;
 import java.util.Map;
-//import modeladoPackge.Elemento_m;
+import modeladoPackge.Elemento_m;
 
 public class ElementoPost {
 
@@ -109,25 +109,35 @@ public class ElementoPost {
   public void setAtt2(String att2) {
       this._att2 = att2;
   }
-/*
+
   public Elemento_m getElemToMap(Estructura e){
+System.out.println(" ");System.out.println(" ");System.out.println(" ");
+			//System.out.println("new map: ");
       Map <String, Integer> aux_M;
       Estructura_Elemento aux_Ee;
       aux_M = new HashMap<>();
       aux_Ee = e.getEstructuraElemento(this._dominio);
+			//System.out.println("dom: " + this._dominio);
+			//System.out.println("Formato Elemento: " );
+			//System.out.println(aux_Ee);
 
       aux_M.put("tipo", aux_Ee.getCodigoValue("tipo", this._tipo));
       aux_M.put("zona", aux_Ee.getCodigoValue("zona", this._zona));
+			//System.out.println("cargó zona y tipo... ");
       //System.out.println("No tengo el dominio como atributo dentro del mapa");
       // dominio
       aux_M.put("left", this._left);
       aux_M.put("top", this._top);
+			//System.out.println("cargó left y top... ");
       aux_M.put("att1", aux_Ee.getCodigoValue("att1", this._att1));
       aux_M.put("att2", aux_Ee.getCodigoValue("att2", this._att2));
+			//System.out.println("cargó att 1 y 2... ");
 
+			//System.out.println("MAPA GENERADO PARA ELEMENTO_M : ");
+			//System.out.println(aux_M);
       return new Elemento_m(aux_M, this._nombre);
   }
-*/
+
     @Override
     public String toString() {
         return " \n ElementoPost{" + "_id=" + _id + ", _img=" + _img + ", _nombre=" + _nombre + ", _dominio=" + _dominio + ", _tipo=" + _tipo + ", _zona=" + _zona + ", _left=" + _left + ", _top=" + _top + ", _att1=" + _att1 + ", _att2=" + _att2 + "} \n";
