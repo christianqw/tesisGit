@@ -14,8 +14,12 @@ var app = app || {};
     defaults:{
         nombre:"form_X",
         valor:"",
-        estado:"", //blanco - none
+        estado:"glyphicon glyphicon-warning-sign ", //blanco - none
         mensaje:""
     }
+
+		//unchequed - glyphicon glyphicon-unchecked
+		// alert  - glyphicon glyphicon-warning-sign
+		// editing - glyphicon glyphicon-edit
 	});
 })();

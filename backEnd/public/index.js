@@ -14,9 +14,17 @@ $(document).ready(function() {
                   ]
                 }),
           url: "http://localhost:8080/action"
-      }).then(function(data, status, jqxhr) {
+      })
+      .then(function(data, status, jqxhr) {
+        $('#respuesta').html('');
         console.log(jqxhr);
-          });
-  });
+        console.log(app);
+        var s = data["listaSentencias"];
+        for (var i in  s) {
+          $('#respuesta').append('Elemenento ' + i +' : ' + s[i] + '<br/>');
+        }
 
+
+      });
+  });
 });
