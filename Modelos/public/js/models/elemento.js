@@ -12,23 +12,23 @@ var app = app || {};
 		localStorage: new Store("Modelos"),
 		var_map : {"tipo1ChicoDespierto":"images/icon_chancho.png",
 							"tipo2ChicoDespierto":"images/icon_gallina.png",
-							"tipo3ChicoDespierto":"images/icon_pato.png",
+							"tipo3ChicoDespierto":"images/iconPato.png",
 							"tipo4ChicoDespierto":"images/icon_vaca.png"
 		},
 		// Atributos por defecto de un Elemento
 		// de faltar un campo, se está asumiendo que simepre se asigna dicho atributo al crearlo
     defaults:{
-				img: 'images/icon_chancho.png',
-        nombre:"eX",
 
+        nombre:"eX",
 				dominio:"animal",
 				tipo:"xxx",
 				zona:"bosque",
+				img: 'images/icon_chancho.png',
 
         left: 0,
         top: 0,
-				
-        att1:"YYY",
+
+				att1:"YYY",
         att2:"WWWW"
     },
 

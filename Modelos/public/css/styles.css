@@ -105,29 +105,36 @@ iframe {
 }
 
 /*Icons*/
-.my-btn-resultado{
-	padding-right: 7px;
-  padding-left: 7px;
+ .my-btn-resultado{
+ 	padding-right: 7px;
+   padding-left: 7px;
   padding-top: 4px;
-  padding-bottom: 4px;
-	height: 34px;
+   padding-bottom: 4px;
+ 	height: 34px;
+ }
+
+ .my-icon-resultado {
+ 	display: inline-block;
+ 	width: 24px;
+ 	height: 24px;
+ 	background-repeat: no-repeat;
+ }
+
+ .my-icon-true{
+ 	background-image: url(../images/my-icons/icon-true.png);
+ }
+
+ .my-icon-false{
+ 	background-image: url(../images/my-icons/icon-false.png);
+ }
+
+.my-icon-none{
+	background-image: url(../images/my-icons/icon-none.png);
 }
 
-.my-icon-resultado {
-	display: inline-block;
-	width: 24px;
-	height: 24px;
-	background-repeat: no-repeat;
+.my-icon-alert{
+	background-image: url(../images/my-icons/icon-alert.png);
 }
-
-.my-icon-true{
-	background-image: url(../images/my-icons/icon-true.png);
-}
-
-.my-icon-false{
-	background-image: url(../images/my-icons/icon-false.png);
-}
-
 /*Sentencias */
 #btn-group-char-2{
 	margin-top: 5px;

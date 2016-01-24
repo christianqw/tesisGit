@@ -14,8 +14,8 @@ var app = app || {};
     defaults:{
         nombre:"form_X",
         valor:"",
-        estado:"glyphicon glyphicon-warning-sign ", //blanco - none
-        mensaje:""
+        estado:"my-icon-none", //blanco - none
+        mensaje:"mensaje mensaje mensaje mensaje"
     }
 
 		//unchequed - glyphicon glyphicon-unchecked

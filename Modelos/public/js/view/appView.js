@@ -84,10 +84,9 @@ var app = app || {};
 				verificar : function(){
 					console.log('collection-Elementos.toJSON(): ', app.elemento_collention.toJSON());
     			console.log('JSON.stringify(collection.toJSON()): ', JSON.stringify(app.elemento_collention.toJSON()));
-				  console.log('------------------- ');
+				  console.log('-------------------');
 					console.log('collection-Sentencias.toJSON(): ', app.sentencia_collention.toJSON());
     			console.log('JSON.stringify(collection.toJSON()): ', JSON.stringify(app.sentencia_collention.toJSON()));
-
 				},
 
 				funcion_popup : function(){
