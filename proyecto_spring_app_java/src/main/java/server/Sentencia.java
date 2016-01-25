@@ -48,5 +48,8 @@ public class Sentencia {
         this.mensaje = mensaje;
     }
 
+    public String toString(){
+      return ("nombre -> " + this.getNombre());
+    }
 
 }

@@ -1,0 +1,20 @@
+{"Predicado":[
+{"NombrePred":"Patito",
+  "CantParam":2,
+  "Claves":["IGUAL","IGUAL","OR"],
+  "Parametro":[1,-1,0,1],
+  "Atributo":["Col","3","Fil","Fil"]},
+{"NombrePred":"EstaEntre",
+ "CantParam":3,
+ "Claves":["IGUAL","IGUAL","MENOR","MENOR","AND"],
+ "Parametro":[0,1,1,2,0,1,1,2],
+ "Atributo":["Fil","Fil","Fil","Fil","Col","Col","Col","Col"]},
+{"NombrePred":"Escirculo",
+"CantParam":1,
+"Claves":["IGUAL"],
+"Parametro":[0,-1],
+"Atributo":["Tipo","circulo"]}],
+
+"Funcion":[{"Rename":"ELMASLEJANO","Class":"ElMasLejano"},{"Rename":"CERCA","Class":"ElMasCercano"},
+{"Rename":"NULL","Class":"ElMasArriva"}],
+"Elemento":{"Dominio":"Figura","ListAtributos":[{"Atributo":"Tipo","Opciones":["circulo","piramide","hexaedro"]},{"Atributo":"Tamaño","Opciones":["chico","mediano","grande"]},{"Atributo":"Fil","Opciones":["1","2","3"]},{"Atributo":"Col","Opciones":["1","2","3","4"]}]}}

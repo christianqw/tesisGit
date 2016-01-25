@@ -87,10 +87,10 @@ Idpredicado = [A-Z][a-z][a-zA-Z]*
 <YYINITIAL> {
 
     /* Regresa que el token EXISTE declarado en la clase sym fue encontrado. */
-    "#" | "∀"               { System.out.print(" ∀ ");
+    "#" | "∃"               { System.out.print(" ∃ ");
 						  return symbol(sym.EXISTE); }
     /* Regresa que el token PARATODO declarado en la clase sym fue encontrado. */
-    "@" | "∃"                {  System.out.print(" ∃ ");
+    "@" | "∀"                {  System.out.print(" ∀ ");
                           return symbol(sym.PARATODO); }
     /* Regresa que el token NEGACION declarado en la clase sym fue encontrado. */
     "¬"|"~"            {  System.out.print(" ¬ ");

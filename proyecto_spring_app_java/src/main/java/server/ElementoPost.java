@@ -1,101 +1,146 @@
 package server;
 
+import generadoresPackge.Estructura;
+import generadoresPackge.Estructura_Elemento;
+import java.util.HashMap;
+import java.util.Map;
+import modeladoPackge.Elemento_m;
+
 public class ElementoPost {
 
-	private String id;
-	private String dominio;
-  private String nombre;
-	private String tipo;
-	private String zona;
-	private String img;
-	private Integer left;
-  private Integer top;
+    //Atributos no comparables:
+	private String _id;
+  private String _img;
+  private String _nombre;
 
-  private String att1;
-  private String att2;
 
+  //Atributos Generalizados o Por defecto:
+  private String _dominio;
+  private String _tipo;
+	private String _zona;
+
+	private Integer _left;
+  private Integer _top;
+
+  //Atributos Personalizables:
+  private String _att1;
+  private String _att2;
+
+  /*
+  Se realizan los get and set de los atributos para realizar la contruccion
+  automatica del objeto dentro del Wrapper.
+  */
   public String getId() {
-      return id;
+      return _id;
   }
 
   public void setId(String id) {
-      this.id = id;
+      this._id = id;
   }
 
-	public String getDominio() {
-			return dominio;
+  public String getTipo() {
+      return _tipo;
+  }
+
+  public void setTipo(String t) {
+      this._tipo = t;
+  }
+
+  public String getDominio() {
+		  return _dominio;
 	}
 
 	public void setDominio(String d) {
-			this.dominio = d;
-	}
-
-	public String getTipo() {
-			return tipo;
-	}
-
-	public void setTipo(String t) {
-			this.tipo = t;
+			this._dominio = d;
 	}
 
   public String getNombre() {
-      return nombre;
+      return _nombre;
   }
 
   public void setNombre(String nombre) {
-      this.nombre = nombre;
+      this._nombre = nombre;
   }
 
-	public String getZona() {
-			return zona;
-	}
+  public String getZona() {
+      return _zona;
+  }
 
-	public void setZona(String z) {
-			this.zona = z;
-	}
+  public void setZona(String z) {
+      this._zona = z;
+  }
 
   public String getImg() {
-      return img;
+      return _img;
   }
 
   public void setImg(String img) {
-      this.img = img;
+      this._img = img;
   }
 
   public Integer getLeft() {
-      return left;
+      return _left;
   }
 
   public void setLeft(Integer left) {
-      this.left = left;
+      this._left = left;
   }
 
   public Integer getTop() {
-      return top;
+      return _top;
   }
 
   public void setTop(Integer top) {
-      this.top = top;
+      this._top = top;
   }
 
   public String getAtt1() {
-      return att1;
+      return _att1;
   }
 
   public void setAtt1(String att1) {
-      this.att1 = att1;
+      this._att1 = att1;
   }
 
   public String getAtt2() {
-      return att2;
+      return _att2;
   }
 
   public void setAtt2(String att2) {
-      this.att2 = att2;
+      this._att2 = att2;
   }
 
-	public ElementoMap getMap(Estructura eE){
+  public Elemento_m getElemToMap(Estructura e){
+System.out.println(" ");System.out.println(" ");System.out.println(" ");
+			//System.out.println("new map: ");
+      Map <String, Integer> aux_M;
+      Estructura_Elemento aux_Ee;
+      aux_M = new HashMap<>();
+      aux_Ee = e.getEstructuraElemento(this._dominio);
+			//System.out.println("dom: " + this._dominio);
+			//System.out.println("Formato Elemento: " );
+			//System.out.println(aux_Ee);
 
-	}
+      aux_M.put("tipo", aux_Ee.getCodigoValue("tipo", this._tipo));
+      aux_M.put("zona", aux_Ee.getCodigoValue("zona", this._zona));
+			//System.out.println("cargó zona y tipo... ");
+      //System.out.println("No tengo el dominio como atributo dentro del mapa");
+      // dominio
+      aux_M.put("left", this._left);
+      aux_M.put("top", this._top);
+			//System.out.println("cargó left y top... ");
+      aux_M.put("att1", aux_Ee.getCodigoValue("att1", this._att1));
+      aux_M.put("att2", aux_Ee.getCodigoValue("att2", this._att2));
+			//System.out.println("cargó att 1 y 2... ");
+
+			//System.out.println("MAPA GENERADO PARA ELEMENTO_M : ");
+			//System.out.println(aux_M);
+      return new Elemento_m(aux_M, this._nombre);
+  }
+
+    @Override
+    public String toString() {
+        return " \n ElementoPost{" + "_id=" + _id + ", _img=" + _img + ", _nombre=" + _nombre + ", _dominio=" + _dominio + ", _tipo=" + _tipo + ", _zona=" + _zona + ", _left=" + _left + ", _top=" + _top + ", _att1=" + _att1 + ", _att2=" + _att2 + "} \n";
+    }
 
 }

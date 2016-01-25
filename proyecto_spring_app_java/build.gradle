@@ -18,6 +18,9 @@ jar {
 }
 
 repositories {
+    flatDir {
+       dirs 'libs'
+    }
     mavenCentral()
 }
 
@@ -27,8 +30,12 @@ targetCompatibility = 1.8
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("com.fasterxml.jackson.core:jackson-databind")
+    compile name: "java-cup-11a"
+    compile name: "json-simple-1.1.1"
+    compile name: "ProyectoJava"
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
+
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.3'
