@@ -60,12 +60,12 @@ public class RequestWrapper {
 						listaSentencias.get(i).setMensaje(e.getId());
 						if (e.isWithoutError()){
 								if (result){
-									listaSentencias.get(i).setEstado("true");
+									listaSentencias.get(i).setEstado("my-icon-true");
 								} else{
-									listaSentencias.get(i).setEstado("false");
+									listaSentencias.get(i).setEstado("my-icon-false");
 								}
             } else {
-							listaSentencias.get(i).setEstado("error");
+							listaSentencias.get(i).setEstado("my-icon-alert");
 						}
         }
 				System.out.println("");System.out.println("");System.out.println("");

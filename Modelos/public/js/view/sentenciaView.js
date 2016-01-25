@@ -78,10 +78,12 @@ var app = app || {};
 
 				remove_editing : function(){
 					this.$el.removeClass('editing');
+					this.model.save({estado : "my-icon-none"});
 				},
 
 				add_editing : function(){
 					this.$el.addClass('editing');
+					this.model.save({estado : "my-icon-editing"});
 				},
 
 				updateOnEnter : function(){

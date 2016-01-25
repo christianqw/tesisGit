@@ -15,7 +15,7 @@ var app = app || {};
         nombre:"form_X",
         valor:"",
         estado:"my-icon-none", //blanco - none
-        mensaje:"mensaje mensaje mensaje mensaje"
+        mensaje:""
     }
 
 		//unchequed - glyphicon glyphicon-unchecked
