@@ -93,11 +93,13 @@ var app = app || {};
         },
 
 				changeFocusElement : function( that ){
-					if (this.var_elem_focus){
-						this.var_elem_focus.remove_editingFocus();
+					if( !(this.var_elem_focus === that)){
+						if (this.var_elem_focus){
+							this.var_elem_focus.remove_editingFocus();
+						}
+						that.add_editingFocus();
+						this.var_elem_focus = that;
 					}
-					that.add_editingFocus();
-					this.var_elem_focus = that;
 				},
 /*
 				revertOnEscape: function (e) {

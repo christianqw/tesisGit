@@ -14,7 +14,7 @@ var app = app || {};
 
 				events:{
 					'click input.input_sentencia' : 'edit',
-					'click .btn-destroy-trash' : 'clear',
+					'click .btn-destroy-trash' : 'delete',
 					'blur .input_sentencia' : 'updateOnFocusOut',
 					'keypress .edit': 'updateOnEnter'
 				},
@@ -39,22 +39,21 @@ var app = app || {};
           return this;
         },
 
-				edit: function(){
+				edit: function(event){
 				//	alert("se toma el focus de la sentencia");
 					this.event_aggregator.trigger("event_formulario:edit_Focus", this);
 				},
 
-				clear : function(){
+				delete : function(){
 					this.model.destroy();
 				},
 
 				updateOnClikBtnChar : function(c){
-					console.log("estoy llamando a mimi");
 					console.log("dentro de la sentencian- pos: " + this.var_char_pos);
-					var string = this.model.get('valor');
-					string = string.substring(0, this.var_char_pos) + c + string.substring(this.var_char_pos);
-					console.log(string);
-					this.model.save({valor : string});
+					var auxs = this.model.get('valor');
+					auxs = auxs.substring(0, this.var_char_pos) + c + auxs.substring(this.var_char_pos);
+					console.log(auxs);
+					this.model.save({valor : auxs});
 					this.var_char_pos = this.var_char_pos + 3;
 				},
 
@@ -74,6 +73,7 @@ var app = app || {};
 								//this.model.trigger('change', this.model);
 								}
 						};
+
 				},
 
 				remove_editing : function(){
@@ -82,7 +82,7 @@ var app = app || {};
 				},
 
 				add_editing : function(){
-					this.$el.addClass('editing');
+					this.$el.addClass('editing ');
 					this.model.save({estado : "my-icon-editing"});
 				},
 

@@ -1,0 +1,53 @@
+.item_sentencia{
+	margin-bottom: 2px;
+}
+
+.imput_icon_center{
+    padding: 9px 11px;
+}
+
+/*botton flotante delete */
+
+#lista_sentencias button {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+	font-size: 100%;
+	vertical-align: baseline;
+	font-family: inherit;
+	font-weight: inherit;
+	color: inherit;
+	-webkit-appearance: none;
+	appearance: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+}
+
+#lista_sentencias div .destroy {
+	display: none;
+	position: absolute;
+	top: 0;
+	right: 0px;
+	bottom: 0;
+	width: 30px;
+	height: 30px;
+	margin: auto 0;
+	font-size: 30px;
+	color: #cc9a9a;
+	margin-bottom: 11px;
+	transition: color 0.2s ease-out;
+}
+
+#lista_sentencias div .destroy:hover {
+	color: #af5b5e;
+}
+
+#lista_sentencias div .destroy:after {
+	content: '×';
+}
+
+#lista_sentencias div:hover .destroy {
+	display: block;
+}

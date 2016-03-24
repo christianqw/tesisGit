@@ -1,5 +1,7 @@
 /*global Backbone, jQuery, _, ENTER_KEY, ESC_KEY */
 var app = app || {};
+var ENTER_KEY = 13;
+var ESC_KEY = 27;
 
 (function ($) {
   'use strict';
@@ -14,6 +16,10 @@ var app = app || {};
 
         events:{
           'click img.elemento_insertado': 'element_focus',
+          'dblclick label': 'edit_nombre',
+          'keypress .nombre-edit': 'updateOnEnter',
+			    'keydown .nombre-edit': 'revertOnEscape',
+			    'blur .nombre-edit': 'close',
           'click .destroy' : 'delete'
           //'contextmenu img.elemento_insertado': 'mm'
           //no andan!!
@@ -23,7 +29,7 @@ var app = app || {};
 
         initialize:function(){
           this.listenTo(this.model, 'destroy', this.remove); //cuando se elimina actualiza
-					//this.listenTo(this.model, 'change', this.render);  //Por los espacion adelante... cuando se edita el modelo actualiza.
+					this.listenTo(this.model, 'change', this.individualRender);  //Por los espacion adelante... cuando se edita el modelo actualiza.
 				},
 
         element_focus: function(){
@@ -36,6 +42,7 @@ var app = app || {};
           var tmpl = _.template(this.template);
           //this.el is what we defined in tagName. use $el to get access to jQuery html() function
           this.$el.html(tmpl(this.model.toJSON()));
+          this.$input = this.$('.nombre-edit');
           var that = this;
           var data = {"left": 0, "top": 0 };
           var size = {"h": 41 , "w": 41};
@@ -60,6 +67,7 @@ var app = app || {};
           var tmpl = _.template(this.template);
           //this.el is what we defined in tagName. use $el to get access to jQuery html() function
           this.$el.html(tmpl(this.model.toJSON()));
+          this.$input = this.$('.nombre-edit');
           return this;
         },
 
@@ -80,6 +88,63 @@ var app = app || {};
         delete : function(){
           this.model.destroy();
         },
+
+        edit_nombre: function () {
+  			this.$el.addClass('focus-name');
+  			this.$input.focus();
+  		  },
+
+        // Close the `"editing"` mode, saving changes to the todo.
+    		close: function () {
+    			var value = this.$input.val();
+    			var trimmedValue = value.trim();
+
+    			if (!this.$el.hasClass('focus-name')) {
+    				return;
+    			}
+
+
+    			if (trimmedValue) {
+/*
+            if (!this.esunico(trimmedValue)){
+              alert("El nombre de los elementos tiene que ser unico dentro del dominio");
+              return;
+            }
+*/
+    				this.model.save({ nombre: trimmedValue });
+
+    				if (value !== trimmedValue) {
+    					// Model values changes consisting of whitespaces only are
+    					// not causing change to be triggered Therefore we've to
+    					// compare untrimmed version with a trimmed one to check
+    					// whether anything changed
+    					// And if yes, we've to trigger change event ourselves
+    					this.model.trigger('change');
+    				}
+    			}
+    			this.$el.removeClass('focus-name');
+    		},
+
+        esunico : function (name) {
+
+        },
+
+    		// If you hit `enter`, we're through editing the item.
+    		updateOnEnter: function (e) {
+    			if (e.which === ENTER_KEY) {
+    				this.close();
+    			}
+    		},
+
+    		// If you're pressing `escape` we revert your change by simply leaving
+    		// the `editing` state.
+    		revertOnEscape: function (e) {
+    			if (e.which === ESC_KEY) {
+    				this.$el.removeClass('focus-name');
+    				// Also reset the hidden input back to the original value.
+    				this.$input.val(this.model.get('nombre'));
+    			}
+    		},
 
         mm : function (event) {
           // body...
