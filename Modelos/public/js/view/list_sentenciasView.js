@@ -14,7 +14,7 @@ var app = app || {};
 
         initialize:function(){                    //var_sentencias
             _.bindAll(this, "addNew");
-						_.bindAll(this, "changeFocusSentencia");
+						_.bindAll(this, "changeFocusSentencia");  //<---
 						_.bindAll(this, "addCharInSentencia");
 						_.bindAll(this, "clearAllInputs");
 
@@ -30,7 +30,7 @@ var app = app || {};
 						*/
 
 						this.event_aggregator.bind("event_formulario:add_Before", this.addNew);
-						this.event_aggregator.bind("event_formulario:edit_Focus", this.changeFocusSentencia);
+						this.event_aggregator.bind("event_formulario:edit_Focus", this.changeFocusSentencia); //<---
 						this.event_aggregator.bind("event_formulario:insert_Char", this.addCharInSentencia);
 						this.event_aggregator.bind("event_formulario:clearAll", this.clearAllInputs);
 

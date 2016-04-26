@@ -84,11 +84,8 @@ var app = app || {};
 				add_editing : function(){
 					this.$el.addClass('editing ');
 					this.model.save({estado : "my-icon-editing"});
-				},
-
-				updateOnEnter : function(){
-
 				}
+
 
     });
   })(jQuery);
