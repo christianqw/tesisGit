@@ -8,139 +8,106 @@ import modeladoPackge.Elemento_m;
 
 public class ElementoPost {
 
-    //Atributos no comparables:
-	private String _id;
-  private String _img;
-  private String _nombre;
+	//Atributos Generalizados o Por defecto:
+private String id;		//no se utiliza... probar si sacando los Set lo ignora al campo. :D
+private String _nombre;
+private String _dominio;
+private Integer _left;
+private Integer _top;
 
+//Atributos Personalizables:
+	private Map<String, String> _atributos;
 
-  //Atributos Generalizados o Por defecto:
-  private String _dominio;
-  private String _tipo;
-	private String _zona;
+/*
+Se realizan los get and set de los atributos para realizar la contruccion
+automatica del objeto dentro del Wrapper.
+*/
+public String getId() {
+		return id;
+}
 
-	private Integer _left;
-  private Integer _top;
+public void setId(String id) {
+		this.id = id;
+}
 
-  //Atributos Personalizables:
-  private String _att1;
-  private String _att2;
+public String getNombre() {
+		return _nombre;
+}
 
-  /*
-  Se realizan los get and set de los atributos para realizar la contruccion
-  automatica del objeto dentro del Wrapper.
-  */
-  public String getId() {
-      return _id;
-  }
+public void setNombre(String nombre) {
+		this._nombre = nombre;
+}
 
-  public void setId(String id) {
-      this._id = id;
-  }
+public String getDominio() {
+		return _dominio;
+}
 
-  public String getTipo() {
-      return _tipo;
-  }
+public void setDominio(String dominio) {
+		this._dominio = dominio;
+}
 
-  public void setTipo(String t) {
-      this._tipo = t;
-  }
+public Integer getLeft() {
+		return _left;
+}
 
-  public String getDominio() {
-		  return _dominio;
+public void setLeft(Integer left) {
+		this._left = left;
+}
+
+public Integer getTop() {
+		return _top;
+}
+
+public void setTop(Integer top) {
+		this._top = top;
+}
+
+public Map<String, String> getAtributos() {
+			return _atributos;
 	}
 
-	public void setDominio(String d) {
-			this._dominio = d;
-	}
+public void setAtributos(Map<String, String> params) {
+		this._atributos = params;
+}
 
-  public String getNombre() {
-      return _nombre;
-  }
+@Override
+public String toString() {
+		return " \n ElementoPost{" + " _nombre=" + _nombre + " _dominio=" + _dominio+", _left=" + _left + ", _top=" + _top + ", atributos=" + this._atributos + "} \n";
+}
 
-  public void setNombre(String nombre) {
-      this._nombre = nombre;
-  }
+public Elemento_m getElemToMap(Estructura e){
+		System.out.println(" ");System.out.println(" ");System.out.println(" ");
+		System.out.println("new map: ");
 
-  public String getZona() {
-      return _zona;
-  }
+		String key;
+		Map <String, Integer> aux_M;
+		Estructura_Elemento aux_Ee;
+		aux_M = new HashMap<>();
+		aux_Ee = e.getEstructuraElemento(this._dominio);
 
-  public void setZona(String z) {
-      this._zona = z;
-  }
+		System.out.println("dom: " + this._dominio);
+		System.out.println("Formato Elemento: " );
+		System.out.println(aux_Ee);
 
-  public String getImg() {
-      return _img;
-  }
+		System.out.println("cargo left y top... ");
+		aux_M.put("left", this._left);
+		aux_M.put("top", this._top);
+		System.out.println("No tengo el dominio como atributo dentro del mapa");
+		// dominio
+		System.out.println(this._atributos.toString());
+		System.out.println("");
+		System.out.println("");
+		for (Map.Entry<String, String> entrySet : this._atributos.entrySet()) {
 
-  public void setImg(String img) {
-      this._img = img;
-  }
+			key = entrySet.getKey();
+			System.out.println("key    "+ key);
+			aux_M.put(key, aux_Ee.getCodigoValue(key, entrySet.getValue()));
+		}
+		System.out.println("cargó att 1 y 2... ");
 
-  public Integer getLeft() {
-      return _left;
-  }
-
-  public void setLeft(Integer left) {
-      this._left = left;
-  }
-
-  public Integer getTop() {
-      return _top;
-  }
-
-  public void setTop(Integer top) {
-      this._top = top;
-  }
-
-  public String getAtt1() {
-      return _att1;
-  }
-
-  public void setAtt1(String att1) {
-      this._att1 = att1;
-  }
-
-  public String getAtt2() {
-      return _att2;
-  }
-
-  public void setAtt2(String att2) {
-      this._att2 = att2;
-  }
-
-  public Elemento_m getElemToMap(Estructura e){
-System.out.println(" ");System.out.println(" ");System.out.println(" ");
-			//System.out.println("new map: ");
-      Map <String, Integer> aux_M;
-      Estructura_Elemento aux_Ee;
-      aux_M = new HashMap<>();
-      aux_Ee = e.getEstructuraElemento(this._dominio);
-			//System.out.println("dom: " + this._dominio);
-			//System.out.println("Formato Elemento: " );
-			//System.out.println(aux_Ee);
-
-      aux_M.put("tipo", aux_Ee.getCodigoValue("tipo", this._tipo));
-      aux_M.put("zona", aux_Ee.getCodigoValue("zona", this._zona));
-			//System.out.println("cargó zona y tipo... ");
-      //System.out.println("No tengo el dominio como atributo dentro del mapa");
-      // dominio
-      aux_M.put("left", this._left);
-      aux_M.put("top", this._top);
-			//System.out.println("cargó left y top... ");
-      aux_M.put("att1", aux_Ee.getCodigoValue("att1", this._att1));
-      aux_M.put("att2", aux_Ee.getCodigoValue("att2", this._att2));
-			//System.out.println("cargó att 1 y 2... ");
-
-			//System.out.println("MAPA GENERADO PARA ELEMENTO_M : ");
-			//System.out.println(aux_M);
-      return new Elemento_m(aux_M, this._nombre);
-  }
-
-    @Override
-    public String toString() {
-        return " \n ElementoPost{" + "_id=" + _id + ", _img=" + _img + ", _nombre=" + _nombre + ", _dominio=" + _dominio + ", _tipo=" + _tipo + ", _zona=" + _zona + ", _left=" + _left + ", _top=" + _top + ", _att1=" + _att1 + ", _att2=" + _att2 + "} \n";
-    }
+		System.out.println("MAPA GENERADO PARA ELEMENTO_M : ");
+		System.out.println(aux_M);
+		return new Elemento_m(aux_M, this._nombre);
+}
 
 }

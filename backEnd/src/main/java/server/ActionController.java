@@ -3,6 +3,8 @@ package server;
 import generadoresPackge.Estructura;
 import java.util.*;
 
+import org.json.simple.parser.ParseException;
+
 import java.io.IOException;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -36,24 +38,74 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 @RestController
 public class ActionController {
 	// private final Mensaje2 m;
-	private final Estructura e;
+	private final Estructura estruc;
+
+	private Map<String, Estructura> framesEstructuras;
 
 	@Autowired
   public ActionController(Estructura e) {
-      this.e = e;
+		System.out.println( "arrancaaa <<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+      this.estruc = e;
+			System.out.println( "new al mapa inic <<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+			this.framesEstructuras = new HashMap<String, Estructura>();
   }
+
+	public Estructura getEstructura(String s, String jsonConfig) throws ParseException{
+		System.out.println( "dentro de get estructura <<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+		if (this.framesEstructuras.containsKey(s)){
+			return (this.framesEstructuras.get(s));
+		} else{
+			Estructura e = new Estructura(jsonConfig);
+			this.framesEstructuras.put(s, e);
+			return e;
+		}
+	}
+
+
+	@RequestMapping(value = "/actionVerificar", method = RequestMethod.POST)
+	public ResponseEntity<List<Sentencia>> updateWithMultipleObjects(
+			@RequestBody RequestWrapper requestWrapper) {
+
+			System.out.println( "-----------XXXXXXX------------");
+			//System.out.println( requestWrapper.toString() );
+			System.out.println( ">>>>>>___________");
+			System.out.println( "Estructura  Pre procesar");
+			System.out.println(  requestWrapper.getjsonConfig() );
+			
+			Estructura e =  null;
+			try {
+			 //The code you are trying to exception handle
+			 e = getEstructura(requestWrapper.getnameIdFrame(), requestWrapper.getjsonConfig());
+
+		 	}catch (Exception ex) {
+			 //The handling for the code
+		 		System.out.println( "ERROR PARSER ");
+			};
+
+			System.out.println( ">>>>>>____");
+			System.out.println( "Estructura elemento");
+			System.out.println( e.getEstructuraElemento("animal").toString() );
+
+
+
+			requestWrapper.ejecutar(e);
+
+		return new ResponseEntity<List<Sentencia>>(requestWrapper.getListaSentencias(), HttpStatus.OK);
+	}
+
+
 
 // consumes = "application/json", produces = "application/json",
 	@RequestMapping(value = "/action", method = RequestMethod.POST)
   //@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<RequestWrapper> updateWithMultipleObjects(
+	public ResponseEntity<RequestWrapper> updateWithMultipleObjectsViejo(
 			@RequestBody RequestWrapper requestWrapper) {
 			System.out.println( "Dentro del Action Estructura cargada: ");
 			//System.out.println( this.e );
 			//System.out.println( "RW:  ");
 			//System.out.println( requestWrapper.toString() );
 			//System.out.println( "");System.out.println( "");
-			requestWrapper.ejecutar(this.e);
+			requestWrapper.ejecutar(this.estruc);
 
 			/*requestWrapper.getCars().stream()
 								.forEach(c -> c.setMiles(c.getMiles() + 100));
@@ -65,94 +117,6 @@ public class ActionController {
 */
 		return new ResponseEntity<RequestWrapper>(requestWrapper, HttpStatus.OK);
 	}
-
-	@RequestMapping(value = "/siguiente1", method = RequestMethod.POST)
-    public ResponseEntity<String> uploadMultipleFileHandler(@RequestParam("inputNameModel") String nameModelo,
-            @RequestParam("filePaso1") MultipartFile[] files) {
-
-      /*  if (files.length != names.length)
-            return "Mandatory information missing";
- */
- 				String[] names = {"modelIcon.png", "Fondo.png", "Mascara.png"};
-
-        for (int i = 0; i < files.length; i++) {
-            MultipartFile file = files[i];
-            String name = names[i];
-
-            try {
-                byte[] imageInByte = file.getBytes();
-
-                // Creating the directory to store file
-                String rootPath = System.getProperty("catalina.home");
-                File dir = new File(rootPath + File.separator + "tmpFiles"+ File.separator + nameModelo);
-                if (!dir.exists()){
-								//	System.out.println( "Ruta de las magenes: ");
-								//	System.out.println( rootPath + File.separator + "tmpFiles" + File.separator + nameModelo);
-									dir.mkdirs();
-								}
-
-                // Create the file on server
-                File serverFile = new File(dir.getAbsolutePath() + File.separator + name);
-                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
-                stream.write(imageInByte);
-                stream.close();
-
-                //logger.info("Server File Location="
-                //        + serverFile.getAbsolutePath());
-
-                System.out.println( "You successfully uploaded file=" + name);
-            } catch (Exception e) {
-								return new ResponseEntity<String>("You failed to upload " + name + " => " + e.getMessage(), HttpStatus.OK);
-            }
-        }
-				String[] colors = null;
-				//if ( files.length = 3){
-					System.out.println( "Si tenemos cargado mascara ...");
-					try {
-						MultipartFile f = files[2];
-						byte[] imageInByte = f.getBytes();
-						InputStream in = new ByteArrayInputStream(imageInByte);
-						BufferedImage image = ImageIO.read(in);
-						colors = convertTo2DWithoutUsingGetRGB(image);
-					} catch (Exception e) {
-							return new ResponseEntity<String>("Error al generar la lista de colores => " + e.getMessage(), HttpStatus.OK);
-					}
-				//}
-      	return new ResponseEntity<String>(" >>>> FIN <<<<", HttpStatus.OK);
-    }
-
-		private static String[] convertTo2DWithoutUsingGetRGB(BufferedImage image) {
-
-				System.out.println( "DEntro de Static getClores ...");
-		     final byte[] pixels = ((DataBufferByte) image.getRaster().getDataBuffer()).getData();
-		     final boolean hasAlphaChannel = image.getAlphaRaster() != null;
-				 final Set<String> colores = new HashSet<String>();
-		     if (hasAlphaChannel) {
-		        final int pixelLength = 4;
-		        for (int pixel = 0; pixel < pixels.length; pixel += pixelLength) {
-		           int argb = 0;
-		           argb += (((int) pixels[pixel] & 0xff) << 24); // alpha
-		           argb += ((int) pixels[pixel + 1] & 0xff); // blue
-		           argb += (((int) pixels[pixel + 2] & 0xff) << 8); // green
-		           argb += (((int) pixels[pixel + 3] & 0xff) << 16); // red
-		           colores.add(Integer.toString(argb));
-		        }
-		     } else {
-		        final int pixelLength = 3;
-		        for (int pixel = 0; pixel < pixels.length; pixel += pixelLength) {
-		           int argb = 0;
-		           argb += -16777216; // 255 alpha
-		           argb += ((int) pixels[pixel] & 0xff); // blue
-		           argb += (((int) pixels[pixel + 1] & 0xff) << 8); // green
-		           argb += (((int) pixels[pixel + 2] & 0xff) << 16); // red
-		           colores.add(Integer.toString(argb));
-		        }
-		     }
-				System.out.println( "Colores en el Conjunto: ");
-				System.out.println( colores.toString() );
-
-		    return colores.toArray(new String[colores.size()]);
-		  }
 
 
 /*

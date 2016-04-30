@@ -27,6 +27,7 @@ public class Application {
 
     @Bean
     public Estructura estructura() throws IOException, ClassNotFoundException, ParseException, FileNotFoundException{ //ClassNotFoundException,
+        System.out.println( "Dentro @Bean <<<<<<<<<<<<<<<<<<<<<<");
         Estructura e = new Estructura(new FileReader("GranjaConfigJSON.json"));
         return e;
 
