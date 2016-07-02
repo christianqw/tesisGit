@@ -67,6 +67,10 @@ public class RequestWrapper {
 	public Modelo generarNuevoModelo( Estructura estructura ){
 				HashMap<String, Elemento_m> list_map_elementos = new HashMap<>();
 				System.out.println("XXXXXXXXXX  -----------  XXXXXXXXXX");
+				System.out.println("Lista De ELEMENTOS : ");
+				System.out.println(listaElementos.toString());
+				System.out.println("XXXXXXXXXX  -----------  XXXXXXXXXX");
+
 				System.out.println("RECORREMOS ELEMENTOS: ");
 				this.listaElementos.stream().forEach((ElementoPost element) -> {
 						System.out.println( "--->  " + element);
@@ -79,7 +83,7 @@ public class RequestWrapper {
 		}
 
 		public void ejecutar(Estructura estructura){
-				System.out.println("  -----------  EJECUTAR VERIFICADO  -----------  ");
+				System.out.println("  -----------  EJECUTAR VERIFICADOR  -----------  ");
 				System.out.println("Llamando a generarModelo: ");
 				Modelo m = generarNuevoModelo(estructura);
 
@@ -91,6 +95,8 @@ public class RequestWrapper {
 				boolean result = false;
 				System.out.println("Analizamos todas las Formulas ... y ejecutamos AL y AS ");
 				for (int i = 0; i < listaSentencias.size(); i++) {
+					//si el valor tiene texto...
+					if ( !(listaSentencias.get(i).getValor().trim().length()==0) ){
 						f = AnalizadorSintactico.EjecutarAnalizador(listaSentencias.get(i).getValor());
 						e = AnalizadorSintactico.getError();
 						if (e.isWithoutError()){
@@ -110,6 +116,8 @@ public class RequestWrapper {
 						} else {
 							listaSentencias.get(i).setEstado("my-icon-alert");
 						}
+					}
+
 				}
 				System.out.println("");System.out.println("");System.out.println("");
 				System.out.println("Resultados finales a mandar como respuesta:");

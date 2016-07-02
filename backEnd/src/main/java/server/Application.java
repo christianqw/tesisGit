@@ -25,13 +25,13 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-    @Bean
+    /*@Bean
     public Estructura estructura() throws IOException, ClassNotFoundException, ParseException, FileNotFoundException{ //ClassNotFoundException,
         System.out.println( "Dentro @Bean <<<<<<<<<<<<<<<<<<<<<<");
         Estructura e = new Estructura(new FileReader("GranjaConfigJSON.json"));
         return e;
 
     }
-
+*/
 
 }

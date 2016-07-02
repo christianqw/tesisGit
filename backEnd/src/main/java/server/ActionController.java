@@ -38,23 +38,22 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 @RestController
 public class ActionController {
 	// private final Mensaje2 m;
-	private final Estructura estruc;
+	//private final Estructura estruc;
 
-	private Map<String, Estructura> framesEstructuras;
+	private Map<String, Estructura> framesEstructuras = new HashMap<String, Estructura>();;
 
-	@Autowired
-  public ActionController(Estructura e) {
-		System.out.println( "arrancaaa <<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-      this.estruc = e;
+/*  public ActionController() {
 			System.out.println( "new al mapa inic <<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 			this.framesEstructuras = new HashMap<String, Estructura>();
   }
-
+*/
 	public Estructura getEstructura(String s, String jsonConfig) throws ParseException{
 		System.out.println( "dentro de get estructura <<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 		if (this.framesEstructuras.containsKey(s)){
+			System.out.println( ">>>>>> USADA");
 			return (this.framesEstructuras.get(s));
 		} else{
+			System.out.println( ">>>>>> NUEVA ");
 			Estructura e = new Estructura(jsonConfig);
 			this.framesEstructuras.put(s, e);
 			return e;
@@ -70,8 +69,8 @@ public class ActionController {
 			//System.out.println( requestWrapper.toString() );
 			System.out.println( ">>>>>>___________");
 			System.out.println( "Estructura  Pre procesar");
-			System.out.println(  requestWrapper.getjsonConfig() );
-			
+			//System.out.println(  requestWrapper.getjsonConfig() );
+
 			Estructura e =  null;
 			try {
 			 //The code you are trying to exception handle
@@ -83,78 +82,12 @@ public class ActionController {
 			};
 
 			System.out.println( ">>>>>>____");
-			System.out.println( "Estructura elemento");
-			System.out.println( e.getEstructuraElemento("animal").toString() );
-
-
+			System.out.println( "Estructura elemento seleccionada ");
+			System.out.println( "Frame:" +requestWrapper.getnameIdFrame() + " Estructura: "+e.toString() );
 
 			requestWrapper.ejecutar(e);
 
 		return new ResponseEntity<List<Sentencia>>(requestWrapper.getListaSentencias(), HttpStatus.OK);
 	}
-
-
-
-// consumes = "application/json", produces = "application/json",
-	@RequestMapping(value = "/action", method = RequestMethod.POST)
-  //@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<RequestWrapper> updateWithMultipleObjectsViejo(
-			@RequestBody RequestWrapper requestWrapper) {
-			System.out.println( "Dentro del Action Estructura cargada: ");
-			//System.out.println( this.e );
-			//System.out.println( "RW:  ");
-			//System.out.println( requestWrapper.toString() );
-			//System.out.println( "");System.out.println( "");
-			requestWrapper.ejecutar(this.estruc);
-
-			/*requestWrapper.getCars().stream()
-								.forEach(c -> c.setMiles(c.getMiles() + 100));
-			System.out.println( "post add");
-			//console.log( requestWrapper.toString());
-
-			System.out.println( "post String print");
-		// TODO: call persistence layer to update
-*/
-		return new ResponseEntity<RequestWrapper>(requestWrapper, HttpStatus.OK);
-	}
-
-
-/*
-	@RequestMapping(value = "/siguiente1", method = RequestMethod.POST)
-	public ResponseEntity<String> clickSiguiente() {
-			System.out.println( "Dentro siguiente !: ");
-			return new ResponseEntity<String>("Este es el string", HttpStatus.OK);
-	}
-*/
-/*
-	@RequestMapping(value = "/siguiente1", method = RequestMethod.POST)
-	public ResponseEntity<String> upload(MultipartHttpServletRequest request) {
-
-		System.out.println( "Dentro siguiente !: ");
-
-		System.out.println( "request: " +  request.getFileMap().size());
-		System.out.println( "----- ");
-		System.out.println( request.getFileMap().toString());
-		Iterator<String> itr =  request.getFileNames();
-		MultipartFile mpf = request.getFile(itr.next());
-		System.out.println(mpf.getOriginalFilename() +" uploaded!");
-
-				try {
-									 //just temporary save file info into ufile
-					// ufile.length = mpf.getBytes().length;
-					// ufile.bytes= mpf.getBytes();
-					// ufile.type = mpf.getContentType();
-					// ufile.name = mpf.getOriginalFilename();
-
-			 } catch (IOException e) {
-					 // TODO Auto-generated catch block
-					 e.printStackTrace();
-			 }
-		return new ResponseEntity<String>(" >>>> FIN <<<<", HttpStatus.OK);
-
- }
-
-	*/
-
 
 }
